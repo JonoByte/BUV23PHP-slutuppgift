@@ -37,7 +37,7 @@
                     <?php for($i=0; $i<20; $i++): ?>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card mb-4">
-                            <img class="card-img-top" src="placeholder.jpg" alt="Card image cap">
+                            <img class="card-img-top" src="placeholder.jpg" alt="Card image">
                             <div class="card-body">
                                 <h5 class="card-title">Game Title</h5>
                                 <p class="card-text">lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
