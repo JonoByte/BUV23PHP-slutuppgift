@@ -17,7 +17,7 @@
 
     <div class="container-xxl">
         <header>
-            <img src="img/header-pic.jpg" alt="lololol">
+            <!-- <img src="img/header-pic.jpg" alt="lololol"> -->
             <div class=header-text>
             <h1>Gamescore</h1>
             <h2>Play, Review, Connect Your Gaming Community Awaits!</h2>
@@ -35,7 +35,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <?php for($i=0; $i<20; $i++): ?>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
                         <div class="card mb-4">
                             <img class="card-img-top" src="placeholder.jpg" alt="Card image">
                             <div class="card-body">
