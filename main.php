@@ -16,17 +16,40 @@
 <body>
 
     <div class="container-xxl">
-
         <header>
-            <img src="img/header-pic.jpg" alt="lololol">
+            <!-- <img src="img/header-pic.jpg" alt="lololol"> -->
+            <div class=header-text>
+            <h1>Gamescore</h1>
+            <h2>Play, Review, Connect Your Gaming Community Awaits!</h2>
+            <h3>Browse</h3>
+        </div>
         </header>
+        <div class="nav">
+            <a href="main.php">Browse</a>
+            <a href="#">Forum</a>
+            <a href="#">Friends</a>
+            <a href="#">Login</a>
+        </div>
 
-        <nav class="container-fluid">
-        </nav>
-
-        <main class="container-fluid">
-
-        </main>
+        <div id="main">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <?php for($i=0; $i<20; $i++): ?>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="card mb-4">
+                            <img class="card-img-top" src="placeholder.jpg" alt="Card image">
+                            <div class="card-body">
+                                <h5 class="card-title">Game Title</h5>
+                                <p class="card-text">lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
+                                <a href="#" class="btn btn-primary">test test</a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endfor; ?>
+                </div>
+            </div>
+        </div>
+        </div>
 
     </div>
 
