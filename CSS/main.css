@@ -5,6 +5,7 @@ body{
 img {
     max-width: 100%;
     max-height: 100%;
+    width: 70%;
 }
 
 header {
@@ -20,6 +21,7 @@ header {
     margin-bottom: 50px;
     text-shadow: 2px 10px 4px rgba(0, 0, 0, 0.5);
 }
+
 
 
 
@@ -60,5 +62,58 @@ header {
 .nav a:hover {
     color: #ffe345;
 }
+
+.carousel-item h1,h2,h3{
+    padding-bottom: 25px;
+  
+}
+
+.carousel-item
+{
+    /* padding-top: 20px; */
+    /* margin-bottom: 50px; */
+    color: #fcfcfc;
+    font-size: 1.2em;
+    text-align: center;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    text-shadow: 2px 10px 4px rgba(0, 0, 0, 0.5);
+    
+
+}
+
+/* .main-header
+{
+    background-image: url(../img/wow.jpg);
+    background-position: 100%;
+    background-size: 100%;
+    height: 200px;
+} */
+
+
+.background-image {
+    padding-top: 25px;
+    max-width: 1400px;
+    background-color: #00000063;
+
+}
+
+
+
+.Latest-news .card{
+    padding: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
