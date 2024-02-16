@@ -53,7 +53,4 @@ class Game
     {
         $this->igdbId = $igdbId;
     }
-
-    
-
 }
