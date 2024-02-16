@@ -13,7 +13,7 @@ html{
 }
 
 a{
-    color:#FF0042;
+    color:#1c2a8b;
     font-weight: bolder;
     text-decoration: none;
 }
@@ -134,7 +134,7 @@ header{
     align-items: center;
 }
 .navigation{
-    background-color:#52057b;
+    background-color:#1c2a8b;
     padding: 10px;
     width: 65%;
     display: inline-block;
@@ -221,12 +221,12 @@ header{
 
   /* Search Box styles */
 .search-box{
-    border: solid 1px #52057b;
+    border: solid 1px #1c2a8b;
     margin-top: 20px;
     padding: 40px;
     display:flex;
     justify-content: center;
-    box-shadow:1px 2px 3px #52057b;
+    box-shadow:1px 2px 3px #1c2a8b;
 }
 
 .search-box select{
@@ -273,7 +273,7 @@ header{
 footer{
     margin-top: 20px;
     padding: 20px;
-    background-color:  #52057b;
+    background-color:  #1c2a8b;
     display: block;
     text-align: center;
 }
@@ -352,7 +352,7 @@ footer{
 }
 
 .navigate a:hover{
-    color:#FF0042;
+    color:#1c2a8b;
     font-weight: bolder;
 }
 
