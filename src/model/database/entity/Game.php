@@ -5,7 +5,7 @@ class Game
 
     private int $id;
     private string $title;
-    private string $description;
+    //private string $description;
     private int $rating;
     private ?int $igdbId;
 
@@ -24,10 +24,10 @@ class Game
         $this->title = $title;
     }
 
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
+    // public function getDescription(): string
+    // {
+    //     return $this->description;
+    // }
 
     public function setDescription(string $description): void
     {
