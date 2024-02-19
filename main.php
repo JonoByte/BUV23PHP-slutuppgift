@@ -92,10 +92,10 @@
 
             <div class="nav">
                 <a href="main.php">Home</a>
-                <a href="../browse.php">Browse</a>
-                <a href="../forum/forums.html">Forum</a>
-                <a href="../friends.php">Friends</a>
-                <a href="../login.php">Login</a>
+                <a href="browse.php">Browse</a>
+                <a href="forum/forums.html">Forum</a>
+                <a href="friends.php">Friends</a>
+                <a href="login.php">Login</a>
             </div>
 
             <ul class="nk-nav nk-nav-right d-none d-lg-table-cell" data-nav-mobile="#nk-nav-mobile">
@@ -122,7 +122,7 @@
         <div class="nano">
             <div class="nano-content">
                 <a href="index.html" class="nk-nav-logo">
-                    <img src="../img/review-bg.png" alt="" width="120">
+                    <img src="img/review-bg.png" alt="" width="120">
                 </a>
                 <div class="nk-navbar-mobile-content">
                     <ul class="nk-nav">
