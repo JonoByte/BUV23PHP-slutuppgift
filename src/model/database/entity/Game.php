@@ -2,7 +2,6 @@
 
 class Game
 {
-
     private int $id;
     private string $title;
     //private string $description;
