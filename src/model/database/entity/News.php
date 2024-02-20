@@ -7,7 +7,7 @@ class News {
     private string $author;
     private string $publishDate;
     private string $content;
-    private string $image;
+    private $image;
     private string $url;
     private string $source;
     private string $address;
@@ -70,12 +70,12 @@ class News {
         $this->content = $content;
     }
 
-    public function getImage(): string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(string $image): void
+    public function setImage($image)
     {
         $this->image = $image;
     }
