@@ -3,12 +3,12 @@
 <?php
 $apiKey = "43e773150eda4c50b462a6d47a38e5d9";
 $url = "https://api.rawg.io/api/games?key=" . $apiKey;
-$json = file_get_contents($url);
+$jsonFilePath = 'games.json';
 
-// Saving output into a json file
-file_put_contents('games.json', $json);
-
-$data = json_decode($json, true);
+if (!file_exists($jsonFilePath)) {
+    $json = file_get_contents($url);
+    file_put_contents($jsonFilePath, $json); // save the json file
+}
 ?>
 
 <head>
