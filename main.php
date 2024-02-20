@@ -20,8 +20,7 @@
     <!-- START: Styles -->
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7cOpen+Sans:400,700" rel="stylesheet"
-        type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7cOpen+Sans:400,700" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -57,28 +56,28 @@
     <!-- jQuery -->
     <script src="jquery.mini.js"></script>
 
+    <?php 
+    // Include the NewsDAO class file
+    require_once('src/model/database/dao/NewsDAO.php');
+    
+    // Instantiate the NewsDAO object
+    $newsDAO = new NewsDAO(); 
+    
+    // Get the article with the specified title
+    $article = $newsDAO->getArticle("Example News Title");
+?>
+
+
+
+
 
 </head>
 
-
-<!--
-    Additional Classes:
-        .nk-page-boxed
--->
 
 <body>
 
     <div class="container-xxl">
 
-
-
-
-
-
-        <!--
-    Additional Classes:
-        .nk-header-opaque
--->
         <header class="nk-header nk-header-opaque">
 
             <div class=header-text>
@@ -103,21 +102,7 @@
 
     </div>
 
-    <!-- END: Navbar -->
 
-
-
-
-
-    <!--
-    START: Navbar Mobile
-
-    Additional Classes:
-        .nk-navbar-left-side
-        .nk-navbar-right-side
-        .nk-navbar-lg
-        .nk-navbar-overlay-content
--->
     <div id="nk-nav-mobile" class="nk-navbar nk-navbar-side nk-navbar-right-side nk-navbar-overlay-content d-lg-none">
         <div class="nano">
             <div class="nano-content">
@@ -142,46 +127,28 @@
         <div class="nk-gap-1"></div>
         <div class="container">
             <ul class="nk-breadcrumbs">
-
-
-
-
-
                 <li><span class="fa fa-angle-right"></span></li>
-
                 <li><span>News</span></li>
-
             </ul>
         </div>
         <div class="nk-gap-1"></div>
         <!-- END: Breadcrumbs -->
 
-
-
-
         <div class="container">
             <div class="row vertical-gap">
                 <div class="col-lg-8">
-
-                    <!-- START: Tabs  -->
-
-                    <!--
-                    Additional Classes:
-                        .nav-tabs-fill
-                -->
-                    <!-- END: Tabs -->
-
 
                     <!-- START: Posts Grid -->
                     <div class="nk-blog-grid">
                         <div class="row">
 
                             <div class="col-md-6">
-                                <!-- START: Post -->
+                                <!-- START: Post 1 -->     
                                 <div class="nk-blog-post">
-                                    <a href="blog-article.html" class="nk-post-img">
-                                        <img src="images/post-1-mid.jpg"
-                                            alt="Smell magic in the air. Or maybe barbecue">
+                                    <a href="<?php
+                                                echo $article->getUrl(); ?>
+                                    " class="nk-post-img">
+                                        <img src="images/post-1-mid.jpg" alt="Smell magic in the air. Or maybe barbecue">
                                         <span class="nk-post-comments-count">4</span>
 
                                         <span class="nk-post-categories">
@@ -198,17 +165,16 @@
                                             friendless and alone...</p>
                                     </div>
                                     <div class="nk-gap"></div>
-                                    <a href="blog-article.html"
-                                        class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
+                                    <a href="blog-article.html" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                                         More</a>
                                     <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Sep
                                         18, 2018</div>
                                 </div>
-                                <!-- END: Post -->
+                                <!-- END: Post 1 -->
                             </div>
 
                             <div class="col-md-6">
-                                <!-- START: Post -->
+                                <!-- START: Post 2 -->
                                 <div class="nk-blog-post">
                                     <a href="blog-article.html" class="nk-post-img">
                                         <img src="images/post-2-mid.jpg" alt="Grab your sword and fight the Horde">
@@ -228,17 +194,16 @@
                                             some little time, I asked the carrier...</p>
                                     </div>
                                     <div class="nk-gap"></div>
-                                    <a href="blog-article.html"
-                                        class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
+                                    <a href="blog-article.html" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                                         More</a>
                                     <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Sep
                                         5, 2018</div>
                                 </div>
-                                <!-- END: Post -->
+                                <!-- END: Post 2 -->
                             </div>
 
                             <div class="col-md-6">
-                                <!-- START: Post -->
+                                <!-- START: Post 3 -->
                                 <div class="nk-blog-post">
                                     <a href="blog-article.html" class="nk-post-img">
                                         <img src="images/post-3-mid.jpg" alt="We found a witch! May we burn her?">
@@ -258,17 +223,16 @@
                                             presents to one's own feet!...</p>
                                     </div>
                                     <div class="nk-gap"></div>
-                                    <a href="blog-article.html"
-                                        class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
+                                    <a href="blog-article.html" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                                         More</a>
                                     <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Aug
                                         27, 2018</div>
                                 </div>
-                                <!-- END: Post -->
+                                <!-- END: Post 3 -->
                             </div>
 
                             <div class="col-md-6">
-                                <!-- START: Post -->
+                                <!-- START: Post 4 -->
                                 <div class="nk-blog-post">
                                     <a href="blog-article.html" class="nk-post-img">
                                         <img src="images/post-4-mid.jpg" alt="For good, too though, in consequence">
@@ -288,17 +252,16 @@
                                             perfect settlement to me compared to that...</p>
                                     </div>
                                     <div class="nk-gap"></div>
-                                    <a href="blog-article.html"
-                                        class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
+                                    <a href="blog-article.html" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                                         More</a>
                                     <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Aug
                                         14, 2018</div>
                                 </div>
-                                <!-- END: Post -->
+                                <!-- END: Post 4 -->
                             </div>
 
                             <div class="col-md-6">
-                                <!-- START: Post -->
+                                <!-- START: Post  5-->
                                 <div class="nk-blog-post">
                                     <a href="blog-article.html" class="nk-post-img">
                                         <img src="images/post-5-mid.jpg" alt="He made his passenger captain of one">
@@ -318,21 +281,19 @@
                                             key and hurried off to the garden door...</p>
                                     </div>
                                     <div class="nk-gap"></div>
-                                    <a href="blog-article.html"
-                                        class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
+                                    <a href="blog-article.html" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                                         More</a>
                                     <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Jul
                                         23, 2018</div>
                                 </div>
-                                <!-- END: Post -->
+                                <!-- END: Post 5-->
                             </div>
 
                             <div class="col-md-6">
-                                <!-- START: Post -->
+                                <!-- START: Post 6-->
                                 <div class="nk-blog-post">
                                     <a href="blog-article.html" class="nk-post-img">
-                                        <img src="images/post-6-mid.jpg"
-                                            alt="At first, for some time, I was not able to answer">
+                                        <img src="images/post-6-mid.jpg" alt="At first, for some time, I was not able to answer">
                                         <span class="nk-post-comments-count">0</span>
 
                                         <span class="nk-post-categories">
@@ -349,21 +310,19 @@
                                             perfect settlement to me compared to that...</p>
                                     </div>
                                     <div class="nk-gap"></div>
-                                    <a href="blog-article.html"
-                                        class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
+                                    <a href="blog-article.html" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                                         More</a>
                                     <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Jul
                                         3, 2018</div>
                                 </div>
-                                <!-- END: Post -->
+                                <!-- END: Post 6-->
                             </div>
 
                             <div class="col-md-6">
-                                <!-- START: Post -->
+                                <!-- START: Post 7-->
                                 <div class="nk-blog-post">
                                     <a href="blog-article.html" class="nk-post-img">
-                                        <img src="images/post-7-mid.jpg"
-                                            alt="At length one of them called out in a clear">
+                                        <img src="images/post-7-mid.jpg" alt="At length one of them called out in a clear">
                                         <span class="nk-post-comments-count">0</span>
 
                                         <span class="nk-post-categories">
@@ -380,17 +339,16 @@
                                             key and hurried off to the garden door...</p>
                                     </div>
                                     <div class="nk-gap"></div>
-                                    <a href="blog-article.html"
-                                        class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
+                                    <a href="blog-article.html" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                                         More</a>
                                     <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Jul
                                         3, 2018</div>
                                 </div>
-                                <!-- END: Post -->
+                                <!-- END: Post 7-->
                             </div>
 
                             <div class="col-md-6">
-                                <!-- START: Post -->
+                                <!-- START: Post 8-->
                                 <div class="nk-blog-post">
                                     <a href="blog-article.html" class="nk-post-img">
                                         <img src="images/post-8-mid.jpg" alt="For good, too though, in consequence">
@@ -410,17 +368,16 @@
                                             perfect settlement to me compared to that...</p>
                                     </div>
                                     <div class="nk-gap"></div>
-                                    <a href="blog-article.html"
-                                        class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
+                                    <a href="blog-article.html" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                                         More</a>
                                     <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Jul
                                         3, 2018</div>
                                 </div>
-                                <!-- END: Post -->
+                                <!-- END: Post 8-->
                             </div>
 
                             <div class="col-md-6">
-                                <!-- START: Post -->
+                                <!-- START: Post 9-->
                                 <div class="nk-blog-post">
                                     <a href="blog-article.html" class="nk-post-img">
                                         <img src="images/post-9-mid.jpg" alt="He made his passenger captain of one">
@@ -440,13 +397,12 @@
                                             key and hurried off to the garden door...</p>
                                     </div>
                                     <div class="nk-gap"></div>
-                                    <a href="blog-article.html"
-                                        class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
+                                    <a href="blog-article.html" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                                         More</a>
                                     <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Jul
                                         3, 2018</div>
                                 </div>
-                                <!-- END: Post -->
+                                <!-- END: Post 9-->
                             </div>
 
                         </div>
@@ -474,15 +430,6 @@
 
                 </div>
                 <div class="col-lg-4">
-                    <!--
-                START: Sidebar
-
-                Additional Classes:
-                    .nk-sidebar-left
-                    .nk-sidebar-right
-                    .nk-sidebar-sticky
-            -->
-
                     <div class="nk-widget nk-widget-highlighted">
                         <h4 class="nk-widget-title"><span><span class="text-main-1">Top 3</span> Recent</span>
                         </h4>
@@ -605,9 +552,7 @@
                                 </a>
                                 <h3 class="nk-post-title"><a href="store-product.html">So saying he
                                         unbuckled</a></h3>
-                                <div class="nk-product-rating" data-rating="4"> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="far fa-star"></i></div>
+                                <div class="nk-product-rating" data-rating="4"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far fa-star"></i></div>
                                 <div class="nk-product-price">€ 23.00</div>
                             </div>
 
@@ -617,9 +562,7 @@
                                 </a>
                                 <h3 class="nk-post-title"><a href="store-product.html">However, I have
                                         reason</a></h3>
-                                <div class="nk-product-rating" data-rating="2.5"> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fas fa-star-half"></i> <i
-                                        class="far fa-star"></i> <i class="far fa-star"></i></div>
+                                <div class="nk-product-rating" data-rating="2.5"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fas fa-star-half"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></div>
                                 <div class="nk-product-price">€ 32.00</div>
                             </div>
 
@@ -629,9 +572,7 @@
                                 </a>
                                 <h3 class="nk-post-title"><a href="store-product.html">It was some time
                                         before</a></h3>
-                                <div class="nk-product-rating" data-rating="5"> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                        class="fa fa-star"></i></div>
+                                <div class="nk-product-rating" data-rating="5"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
                                 <div class="nk-product-price">€ 14.00</div>
                             </div>
 
@@ -688,8 +629,7 @@
 
                     <div class="nk-gap-1"></div>
                     <form action="#" class="nk-form nk-form-style-1">
-                        <input type="text" value="" name="search" class="form-control"
-                            placeholder="Type something and press Enter" autofocus>
+                        <input type="text" value="" name="search" class="form-control" placeholder="Type something and press Enter" autofocus>
                     </form>
                 </div>
             </div>
@@ -720,8 +660,7 @@
                                 <input type="email" value="" name="email" class=" form-control" placeholder="Email">
 
                                 <div class="nk-gap"></div>
-                                <input type="password" value="" name="password" class="required form-control"
-                                    placeholder="Password">
+                                <input type="password" value="" name="password" class="required form-control" placeholder="Password">
                             </div>
                             <div class="col-md-6">
                                 Or social account:
@@ -731,8 +670,7 @@
                                 <ul class="nk-social-links-2">
                                     <li><a class="nk-social-facebook" href="#"><span class="fab fa-facebook"></span></a>
                                     </li>
-                                    <li><a class="nk-social-google-plus" href="#"><span
-                                                class="fab fa-google-plus"></span></a></li>
+                                    <li><a class="nk-social-google-plus" href="#"><span class="fab fa-google-plus"></span></a></li>
                                     <li><a class="nk-social-twitter" href="#"><span class="fab fa-twitter"></span></a>
                                     </li>
                                 </ul>
