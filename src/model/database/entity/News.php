@@ -1,17 +1,29 @@
 <?php
 
 class News {
-    private int $id;
+
+    private $id;
     private string $title;
     private string $author;
-    private DateTime $publishDate;
+    private string $publishDate;
     private string $content;
     private string $image;
     private string $url;
     private string $source;
     private string $address;
 
-    public function getId(): int 
+    // public function __set($name, $value)
+    // {
+
+    //     echo 'test';
+    //     if ($name == 'publishDate' && is_string($value))
+    //     {
+    //         echo $value;
+    //     }
+
+    // }
+
+    public function getId(): int
     {
         return $this->id;
     }
@@ -36,13 +48,15 @@ class News {
         $this->author = $author;
     }
 
-    public function getPublishDate(): DateTime
+    public function getPublishDate(): string
     {
+        
         return $this->publishDate;
     }
 
-    public function setPublishDate(DateTime $publishDate): void
+    public function setPublishDate(string $publishDate): void
     {
+        
         $this->publishDate = $publishDate;
     }
 
@@ -95,5 +109,5 @@ class News {
     {
         $this->address = $address;
     }
-}
+ }
 ?>

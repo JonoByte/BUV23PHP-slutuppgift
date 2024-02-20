@@ -1,4 +1,5 @@
 <?php
+require 'src/config/pdo.php';
 class NewsDAO {
     private $pdo;
 
@@ -30,27 +31,18 @@ class NewsDAO {
         return $newsList;
     }
 
-    public function getArticle($title): array 
+    public function getArticle(int $id): News
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM news WHERE title= :title");
-        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt = $this->pdo->prepare("SELECT * FROM news WHERE id= :id limit 1 ");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     
-        $articleList = [];
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $news = new News();
-            $news->setTitle($row['title']);
-            $news->setAuthor($row['author']);
-            $news->setPublishDate(new DateTime($row['publishDate']));
-            $news->setContent($row['content']);
-            $news->setImage($row['image']);
-            $news->setUrl($row['url']);
-            $news->setSource($row['source']);
-            $news->setAddress($row['address']);
-            $articleList[] = $news;
-        }
+       
+       return $stmt->fetchAll(PDO::FETCH_CLASS, News::class)[0];
+            
         
-        return $articleList;
+        
+       
     }
     
     

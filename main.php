@@ -56,16 +56,23 @@
     <!-- jQuery -->
     <script src="jquery.mini.js"></script>
 
-    <?php 
+    <?php
+
+
+    require __DIR__ . '/src/config/pdo.php';
+
+    require_once('src/model/database/entity/News.php');
+   
     // Include the NewsDAO class file
     require_once('src/model/database/dao/NewsDAO.php');
-    
+
+
     // Instantiate the NewsDAO object
-    $newsDAO = new NewsDAO(); 
-    
+    $newsDAO = new NewsDAO($pdo);
+
     // Get the article with the specified title
-    $article = $newsDAO->getArticle("Example News Title");
-?>
+    $article = $newsDAO->getArticle(1);
+    ?>
 
 
 
@@ -143,11 +150,9 @@
                         <div class="row">
 
                             <div class="col-md-6">
-                                <!-- START: Post 1 -->     
+                                <!-- START: Post 1 -->
                                 <div class="nk-blog-post">
-                                    <a href="<?php
-                                                echo $article->getUrl(); ?>
-                                    " class="nk-post-img">
+                                    <a href="<?php echo $article->getUrl() ?>" class="nk-post-img">
                                         <img src="images/post-1-mid.jpg" alt="Smell magic in the air. Or maybe barbecue">
                                         <span class="nk-post-comments-count">4</span>
 
@@ -157,7 +162,7 @@
 
                                     </a>
                                     <div class="nk-gap"></div>
-                                    <h2 class="nk-post-title h4"><a href="blog-article.html">Smell magic in the air.
+                                    <h2 class="nk-post-title h4"><a href="<?php echo $article->getUrl() ?>">Smell magic in the air.
                                             Or maybe barbecue</a></h2>
                                     <div class="nk-post-text">
                                         <p>With what mingled joy and sorrow do I take up the pen to write to my
@@ -165,7 +170,7 @@
                                             friendless and alone...</p>
                                     </div>
                                     <div class="nk-gap"></div>
-                                    <a href="blog-article.html" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
+                                    <a href="<?php echo $article->getUrl() ?>" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                                         More</a>
                                     <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Sep
                                         18, 2018</div>
