@@ -27,4 +27,5 @@ class GameDAO{
         return $statement->fetch(PDO::FETCH_CLASS, Game::class);
     }
 }
+
 ?>
