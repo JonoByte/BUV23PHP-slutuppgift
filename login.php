@@ -43,17 +43,28 @@
                     <input type="submit" value="Log in">
                 </form>
                 <?php
-                $username = ""; // Initiera $username för att undvika "undefined variable"-varningar
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    // Hämta användarnamn och lösenord från POST-arrayen
+                    require 'src/config/pdo.php'; // Anpassa sökvägen till din pdo.php-fil
+                    require 'src/model/database/entity/User.php'; // Om du behöver användarobjektet
+                    require 'src/model/database/dao/UserDAO.php';
+                
                     $username = $_POST['username'];
                     $password = $_POST['password'];
-
-                    // Kod för att spara användaren till databasen här!
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                    // Skriv ut ett meddelande till användaren
-                    echo "<h2>Du är inloggad som:  " . htmlspecialchars($username),"</h2>";
+                
+                    $userDao = new UserDAO($pdo);
+                    $user = $userDao->findUser($username); // Anta att du har denna metod
+                
+                    if ($user && password_verify($password, $user->getPassword())) {
+                        // Lösenordet är korrekt, starta en session för användaren
+                        session_start();
+                        $_SESSION['username'] = $username; // Spara användarnamnet i sessionen
+                        echo "<h2>Du är inloggad som: " . htmlspecialchars($username) . "</h2>";
+                        // Omdirigera användaren till en säker sida
+                        header('Location: securePage.php'); // Anpassa till din skyddade sida
+                        exit;
+                    } else {
+                        echo "<h2>Felaktigt användarnamn eller lösenord</h2>";
+                    }
                 }
                 ?>
             </div>

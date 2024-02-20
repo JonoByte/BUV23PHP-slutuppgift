@@ -20,15 +20,13 @@ class UserDAO{
         $statement->execute();
     }
 
-
-
-    public function findUser(int $id) :?User
-    {
-        $sql = "SELECT * FROM user WHERE id = :id";
+    public function findUser($username) : ?User {
+        $sql = "SELECT * FROM user WHERE id = :username"; // Använd rätt kolumnnamn för användarnamn
         $statement = $this->pdo->prepare($sql);
-        $statement->bindValue(":id", $id);
+        $statement->bindValue(":username", $username);
         $statement->execute();
-        return $statement->fetch(PDO::FETCH_CLASS, User::class);
+        $statement->setFetchMode(PDO::FETCH_CLASS, User::class);
+        return $statement->fetch();
     }
 }
 

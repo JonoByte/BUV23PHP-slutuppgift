@@ -1,3 +1,14 @@
+<?php
+
+//måste vara inloggad för att komma åt friends
+session_start();
+if (!isset($_SESSION['username'])) {
+    // Användaren är inte inloggad, omdirigera till login-sidan
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
