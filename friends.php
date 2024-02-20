@@ -1,3 +1,26 @@
+<?php
+// Include the FriendsDAO class and establish a database connection
+require_once('src/model/database/dao/FriendsDAO.php');
+
+// Replace with your database connection details
+$host = 'localhost:3308';
+$dbname = 'gamescore';
+$username = 'root';
+$password = '';
+
+$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+// Instantiate the FriendsDAO with the database connection
+$friendsDAO = new FriendsDAO($pdo);
+
+// Replace 'user_id' with the actual user ID
+$userId = 'user_id';
+
+// Retrieve the list of friends
+$friends = $friendsDAO->getFriendsByUserId($userId);
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -73,18 +96,17 @@
         <div id="friend">
             <div class="container">
                 <div class="row justify-content-center">
-                    <?php for ($i = 0; $i < 20; $i++) : ?>
-                        <div class="col-lg-3 col-md-3 col-sm-6">
-                            <div class="card mb-4">
-                                <img class="card-img-top" src="img/profile.jpg" alt="Card image">
-                                <div class="card-body">
-                                    <h5 class="card-title">Username</h5>
-                                    <p class="card-text">lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
-                                    <a href="#" class="btn btn-primary">Send message</a>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endfor; ?>
+                    <?php foreach ($friends as $friend) : ?>
+                        echo '<div class="col-lg-3 col-md-3 col-sm-6">';
+                            echo '<div class="card mb-4">';
+                                echo '<img src="' . $friend['profilepic'] . '" alt="Profile Picture">';
+                                echo '<div class="card-body">';
+                                    echo '<p><?php echo $friend['id']; ?></p>';
+                                    echo '<a href="#" class="btn btn-primary">Send message</a>';
+                                    echo '</div>';
+                                echo '</div>';
+                            echo '</div>';
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
