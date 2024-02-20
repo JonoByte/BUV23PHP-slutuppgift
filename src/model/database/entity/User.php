@@ -2,32 +2,31 @@
 
 class User
 {
-    private int $id;
+    private int $username;
     private string $password;
     private string $email;
 
-    public function getId(): int
-    {
-        return $this->id;
+    public function getUsername(): string {
+        return $this->username;
     }
 
-    public function getPassword(): string
-    {
+    public function setUsername(string $username): void {
+        $this->username = $username;
+    }
+
+    public function getPassword(): string {
         return $this->password;
     }
 
-    public function setPassword(string $password): void
-    {
+    public function setPassword(string $password): void {
         $this->password = $password;
     }
 
-    public function getEmail(): int
-    {
+    public function getEmail(): string {
         return $this->email;
     }
 
-    public function setEmil(int $email): void
-    {
+    public function setEmail(string $email): void {
         $this->email = $email;
     }
 }
