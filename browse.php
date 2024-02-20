@@ -40,7 +40,7 @@ $data = json_decode($json, true);
             <a href="browse.php">Browse</a>
             <a href="forum/forums.html">Forum</a>
             <a href="friends.php">Friends</a>
-            <a href="login-site/login.php">Login</a>
+            <a href="login.php">Login</a>
         </div>
 
         <div id="main">
