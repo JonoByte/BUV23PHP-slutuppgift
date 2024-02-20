@@ -34,32 +34,51 @@
         <div class="main">
 
             <div>
-                <h2 class="login">Log in</h2>
+                <h2> </h2>
             </div>
             <div>
-                <form action="" method="post">
-                    <label class="label-style">Username:</label> <input type="text" name="username" class="input-style"><br>
-                    <label class="label-style">Password:</label> <input type="password" name="password" class="input-style"><br>
-                    <input type="submit" value="Log in">
-                </form>
                 <?php
-                $username = ""; // Initiera $username för att undvika "undefined variable"-varningar
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    // Hämta användarnamn och lösenord från POST-arrayen
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
 
-                    // Kod för att spara användaren till databasen här!
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                    // Skriv ut ett meddelande till användaren
-                    echo "<h2>Du är inloggad som:  " . htmlspecialchars($username),"</h2>";
+                // validering för registreringen
+                if (empty($_POST["name"])) {
+                    die("Username is required");
                 }
-                ?>
-            </div>
 
-            <div>
-            <a href="register.php" class="reglink">New to Gamescore? Register here!</a>
+                if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+                    die("Valid email is required");
+                }
+
+                if (strlen($_POST["password"]) < 8) {
+                    die("Password must be at least 8 characters");
+                }
+
+                if (!preg_match("/[a-z]/i", $_POST["password"])) {
+                    die("Password must contain at least one letter");
+                }
+
+                if (!preg_match("/[0-9]/", $_POST["password"])) {
+                    die("Password must contain at least one letter");
+                }
+
+                if ($_POST["password"] !== $_POST["password_confirmation"]) {
+                    die("Passwords must match");
+                }
+
+                $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+                print_r($_POST);
+                var_dump($password_hash);
+
+                // if (!empty($_POST)) {
+                //     echo "<h2>Data:</h2>";
+                //     echo "<h2>" . "\n" . htmlspecialchars($value) . "</h2>";
+                //     foreach ($_POST as $key => $value) {
+                //         echo "<h2>" . " " . htmlspecialchars($value) . "</h2>";
+                //     }
+                // }
+
+
+
+                ?>
             </div>
         </div>
 

@@ -1,6 +1,6 @@
-CREATE DATABASE `gamescore` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+CREATE DATABASE `gamescore`;
 
-/*kör rad ett först sen resten av tabellerna*/
+/*kör rad 1 först sen resten av tabellerna*/
 
 CREATE TABLE `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -12,9 +12,7 @@ CREATE TABLE `news` (
   PRIMARY KEY (`id`)
 );
 
-
-
-CREATE TABLE `users` (
+CREATE TABLE `user` (
   `id` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -22,8 +20,20 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `message` (
+  `message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender_id` varchar(255) NOT NULL,
+  `receiver_id` varchar(255) NOT NULL,
+  `message_text` text NOT NULL,
+  `sent_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`message_id`),
+  KEY `fk_messages_sender_id` (`sender_id`),
+  KEY `fk_messages_receiver_id` (`receiver_id`),
+  CONSTRAINT `fk_messages_sender` FOREIGN KEY (`sender_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_messages_receiver` FOREIGN KEY (`receiver_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `games` (
+CREATE TABLE `game` (
   `title` varchar(255) NOT NULL,
   `gameinfo` text NOT NULL,
   `agerating` int(11) NOT NULL,
@@ -45,8 +55,8 @@ CREATE TABLE `friends` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`user_id_a`,`user_id_b`),
   KEY `fk_friends_user_b` (`user_id_b`),
-  CONSTRAINT `fk_friends_user_a` FOREIGN KEY (`user_id_a`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_friends_user_b` FOREIGN KEY (`user_id_b`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_friends_user_a` FOREIGN KEY (`user_id_a`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_friends_user_b` FOREIGN KEY (`user_id_b`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `CONSTRAINT_1` CHECK (`user_id_a` <> `user_id_b`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -62,11 +72,8 @@ CREATE TABLE `forum` (
   `fk_userId` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK från users_idx` (`fk_userId`),
-  CONSTRAINT `fk_userId` FOREIGN KEY (`fk_userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_userId` FOREIGN KEY (`fk_userId`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
-
 
 CREATE TABLE `review` (
   `user_id` varchar(255) NOT NULL,
@@ -76,8 +83,6 @@ CREATE TABLE `review` (
   `reviewdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`user_id`,`game_title`),
   KEY `fk_review_game` (`game_title`),
-  CONSTRAINT `fk_review_game` FOREIGN KEY (`game_title`) REFERENCES `games` (`title`),
-  CONSTRAINT `fk_review_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `fk_review_game` FOREIGN KEY (`game_title`) REFERENCES `game` (`title`),
+  CONSTRAINT `fk_review_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-

@@ -2,7 +2,6 @@
 
 class Game
 {
-
     private int $id;
     private string $title;
     //private string $description;
@@ -29,10 +28,10 @@ class Game
     //     return $this->description;
     // }
 
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
+    // public function setDescription(string $description): void
+    // {
+    //     $this->description = $description;
+    // }
 
     public function getRating(): int
     {

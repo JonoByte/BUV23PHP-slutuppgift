@@ -20,7 +20,7 @@
             <div class=header-text>
                 <h1>Gamescore</h1>
                 <h2>Play, Review, Connect Your Gaming Community Awaits!</h2>
-                <h3>Log in</h3>
+                <h3>Register</h3>
             </div>
         </header>
         <div class="nav">
@@ -32,34 +32,33 @@
         </div>
 
         <div class="main">
-
             <div>
-                <h2 class="login">Log in</h2>
+                <h2 class="login">Register new user</h2>
             </div>
             <div>
-                <form action="" method="post">
-                    <label class="label-style">Username:</label> <input type="text" name="username" class="input-style"><br>
-                    <label class="label-style">Password:</label> <input type="password" name="password" class="input-style"><br>
-                    <input type="submit" value="Log in">
+                <form action="process-register.php" method="post" id="signup" novalidate>
+                    <div>
+                        <label class="label-style" for="name">Username: </label>
+                        <input type="text" id="name" name="name">
+                    </div>
+
+                    <div>
+                        <label class="label-style" for="email">Email: </label>
+                        <input type="email" id="email" name="email">
+                    </div>
+
+                    <div>
+                        <label class="label-style" for="password">Password: </label>
+                        <input type="password" id="password" name="password">
+                    </div>
+
+                    <div>
+                        <label class="label-style" for="password_confirmation">Repeat password: </label>
+                        <input type="password" id="password_confirmation" name="password_confirmation">
+                    </div>
+
+                    <input type="submit" value="Register">
                 </form>
-                <?php
-                $username = ""; // Initiera $username för att undvika "undefined variable"-varningar
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    // Hämta användarnamn och lösenord från POST-arrayen
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
-
-                    // Kod för att spara användaren till databasen här!
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                    // Skriv ut ett meddelande till användaren
-                    echo "<h2>Du är inloggad som:  " . htmlspecialchars($username),"</h2>";
-                }
-                ?>
-            </div>
-
-            <div>
-            <a href="register.php" class="reglink">New to Gamescore? Register here!</a>
             </div>
         </div>
 
