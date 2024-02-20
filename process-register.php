@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirectWithError("Passwords must match");
     }
 
-    // Resten av koden för att skapa User-objektet och använda UserDAO för att spara användaren
+    //skapa User-objektet och använda UserDAO för att spara användaren
     $user = new User();
     $user->setUsername($_POST['name']);
     $user->setPassword($_POST['password']);
