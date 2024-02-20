@@ -1,4 +1,13 @@
 <?php
+
+
+//kolla hur jag har kopplat upp mig via pdo.php!
+//det är som en connection sträng som tar hand om host, dbname å allt så du slipper ha det här!
+// kolla i login.php hur jag gjorde, rad 54 har jag använt mig av $pdo för att fixa hela kopplingen tilldatabasen
+
+
+
+
 // Include the FriendsDAO class and establish a database connection
 require_once('src/model/database/dao/FriendsDAO.php');
 
@@ -19,6 +28,17 @@ $userId = 'user_id';
 
 // Retrieve the list of friends
 $friends = $friendsDAO->getFriendsByUserId($userId);
+?>
+
+<?php
+
+//måste vara inloggad för att komma åt friends
+session_start();
+if (!isset($_SESSION['username'])) {
+    // Användaren är inte inloggad, omdirigera till login-sidan
+    header('Location: login.php');
+    exit;
+}
 ?>
 
 <!doctype html>
