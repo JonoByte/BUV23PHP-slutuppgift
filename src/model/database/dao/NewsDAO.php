@@ -9,7 +9,7 @@ class NewsDAO {
 
     public function insertNews(News $news): void {
         $stmt = $this->pdo->prepare("INSERT INTO news (title, author, publishDate, content, image, url, source, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$news->getTitle(), $news->getAuthor(), $news->getPublishDate()->format('Y-m-d H:i:s'), $news->getContent(), $news->getImage(), $news->getUrl(), $news->getSource(), $news->getAddress()]);
+        $stmt->execute([$news->getTitle(), $news->getAuthor(), $news->getPublishDate(), $news->getContent(), $news->getImage(), $news->getUrl(), $news->getSource(), $news->getAddress()]);
     }
     
     
@@ -20,7 +20,7 @@ class NewsDAO {
             $news = new News();
             $news->setTitle($row['title']);
             $news->setAuthor($row['author']);
-            $news->setPublishDate(new DateTime($row['publishDate']));
+            $news->setPublishDate($row['publishDate']);
             $news->setContent($row['content']);
             $news->setImage($row['image']);
             $news->setUrl($row['url']);
