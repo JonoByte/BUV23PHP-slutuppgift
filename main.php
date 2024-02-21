@@ -15,12 +15,13 @@
 
     <link rel="icon" type="image/png" href="images/favicon.png">
 
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- START: Styles -->
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7cOpen+Sans:400,700" rel="stylesheet" type="text/css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7cOpen+Sans:400,700" rel="stylesheet" type="text/css"> -->
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -45,11 +46,15 @@
     <!-- Summernote -->
     <link rel="stylesheet" type="text/css" href="vendor/summernote/dist/summernote-bs4.css">
 
+
+
     <!-- GoodGames -->
-    <link rel="stylesheet" href="newsList.css">
+    <link rel="stylesheet" href="news.css">
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="newsList.css">
+    <link rel="stylesheet" href="news.css">
+
+
 
     <!-- END: Styles -->
 
@@ -129,12 +134,20 @@
 
                     <!-- START: Posts Grid -->
                     <div class="nk-blog-grid">
-                        <div class="row">
+                        <?php
+                        // Counter to keep track of posts
+                        $count = 0;
+                        // Loop through the news lists
+                        foreach ($newsLists as $newsList) :
+                            // Increment the counter
+                            $count++;
+                        ?>
+                            <?php if ($count % 2 !== 0) : ?>
+                                <div class="row">
+                                <?php endif; ?>
 
-                            <div class="col-md-6">
-                            <?php foreach ($newsLists as $newsList) : ?>
+                                <div class="col-md-6">
                                     <div class="nk-blog-post">
-                                        
                                         <a href="<?php echo $newsList->getUrl() ?>" class="nk-post-img">
                                             <?php
                                             // Check if image data exists
@@ -148,10 +161,11 @@
                                                 echo '<img src="placeholder.jpg" alt="' . $newsList->getTitle() . '">';
                                             }
                                             ?>
-                                            <span class="nk-post-comments-count">0</span>
+                                            <span class="nk-post-comments-count">4</span>
                                             <span class="nk-post-categories">
-                                                <span class="bg-main-1"><?php echo $newsList->getSource() ?></span>
+                                                <span class="bg-main-4">MMO</span>
                                             </span>
+                                            <span class="bg-main-1"><?php echo $newsList->getSource() ?></span>
                                         </a>
                                         <div class="nk-gap"></div>
                                         <h2 class="nk-post-title h4"><a href="<?php echo $newsList->getUrl() ?>"><?php echo $newsList->getTitle() ?></a></h2>
@@ -162,10 +176,13 @@
                                         <a href="<?php echo $newsList->getUrl() ?>" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read More</a>
                                         <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> <?php echo date('M d, Y', strtotime($newsList->getPublishDate())) ?></div>
                                     </div>
-                                <?php endforeach; ?>
-                            </div>
+                                </div>
 
-                        </div>
+                                <?php if ($count % 2 === 0 || $count === count($newsLists)) : ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
                         <!-- END: Post 9-->
                         <!-- START: Pagination -->
                         <div class="nk-pagination nk-pagination-center">
