@@ -60,7 +60,7 @@
                         $_SESSION['username'] = $username; // Spara användarnamnet i sessionen
                         echo "<h2>Du är inloggad som: " . htmlspecialchars($username) . "</h2>";
                         // Omdirigera användaren till en säker sida
-                        header('Location: securePage.php'); // Anpassa till din skyddade sida
+                        header('Location: profile.php'); // Anpassa till din skyddade sida
                         exit;
                     } else {
                         echo "<h2>Felaktigt användarnamn eller lösenord</h2>";
