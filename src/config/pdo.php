@@ -1,6 +1,6 @@
 <?php
 
-$host = 'localhost'; // eller din databasserver
+$host = 'localhost:3308'; // eller din databasserver
 $db   = 'gamescore'; // ditt databasnamn
 $user = 'root'; // din databasanvändare
 $pass = ''; // ditt databaslösenord
@@ -18,5 +18,3 @@ try {
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-
-?>

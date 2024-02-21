@@ -1,44 +1,15 @@
 <?php
 
-
-//kolla hur jag har kopplat upp mig via pdo.php!
-//det är som en connection sträng som tar hand om host, dbname å allt så du slipper ha det här!
-// kolla i login.php hur jag gjorde, rad 54 har jag använt mig av $pdo för att fixa hela kopplingen tilldatabasen
-
-
-
-
-// Include the FriendsDAO class and establish a database connection
+require __DIR__ . '/src/config/pdo.php';
 require_once('src/model/database/dao/FriendsDAO.php');
 
-// Replace with your database connection details
-$host = 'localhost:3308';
-$dbname = 'gamescore';
-$username = 'root';
-$password = '';
-
-$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-// Instantiate the FriendsDAO with the database connection
-$friendsDAO = new FriendsDAO($pdo);
-
-// Replace 'user_id' with the actual user ID
-$userId = 'user_id';
-
-// Retrieve the list of friends
-$friends = $friendsDAO->getFriendsByUserId($userId);
-?>
-
-<?php
-
 //måste vara inloggad för att komma åt friends
-session_start();
+/* session_start();
 if (!isset($_SESSION['username'])) {
     // Användaren är inte inloggad, omdirigera till login-sidan
     header('Location: login.php');
     exit;
-}
+} */
 ?>
 
 <!doctype html>
