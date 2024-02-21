@@ -1,3 +1,4 @@
+<?php require 'src/config/autoloader.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -44,6 +45,7 @@
                 </form>
                 <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    
                     require 'src/config/pdo.php'; // Anpassa sökvägen till din pdo.php-fil
                     require 'src/model/database/entity/User.php'; // Om du behöver användarobjektet
                     require 'src/model/database/dao/UserDAO.php';
