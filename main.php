@@ -1,65 +1,16 @@
-<!DOCTYPE html>
-
-
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Gamescore</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <title>Gamescore| newsList</title>
+    <link rel="stylesheet" href="CSS/main.css">
 
-    <meta name="description" content="GoodGames - Bootstrap template for communities and games store">
-    <meta name="keywords" content="game, gaming, template, HTML template, responsive, Bootstrap, premium">
-    <meta name="author" content="_nK">
-
-    <link rel="icon" type="image/png" href="images/favicon.png">
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- START: Styles -->
-
-    <!-- Google Fonts -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7cOpen+Sans:400,700" rel="stylesheet" type="text/css"> -->
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-
-    <!-- FontAwesome -->
-    <script defer src="vendor/fontawesome-free/js/all.js"></script>
-    <script defer src="vendor/fontawesome-free/js/v4-shims.js"></script>
-
-    <!-- IonIcons -->
-    <link rel="stylesheet" href="ionicons.min.css">
-
-    <!-- Flickity -->
-    <link rel="stylesheet" href="flickity.mini.css">
-
-    <!-- Photoswipe -->
-    <link rel="stylesheet" type="text/css" href="photoswipe.css">
-    <link rel="stylesheet" type="text/css" href="default-skin.css">
-
-    <!-- Seiyria Bootstrap Slider -->
-    <link rel="stylesheet" href="vendor/bootstrap-slider/dist/css/bootstrap-slider.min.css">
-
-    <!-- Summernote -->
-    <link rel="stylesheet" type="text/css" href="vendor/summernote/dist/summernote-bs4.css">
-
-
-
-    <!-- GoodGames -->
-    <link rel="stylesheet" href="news.css">
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="news.css">
-
-
-
-    <!-- END: Styles -->
-
-    <!-- jQuery -->
-    <script src="jquery.mini.js"></script>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 
     <?php
 
@@ -80,385 +31,153 @@
     ?>
 
 
-
-
-
 </head>
+
+
+
+
 
 
 <body>
 
     <div class="container-xxl">
-
-        <header class="nk-header nk-header-opaque">
-
+        <header>
+            <!-- <img src="img/header-pic.jpg" alt="lololol"> -->
             <div class=header-text>
                 <h1>Gamescore</h1>
                 <h2>Play, Review, Connect Your Gaming Community Awaits!</h2>
+                <h3>Home</h3>
             </div>
-
         </header>
+        <div class="nav">
+            <a href="main.php">Home</a>
+            <a href="browse.php">Browse</a>
+            <a href="forum.php">Forum</a>
+            <a href="friends.php">Friends</a>
+            <a href="login.php">Login</a>
+        </div>
 
-        <nav class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
+        <div id="main">
+            <div class="main-header">
 
-            <div class="nav">
-                <a href="main.php">Home</a>
-                <a href="browse.php">Browse</a>
-                <a href="forum/forums.html">Forum</a>
-                <a href="friends.php">Friends</a>
-                <a href="login.php">Login</a>
+                <!-----Carousel function------>
+
+                <div id="carouselExampleDark" class="carousel carousel-light slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="5000">
+                            <img src="img/wow.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h1>We have the latest news in the gaming world</h1>
+                                <h2>search your favourite game and learn all from tips and tricks to lore</h2>
+                                <h3>make friends and join the community</h3>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="img/overwatch.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h1>We have the latest news in the gaming world</h1>
+                                <h2>search your favourite game and learn all from tips and tricks to lore</h2>
+                                <h3>make friends and join the community</h3>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/pubg.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h1>We have the latest news in the gaming world</h1>
+                                <h2>search your favourite game and learn all from tips and tricks to lore</h2>
+                                <h3>make friends and join the community</h3>
+
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <!-----Carousel function END------>
+
             </div>
 
-            <ul class="nk-nav nk-nav-right d-none d-lg-table-cell" data-nav-mobile="#nk-nav-mobile">
+            <div class="background-image">
 
-
-    </div>
-
-
-    <div class="nk-main">
-
-        <!-- START: Breadcrumbs -->
-        <div class="nk-gap-1"></div>
-        <div class="container">
-            <ul class="nk-breadcrumbs">
-                <li><span class="fa fa-angle-right"></span></li>
-                <li><span>news</span></li>
-            </ul>
-        </div>
-        <div class="nk-gap-1"></div>
-        <!-- END: Breadcrumbs -->
-
-        <div class="container">
-            <div class="row vertical-gap">
-                <div class="col-lg-8">
-
-                    <!-- START: Posts Grid -->
-                    <div class="nk-blog-grid">
-                        <?php
-                        // Counter to keep track of posts
-                        $count = 0;
-                        // Loop through the news lists
-                        foreach ($newsLists as $newsList) :
-                            // Increment the counter
-                            $count++;
-                        ?>
-                            <?php if ($count % 2 !== 0) : ?>
-                                <div class="row">
-                                <?php endif; ?>
-
-                                <div class="col-md-6">
-                                    <div class="nk-blog-post">
-                                        <a href="<?php echo $newsList->getUrl() ?>" class="nk-post-img">
-                                            <?php
-                                            // Check if image data exists
-                                            if ($newsList->getImage()) {
-                                                // Convert binary data to base64-encoded string
-                                                $imageData = base64_encode($newsList->getImage());
-                                                // Output HTML with embedded image data
-                                                echo '<img src="data:image/jpeg;base64,' . $imageData . '" alt="' . $newsList->getTitle() . '">';
-                                            } else {
-                                                // If no image data is found, use a placeholder image or leave it empty
-                                                echo '<img src="placeholder.jpg" alt="' . $newsList->getTitle() . '">';
-                                            }
-                                            ?>
-                                            <span class="nk-post-comments-count">4</span>
-                                            <span class="nk-post-categories">
-                                                <span class="bg-main-4">MMO</span>
-                                            </span>
-                                            <span class="bg-main-1"><?php echo $newsList->getSource() ?></span>
-                                        </a>
-                                        <div class="nk-gap"></div>
-                                        <h2 class="nk-post-title h4"><a href="<?php echo $newsList->getUrl() ?>"><?php echo $newsList->getTitle() ?></a></h2>
-                                        <div class="nk-post-text">
-                                            <p><?php echo $newsList->getContent() ?></p>
-                                        </div>
-                                        <div class="nk-gap"></div>
-                                        <a href="<?php echo $newsList->getUrl() ?>" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read More</a>
-                                        <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> <?php echo date('M d, Y', strtotime($newsList->getPublishDate())) ?></div>
+                <div class="container">
+                    <h1>Latest News</h1>
+                    <div class="row justify-content-md-center">
+                        <!-- <div class="col"> -->
+                        <!-- START: Posts Grid -->
+                        <div class="row col-lg-10">
+                            <?php foreach ($newsLists as $newsList) : ?>
+                                <div class="mb-2 custom-card">
+                                    <img class="card-img-top" src="<?php echo $newsList->getImage() ? 'data:image/jpeg;base64,' . base64_encode($newsList->getImage()) : 'placeholder.jpg'; ?>" alt="<?php echo $newsList->getTitle(); ?>">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $newsList->getTitle(); ?></h5>
+                                        <p class="card-text"><?php echo $newsList->getContent(); ?></p>
+                                        <a href="<?php echo $newsList->getUrl(); ?>" class="btn btn-primary">Read More</a>
                                     </div>
                                 </div>
-
-                                <?php if ($count % 2 === 0 || $count === count($newsLists)) : ?>
-                                </div>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-
-                        <!-- END: Post 9-->
-                        <!-- START: Pagination -->
-                        <div class="nk-pagination nk-pagination-center">
-                            <a href="#" class="nk-pagination-prev">
-                                <span class="ion-ios-arrow-back"></span>
-                            </a>
-                            <nav>
-                                <h3></h3>
-                                <a class="nk-pagination-current" href="#">GO TO THE TOP</a>
-
-                            </nav>
-                            <a href="#" class="nk-pagination-next">
-                                <span class="ion-ios-arrow-forward"></span>
-                            </a>
-                        </div>
-                        <!-- END: Pagination -->
-                    </div>
-                </div>
-                <!-- END: Posts Grid -->
-                <!--TOP 3 Recent START--->
-                <div class="col-lg-4">
-                    <div class="nk-widget nk-widget-highlighted">
-                        <h4 class="nk-widget-title"><span><span class="text-main-1">Top 3</span> Recent</span>
-                        </h4>
-                        <div class="nk-widget-content">
-
-                            <div class="nk-widget-post">
-                                <a href="blog-newsList.html" class="nk-post-image">
-                                    <img src="images/post-1-sm.jpg" alt="">
-                                </a>
-                                <h3 class="nk-post-title"><a href="blog-newsList.html">Smell magic in the air. Or
-                                        maybe barbecue</a></h3>
-                                <div class="nk-post-date"><span class="fa fa-calendar"></span> Sep 18, 2018
-                                </div>
-                            </div>
-
-                            <div class="nk-widget-post">
-                                <a href="blog-newsList.html" class="nk-post-image">
-                                    <img src="images/post-2-sm.jpg" alt="">
-                                </a>
-                                <h3 class="nk-post-title"><a href="blog-newsList.html">Grab your sword and fight
-                                        the Horde</a></h3>
-                                <div class="nk-post-date"><span class="fa fa-calendar"></span> Sep 5, 2018</div>
-                            </div>
-
-                            <div class="nk-widget-post">
-                                <a href="blog-newsList.html" class="nk-post-image">
-                                    <img src="images/post-3-sm.jpg" alt="">
-                                </a>
-                                <h3 class="nk-post-title"><a href="blog-newsList.html">We found a witch! May we
-                                        burn her?</a></h3>
-                                <div class="nk-post-date"><span class="fa fa-calendar"></span> Aug 27, 2018
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
 
                         </div>
 
-                    </div>
-                    <!--TOP 3 Recent END--->
-                    <!--LATEST SCREENSHOT START-->
-                    <div class="nk-widget nk-widget-highlighted">
-                        <h4 class="nk-widget-title"><span><span class="text-main-1">Latest</span>
-                                Screenshots</span></h4>
-                        <div class="nk-widget-content">
-                            <div class="nk-popup-gallery">
-                                <div class="row sm-gap vertical-gap">
-                                    <div class="col-sm-6">
-                                        <div class="nk-gallery-item-box">
-                                            <a href="images/gallery-1.jpg" class="nk-gallery-item" data-size="1016x572">
-                                                <div class="nk-gallery-item-overlay"><span class="ion-eye"></span></div>
-                                                <img src="images/gallery-1-thumb.jpg" alt="">
-                                            </a>
-                                            <div class="nk-gallery-item-description">
-                                                <h4>Called Let</h4>
-                                                Divided thing, land it evening earth winged whose great after.
-                                                Were grass night. To Air itself saw bring fly fowl. Fly years
-                                                behold spirit day greater of wherein winged and form. Seed open
-                                                don't thing midst created dry every greater divided of, be man
-                                                is. Second Bring stars fourth gathering he hath face morning
-                                                fill. Living so second darkness. Moveth were male. May creepeth.
-                                                Be tree fourth.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="nk-gallery-item-box">
-                                            <a href="images/gallery-2.jpg" class="nk-gallery-item" data-size="1188x594">
-                                                <div class="nk-gallery-item-overlay"><span class="ion-eye"></span></div>
-                                                <img src="images/gallery-2-thumb.jpg" alt="">
-                                            </a>
-                                            <div class="nk-gallery-item-description">
-                                                Seed open don't thing midst created dry every greater divided
-                                                of, be man is. Second Bring stars fourth gathering he hath face
-                                                morning fill. Living so second darkness. Moveth were male. May
-                                                creepeth. Be tree fourth.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="nk-gallery-item-box">
-                                            <a href="images/gallery-4.jpg" class="nk-gallery-item" data-size="625x350">
-                                                <div class="nk-gallery-item-overlay"><span class="ion-eye"></span></div>
-                                                <img src="images/gallery-3-thumb.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="nk-gallery-item-box">
-                                            <a href="images/gallery-4.jpg" class="nk-gallery-item" data-size="873x567">
-                                                <div class="nk-gallery-item-overlay"><span class="ion-eye"></span></div>
-                                                <img src="images/gallery-4-thumb.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="nk-gallery-item-box">
-                                            <a href="images/gallery-5.jpg" class="nk-gallery-item" data-size="471x269">
-                                                <div class="nk-gallery-item-overlay"><span class="ion-eye"></span></div>
-                                                <img src="images/gallery-5-thumb.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="nk-gallery-item-box">
-                                            <a href="images/gallery-6.jpg" class="nk-gallery-item" data-size="472x438">
-                                                <div class="nk-gallery-item-overlay"><span class="ion-eye"></span></div>
-                                                <img src="images/gallery-6-thumb.jpg" alt="">
-                                            </a>
-                                        </div>
+                        <!-- </div> -->
+                        <!-- END: Posts Grid -->
+
+                        <div class="col-lg-2">
+                            <!-- START: Fristående Kort -->
+                            <div class="mb-2 custom-card">
+                                <div class="border-0">
+                                    <img class="card-img-top" src="img/post-4-sm.jpg" alt="image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">title</h5>
+                                        <p class="card-text">Some quick example text to build on the title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
+                            <div class="mb-2 custom-card">
+                                <div class="card-transparent">
+                                    <img class="card-img-top" src=".../100px180/" alt="image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">title</h5>
+                                        <p class="card-text">Some quick example text to build on the title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-2 custom-card">
+                                <div class="review3">
+                                    <img class="card-img-top" src=".../100px180/" alt="image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">title</h5>
+                                        <p class="card-text">Some quick example text to build on the title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END: Fristående Kort -->
                         </div>
+
                     </div>
-                    <!--LATEST SCREENSHOT END-->
-                    <div class="nk-widget nk-widget-highlighted">
-                        <h4 class="nk-widget-title"><span><span class="text-main-1">Most</span> Popular Reviews</span>
-                        </h4>
-                        <div class="nk-widget-content">
-
-                            <div class="nk-widget-post">
-                                <a href="store-product.html" class="nk-post-image">
-                                    <img src="images/product-1-xs.jpg" alt="So saying he unbuckled">
-                                </a>
-                                <h3 class="nk-post-title"><a href="store-product.html">So saying he
-                                        unbuckled</a></h3>
-                                <div class="nk-product-rating" data-rating="4"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far fa-star"></i></div>
-                                <div class="nk-product-price">USER REVIEW</div>
-                            </div>
-
-                            <div class="nk-widget-post">
-                                <a href="store-product.html" class="nk-post-image">
-                                    <img src="images/product-2-xs.jpg" alt="However, I have reason">
-                                </a>
-                                <h3 class="nk-post-title"><a href="store-product.html">However, I have
-                                        reason</a></h3>
-                                <div class="nk-product-rating" data-rating="2.5"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fas fa-star-half"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></div>
-                                <div class="nk-product-price">USER REVIEW</div>
-                            </div>
-
-                            <div class="nk-widget-post">
-                                <a href="store-product.html" class="nk-post-image">
-                                    <img src="images/product-3-xs.jpg" alt="It was some time before">
-                                </a>
-                                <h3 class="nk-post-title"><a href="store-product.html">It was some time
-                                        before</a></h3>
-                                <div class="nk-product-rating" data-rating="5"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                <div class="nk-product-price">USER REVIEW</div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    </aside>
-                    <!-- END: Sidebar -->
                 </div>
             </div>
         </div>
-
-        <div class="nk-gap-2"></div>
-
-
-
-        <!-- START: Footer -->
-        <footer class="nk-footer">
-
-            <div class="container">
-
-
-
-            </div>
-        </footer>
-        <!-- END: Footer -->
-
-
     </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
-
-
-
-    <!-- START: Page Background -->
-
-    <!-- <img class="nk-page-background-top" src="img/community-bg-trans.png" alt="">
-    <img class="nk-page-background-bottom" src="img/review-bg.png" alt=""> -->
-
-    <!-- END: Page Background -->
-
-
-
-
-
-    <!-- START: Scripts -->
-
-    <!-- Object Fit Polyfill -->
-    <script src="vendor/object-fit-images/dist/ofi.min.js"></script>
-
-    <!-- GSAP -->
-    <script src="vendor/gsap/src/minified/TweenMax.min.js"></script>
-    <script src="vendor/gsap/src/minified/plugins/ScrollToPlugin.min.js"></script>
-
-    <!-- Popper -->
-    <script src="vendor/popper.js/dist/umd/popper.min.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Sticky Kit -->
-    <script src="vendor/sticky-kit/dist/sticky-kit.min.js"></script>
-
-    <!-- Jarallax -->
-    <script src="vendor/jarallax/dist/jarallax.min.js"></script>
-    <script src="vendor/jarallax/dist/jarallax-video.min.js"></script>
-
-    <!-- imagesLoaded -->
-    <script src="vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-
-    <!-- Flickity -->
-    <script src="vendor/flickity/dist/flickity.pkgd.min.js"></script>
-
-    <!-- Photoswipe -->
-    <script src="vendor/photoswipe/dist/photoswipe.min.js"></script>
-    <script src="vendor/photoswipe/dist/photoswipe-ui-default.min.js"></script>
-
-    <!-- Jquery Validation -->
-    <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-
-    <!-- Jquery Countdown + Moment -->
-    <script src="vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
-    <script src="vendor/moment/min/moment.min.js"></script>
-    <script src="vendor/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
-
-    <!-- Hammer.js -->
-    <script src="vendor/hammerjs/hammer.min.js"></script>
-
-    <!-- NanoSroller -->
-    <script src="vendor/nanoscroller/bin/javascripts/jquery.nanoscroller.js"></script>
-
-    <!-- SoundManager2 -->
-    <script src="vendor/soundmanager2/script/soundmanager2-nodebug-jsmin.js"></script>
-
-    <!-- Seiyria Bootstrap Slider -->
-    <script src="vendor/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
-
-    <!-- Summernote -->
-    <script src="vendor/summernote/dist/summernote-bs4.min.js"></script>
-
-    <!-- nK Share -->
-    <script src="plugins/nk-share/nk-share.js"></script>
-
-    <!-- GoodGames -->
-    <script src="js/goodgames.min.js"></script>
-    <script src="js/goodgames-init.js"></script>
-    <!-- END: Scripts -->
-
-
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
 
 </html>

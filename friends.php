@@ -12,7 +12,7 @@
 require_once('src/model/database/dao/FriendsDAO.php');
 
 // Replace with your database connection details
-$host = 'localhost:3308';
+$host = 'localhost';
 $dbname = 'gamescore';
 $username = 'root';
 $password = '';
