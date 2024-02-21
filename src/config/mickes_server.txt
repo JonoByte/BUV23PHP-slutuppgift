@@ -1,0 +1,5 @@
+$host = 'localhost'; // eller din databasserver
+$db   = 'gamescore'; // ditt databasnamn
+$user = 'root'; // din databasanvändare
+$pass = ''; // ditt databaslösenord
+$charset = 'utf8mb4';
