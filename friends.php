@@ -1,37 +1,16 @@
 <?php
-
+require 'src/config/autoloader.php';
 require __DIR__ . '/src/config/pdo.php';
-require_once('src/model/database/dao/FriendsDAO.php');
+require 'src/model/database/dao/FriendsDAO.php';
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
 
-// Replace with your database connection details
-$host = 'localhost:3308';
-$dbname = 'gamescore';
-$username = 'root';
-$password = '';
+$userId = $_SESSION['username'];
 
-$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-// Instantiate the FriendsDAO with the database connection
-$friendsDAO = new FriendsDAO($pdo);
-
-// Replace 'user_id' with the actual user ID
-$userId = 'user_id';
-
-// Retrieve the list of friends
+$friendsDAO = new FriendsDAO($pdo);  // Replace with your PDO instance
 $friends = $friendsDAO->getFriendsByUserId($userId);
-?>
-
-<?php
-
-//måste vara inloggad för att komma åt friends
-/* //Användaren är inte inloggad, omdirigera till login-sidan
-
-// session_start();
-// if (!isset($_SESSION['username'])) {
-//     header('Location: login.php');
-//     exit;
-// } */
 ?>
 
 <!doctype html>
@@ -71,7 +50,7 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
         <div class="main">
             <div class="container">
                 <img class="profile" src="img/profile.jpg" alt="profile picture">
-                <h1>Username</h1>
+                <h1><?php echo $userId ?></h1>
             </div>
 
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Friend</button>
@@ -110,15 +89,15 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
             <div class="container">
                 <div class="row justify-content-center">
                     <?php foreach ($friends as $friend) : ?>
-                        echo '<div class="col-lg-3 col-md-3 col-sm-6">';
-                            echo '<div class="card mb-4">';
-                                echo '<img src="' . $friend['profilepic'] . '" alt="Profile Picture">';
-                                echo '<div class="card-body">';
-                                    echo '<p><?php echo $friend['id']; ?></p>';
-                                    echo '<a href="#" class="btn btn-primary">Send message</a>';
-                                    echo '</div>';
-                                echo '</div>';
-                            echo '</div>';
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="card mb-4">
+                                <img src="' . $friend['profilepic'] . '" alt="Profile Picture">
+                                <div class="card-body">
+                                    <p><?php echo $friend['id']; ?></p>
+                                    <a href="#" class="btn btn-primary">Send message</a>
+                                </div>
+                            </div>
+                        </div>
                     <?php endforeach; ?>
                 </div>
             </div>
