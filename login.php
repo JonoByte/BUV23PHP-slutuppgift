@@ -1,3 +1,4 @@
+<?php require 'src/config/autoloader.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -44,6 +45,7 @@
                 </form>
                 <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    
                     require 'src/config/pdo.php'; // Anpassa sökvägen till din pdo.php-fil
                     require 'src/model/database/entity/User.php'; // Om du behöver användarobjektet
                     require 'src/model/database/dao/UserDAO.php';
@@ -60,7 +62,7 @@
                         $_SESSION['username'] = $username; // Spara användarnamnet i sessionen
                         echo "<h2>Du är inloggad som: " . htmlspecialchars($username) . "</h2>";
                         // Omdirigera användaren till en säker sida
-                        header('Location: securePage.php'); // Anpassa till din skyddade sida
+                        header('Location: profile.php'); // Anpassa till din skyddade sida
                         exit;
                     } else {
                         echo "<h2>Felaktigt användarnamn eller lösenord</h2>";
