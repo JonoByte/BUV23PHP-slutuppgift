@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 
 $userId = $_SESSION['username'];
 
-$friendsDAO = new FriendsDAO($pdo);  // Replace with your PDO instance
+$friendsDAO = new FriendsDAO($pdo);
 $friends = $friendsDAO->getFriendsByUserId($userId);
 ?>
 
@@ -26,6 +26,32 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Handle the button click event
+            $("#sendFriendRequest").click(function() {
+                // Get the values from the form
+                var friendUsername = $("#recipient-name").val();
+                var message = $("#message-text").val();
+
+                // Make an AJAX request to the server
+                $.ajax({
+                    url: 'processFriendsRequest.php',
+                    type: 'POST',
+                    data: {
+                        friendUsername: friendUsername
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -68,15 +94,11 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
                                     <label for="recipient-name" class="col-form-label">Friends Username:</label>
                                     <input type="text" class="form-control" id="recipient-name">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Message:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
-                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Send message</button>
+                            <button type="button" class="btn btn-primary" id="sendFriendRequest">Send</button>
                         </div>
                     </div>
                 </div>
