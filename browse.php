@@ -42,7 +42,7 @@ if (!file_exists($jsonFilePath)) {
             <a href="friends.php">Friends</a>
             <a href="login.php">Login</a>
         </div>
-
+        
         <div id="main">
             <div class="container">
                 <div class="row justify-content-center">
