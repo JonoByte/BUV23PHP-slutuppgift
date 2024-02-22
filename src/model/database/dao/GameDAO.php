@@ -1,5 +1,4 @@
 <?php
-require 'src/config/pdo.php';
 class GameDAO{
 
     private PDO $pdo;

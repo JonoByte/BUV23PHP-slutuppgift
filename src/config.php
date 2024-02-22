@@ -16,7 +16,7 @@ spl_autoload_register(function ($className) {
     foreach ($paths as $file) {
         $file = str_replace('/', DIRECTORY_SEPARATOR, $file);
         $file = str_replace('\\', DIRECTORY_SEPARATOR, $file);
-        echo $file . '<BR>';
+        // echo $file . '<BR>';
 
         if (file_exists($file)) {
             require_once $file;

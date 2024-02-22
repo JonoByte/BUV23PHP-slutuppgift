@@ -1,3 +1,4 @@
+<?php require 'src/config.php' ?>
 <!doctype html>
 <html lang="en">
 
@@ -14,19 +15,12 @@
 
     <?php
 
-
-    // require __DIR__ . '/src/config/pdo.php';
-
-    // require_once('src/model/database/entity/news.php');
-
-    // require_once('src/model/database/dao/NewsDAO.php');
-
-
-    // Instantiate the NewsDAO object
-    $newsDAO = new NewsDAO($pdo);
+    $db = new Database();
+    $newsDAO = new NewsDAO($db->getPdo());
 
     // Get all the articles
-    $newsLists = $newsDAO->getAllNews();
+    $newsLists = $newsDAO->findAll();
+
     ?>
 
 

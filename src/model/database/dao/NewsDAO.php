@@ -1,9 +1,10 @@
 <?php
-require 'src/config/pdo.php';
 class NewsDAO {
-    private $pdo;
 
-    public function __construct($pdo) {
+    private PDO $pdo;
+
+    public function __construct($pdo)
+    {
         $this->pdo = $pdo;
     }
 
