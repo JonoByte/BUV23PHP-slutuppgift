@@ -137,9 +137,10 @@
                         <!-- END: Posts Grid -->
 
                         <div class="col-lg-2">
+
                             <h1>Latest reviews</h1>
                             <!-- START: Fristående Kort -->
-                            <div class="mb-2 custom-card2">
+                            <div class="mb-2 custom-card1">
                                 <div class="border-0">
                                     <img class="card-img-top" src="img/product-1-sm.jpg" alt="image cap">
                                     <div class="card-body2">
@@ -159,7 +160,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-2 custom-card2">
+                            <div class="mb-2 custom-card3">
                                 <div class="review3">
                                     <img class="card-img-top" src="img/product-6-sm.jpg" alt="image cap">
                                     <div class="card-body2">
@@ -169,6 +170,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!-- END: Fristående Kort -->
                         </div>
 

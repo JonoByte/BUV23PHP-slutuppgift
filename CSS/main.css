@@ -141,7 +141,7 @@ header {
   
 }
 
-.background-image .custom-card .btn-primary{
+.background-image .btn-primary{
     
     background-color: #293139;
     border-color: #101215;
@@ -162,14 +162,39 @@ header {
    
 }
 
-.background-image .custom-card .btn-primary:hover{
+
+
+.background-image .btn-primary:hover{
 
     background-color: #eb3154;
     border-color: #ee526f;
 
 }
 
-.background-image .custom-card2 .btn-primary{
+.background-image .custom-card {
+    max-width: 500px;
+    margin:  auto;
+    
+}
+
+
+
+
+
+.carousel-inner .carousel-caption
+{
+    margin-bottom: 50px;
+    opacity: 60%;
+    text-shadow: 2px 10px 4px rgba(0, 0, 0, 0.5);
+    padding-bottom: 50px;
+}
+
+.justify-content-md-center
+{
+    padding-top: 20px;
+}
+
+.background-image .col-lg-2 .btn-primary{
     
     background-color: #293139;
     border-color: #101215;
@@ -186,46 +211,26 @@ header {
     white-space: nowrap;
     vertical-align: middle;
     border: 0;
-   
+    
    
 }
 
-.background-image .custom-card2 .btn-primary:hover{
+
+
+.background-image .col-lg-2 .btn-primary:hover{
 
     background-color: #eb3154;
     border-color: #ee526f;
 
 }
 
-.background-image .custom-card {
-    max-width: 500px;
-    margin:  auto;
-    /* border-bottom: 5px solid rgba(255, 0, 0, 0.527); */
-
-}
-
-
-.background-image .custom-card2 .card-body{
-
-    color: white;
-}
-
-.background-image .custom-card .card-body {
-
-
-    color: white;
-}
-
-
-.carousel-inner .carousel-caption
+.background-image .col-lg-2
 {
-    margin-bottom: 50px;
-    opacity: 60%;
-    text-shadow: 2px 10px 4px rgba(0, 0, 0, 0.5);
-    padding-bottom: 50px;
+    background-color: #3f3f3f;
+    border-color: #101215;
+    border-style: solid;
+    border: none;
+    text-align: center;
 }
 
-.justify-content-md-center
-{
-    padding-top: 20px;
-}
+
