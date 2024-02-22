@@ -123,6 +123,8 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $newsList->getTitle(); ?></h5>
                                         <p class="card-text"><?php echo $newsList->getContent(); ?></p>
+                                        <p class="card-text-Source"><?php echo $newsList->getSource(); ?></p> <!-- Display Source -->
+                                        <p class="card-text-Address"><?php echo $newsList->getAddress(); ?></p> <!-- Display Address -->
                                         <a href="<?php echo $newsList->getUrl(); ?>" class="btn btn-primary">Read More</a>
                                     </div>
                                 </div>
@@ -134,37 +136,40 @@
                         <!-- END: Posts Grid -->
 
                         <div class="col-lg-2">
+
+                            <h1>Latest reviews</h1>
                             <!-- START: Fristående Kort -->
-                            <div class="mb-2 custom-card">
+                            <div class="mb-2 custom-card1">
                                 <div class="border-0">
-                                    <img class="card-img-top" src="img/post-4-sm.jpg" alt="image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">title</h5>
-                                        <p class="card-text">Some quick example text to build on the title and make up the bulk of the card's content.</p>
+                                    <img class="card-img-top" src="img/product-1-sm.jpg" alt="image cap">
+                                    <div class="card-body2">
+                                        <h5 class="card-title2">title</h5>
+                                        <p class="card-text2">Some quick example text to build on the title and make up the bulk of the card's content.</p>
                                         <a href="#" class="btn btn-primary">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-2 custom-card">
+                            <div class="mb-2 custom-card2">
                                 <div class="card-transparent">
-                                    <img class="card-img-top" src=".../100px180/" alt="image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">title</h5>
-                                        <p class="card-text">Some quick example text to build on the title and make up the bulk of the card's content.</p>
+                                    <img class="card-img-top" src="img/product-9-sm.jpg" alt="image cap">
+                                    <div class="card-body2">
+                                        <h5 class="card-title2">title</h5>
+                                        <p class="card-text2">Some quick example text to build on the title and make up the bulk of the card's content.</p>
                                         <a href="#" class="btn btn-primary">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-2 custom-card">
+                            <div class="mb-2 custom-card3">
                                 <div class="review3">
-                                    <img class="card-img-top" src=".../100px180/" alt="image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">title</h5>
-                                        <p class="card-text">Some quick example text to build on the title and make up the bulk of the card's content.</p>
+                                    <img class="card-img-top" src="img/product-6-sm.jpg" alt="image cap">
+                                    <div class="card-body2">
+                                        <h5 class="card-title2">title</h5>
+                                        <p class="card-text2">Some quick example text to build on the title and make up the bulk of the card's content.</p>
                                         <a href="#" class="btn btn-primary">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
+
                             <!-- END: Fristående Kort -->
                         </div>
 
