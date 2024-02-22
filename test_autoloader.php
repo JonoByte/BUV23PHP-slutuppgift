@@ -1,7 +1,11 @@
 <?php
 // Inkludera din autoloader
-require 'src/config/autoloader.php';
+
+require 'src/config.php';
+
+$db = new Database();
 
 echo 'här kommer dump';
+$test = new UserDAO($db->getPdo());
 
 ?>

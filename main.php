@@ -1,6 +1,5 @@
-<?php require 'src/config/autoloader.php'; ?>
+<?php require 'src/config.php'?>
 <!DOCTYPE html>
-
 
 <html lang="en">
 

@@ -6,6 +6,9 @@ class User
     private string $password;
     private string $email;
 
+    //getFriends funktion
+    
+
     public function getUsername(): string {
         return $this->username;
     }

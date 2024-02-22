@@ -13,7 +13,7 @@ class NewsDAO {
     }
     
     
-    public function getAllNews(): array {
+    public function findAll(): array {
         $stmt = $this->pdo->query("SELECT * FROM news");
         $newsList = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -31,7 +31,7 @@ class NewsDAO {
         return $newsList;
     }
 
-    public function getArticle(int $id): News
+    public function findById(int $id): News
     {
         $stmt = $this->pdo->prepare("SELECT * FROM news WHERE id= :id limit 1 ");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);

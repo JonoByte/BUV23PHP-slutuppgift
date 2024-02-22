@@ -1,4 +1,4 @@
-<?php require 'src/config/autoloader.php'; ?>
+<?php require 'src/config.php'?>
 <!doctype html>
 <html lang="en">
 
@@ -38,37 +38,14 @@
                 <h2 class="login"> </h2>
             </div>
             <div>
-                <form action="" method="post">
+                <form action="src/controller/loginController.php" method="post">
                     <label class="label-style">Username:</label> <input type="text" name="username" class="input-style"><br>
                     <label class="label-style">Password:</label> <input type="password" name="password" class="input-style"><br>
                     <input type="submit" value="Log in">
                 </form>
-                <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    
-                    // require 'src/config/pdo.php'; // Anpassa sökvägen till din pdo.php-fil
-                    // require 'src/model/database/entity/User.php'; // Om du behöver användarobjektet
-                    // require 'src/model/database/dao/UserDAO.php';
                 
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
-                
-                    $userDao = new UserDAO($pdo);
-                    $user = $userDao->findUser($username); // Anta att du har denna metod
-                
-                    if ($user && password_verify($password, $user->getPassword())) {
-                        // Lösenordet är korrekt, starta en session för användaren
-                        session_start();
-                        $_SESSION['username'] = $username; // Spara användarnamnet i sessionen
-                        echo "<h2>Du är inloggad som: " . htmlspecialchars($username) . "</h2>";
-                        // Omdirigera användaren till en säker sida
-                        header('Location: profile.php'); // Anpassa till din skyddade sida
-                        exit;
-                    } else {
-                        echo "<h2>Felaktigt användarnamn eller lösenord</h2>";
-                    }
-                }
-                ?>
+                <!-- kolla upp ajax för att stanna kvar på sidan -->
+
             </div>
 
             <div>
@@ -77,9 +54,6 @@
         </div>
 
     </div>
-
-
-
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
