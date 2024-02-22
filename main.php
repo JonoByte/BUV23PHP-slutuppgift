@@ -15,18 +15,13 @@
     <?php
 
 
-    // require __DIR__ . '/src/config/pdo.php';
-
-    // require_once('src/model/database/entity/news.php');
-
-    // require_once('src/model/database/dao/NewsDAO.php');
 
 
     // Instantiate the NewsDAO object
     $newsDAO = new NewsDAO($pdo);
 
     // Get all the articles
-    $newsLists = $newsDAO->getAllNews();
+    $newsLists = $newsDAO->findAll();
     ?>
 
 
