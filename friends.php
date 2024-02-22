@@ -1,9 +1,9 @@
 <?php
 require 'src/config.php';
-// if (!isset($_SESSION['username'])) {
-//     header('Location: login.php');
-//     exit;
-// }
+if (!isset($_SESSION['username'])) {
+     header('Location: login.php');
+     exit;
+}
 
 $userId = $_SESSION['username'];
 
