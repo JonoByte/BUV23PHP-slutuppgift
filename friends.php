@@ -1,3 +1,20 @@
+<?php require 'src/config/autoloader.php'; ?>
+
+<?php
+require 'src/config/autoloader.php';
+require __DIR__ . '/src/config/pdo.php';
+require 'src/model/database/dao/FriendsDAO.php';
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$userId = $_SESSION['username'];
+
+$friendsDAO = new FriendsDAO($pdo);
+$friends = $friendsDAO->getFriendsByUserId($userId);
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -11,6 +28,32 @@
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Handle the button click event
+            $("#sendFriendRequest").click(function() {
+                // Get the values from the form
+                var friendUsername = $("#recipient-name").val();
+                var message = $("#message-text").val();
+
+                // Make an AJAX request to the server
+                $.ajax({
+                    url: 'processFriendsRequest.php',
+                    type: 'POST',
+                    data: {
+                        friendUsername: friendUsername
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -35,7 +78,7 @@
         <div class="main">
             <div class="container">
                 <img class="profile" src="img/profile.jpg" alt="profile picture">
-                <h1>Username</h1>
+                <h1><?php echo $userId ?></h1>
             </div>
 
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Friend</button>
@@ -53,15 +96,11 @@
                                     <label for="recipient-name" class="col-form-label">Friends Username:</label>
                                     <input type="text" class="form-control" id="recipient-name">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Message:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
-                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Send message</button>
+                            <button type="button" class="btn btn-primary" id="sendFriendRequest">Send</button>
                         </div>
                     </div>
                 </div>
@@ -73,18 +112,17 @@
         <div id="friend">
             <div class="container">
                 <div class="row justify-content-center">
-                    <?php for ($i = 0; $i < 20; $i++) : ?>
+                    <?php foreach ($friends as $friend) : ?>
                         <div class="col-lg-3 col-md-3 col-sm-6">
                             <div class="card mb-4">
-                                <img class="card-img-top" src="img/profile.jpg" alt="Card image">
+                                <img src="' . $friend['profilepic'] . '" alt="Profile Picture">
                                 <div class="card-body">
-                                    <h5 class="card-title">Username</h5>
-                                    <p class="card-text">lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
+                                    <p><?php echo $friend['id']; ?></p>
                                     <a href="#" class="btn btn-primary">Send message</a>
                                 </div>
                             </div>
                         </div>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

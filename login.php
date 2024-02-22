@@ -1,3 +1,4 @@
+<?php require 'src/config.php'?>
 <!doctype html>
 <html lang="en">
 
@@ -34,28 +35,17 @@
         <div class="main">
 
             <div>
-                <h2 class="login">Log in</h2>
+                <h2 class="login"> </h2>
             </div>
             <div>
-                <form action="" method="post">
+                <form action="src/controller/loginController.php" method="post">
                     <label class="label-style">Username:</label> <input type="text" name="username" class="input-style"><br>
                     <label class="label-style">Password:</label> <input type="password" name="password" class="input-style"><br>
                     <input type="submit" value="Log in">
                 </form>
-                <?php
-                $username = ""; // Initiera $username för att undvika "undefined variable"-varningar
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    // Hämta användarnamn och lösenord från POST-arrayen
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
+                
+                <!-- kolla upp ajax för att stanna kvar på sidan -->
 
-                    // Kod för att spara användaren till databasen här!
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                    // Skriv ut ett meddelande till användaren
-                    echo "<h2>Du är inloggad som:  " . htmlspecialchars($username),"</h2>";
-                }
-                ?>
             </div>
 
             <div>
@@ -64,9 +54,6 @@
         </div>
 
     </div>
-
-
-
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
