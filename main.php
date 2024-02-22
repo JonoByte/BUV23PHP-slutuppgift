@@ -55,9 +55,9 @@
 
                 <!-----Carousel function------>
 
-                <div id="carouselExampleDark" class="carousel carousel-light slide">
+                <div id="carouselExampleDark" class="carousel carousel-light slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5000" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
@@ -68,25 +68,22 @@
                                 <h1>We have the latest news in the gaming world</h1>
                                 <h2>search your favourite game and learn all from tips and tricks to lore</h2>
                                 <h3>make friends and join the community</h3>
-
                             </div>
                         </div>
-                        <div class="carousel-item" data-bs-interval="2000">
+                        <div class="carousel-item" data-bs-interval="5000">
                             <img src="img/overwatch.jpg" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1>We have the latest news in the gaming world</h1>
                                 <h2>search your favourite game and learn all from tips and tricks to lore</h2>
                                 <h3>make friends and join the community</h3>
-
                             </div>
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-bs-interval="5000">
                             <img src="img/pubg.jpg" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1>We have the latest news in the gaming world</h1>
                                 <h2>search your favourite game and learn all from tips and tricks to lore</h2>
                                 <h3>make friends and join the community</h3>
-
                             </div>
                         </div>
                     </div>
@@ -99,6 +96,7 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
+
                 <!-----Carousel function END------>
 
             </div>
@@ -134,7 +132,7 @@
                             <h1>Latest reviews</h1>
                             <!-- START: Fristående Kort -->
                             <div class="mb-2 custom-card1">
-                                <div class="border-0">
+                                <div class="border-5000">
                                     <img class="card-img-top" src="img/product-1-sm.jpg" alt="image cap">
                                     <div class="card-body2">
                                         <h5 class="card-title2">title</h5>
