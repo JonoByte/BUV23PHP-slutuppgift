@@ -1,5 +1,4 @@
 <?php
-require 'src/config/pdo.php';
 class UserDAO{
 
     private PDO $pdo;
@@ -28,6 +27,8 @@ class UserDAO{
         $statement->setFetchMode(PDO::FETCH_CLASS, User::class);
         return $statement->fetch();
     }
+
+    
 }
 
 ?>
