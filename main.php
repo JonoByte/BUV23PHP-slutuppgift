@@ -1,3 +1,4 @@
+<?php require 'src/config.php' ?>
 <!doctype html>
 <html lang="en">
 
@@ -14,14 +15,12 @@
 
     <?php
 
-
-
-
-    // Instantiate the NewsDAO object
-    $newsDAO = new NewsDAO($pdo);
+    $db = new Database();
+    $newsDAO = new NewsDAO($db->getPdo());
 
     // Get all the articles
     $newsLists = $newsDAO->findAll();
+
     ?>
 
 

@@ -1,17 +1,14 @@
-<?php require 'src/config/autoloader.php'; ?>
-
 <?php
-require 'src/config/autoloader.php';
-require __DIR__ . '/src/config/pdo.php';
-require 'src/model/database/dao/FriendsDAO.php';
-if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
-    exit;
-}
+require 'src/config.php';
+// if (!isset($_SESSION['username'])) {
+//     header('Location: login.php');
+//     exit;
+// }
 
 $userId = $_SESSION['username'];
 
-$friendsDAO = new FriendsDAO($pdo);
+$db = new Database();
+$friendsDAO = new FriendsDAO($db->getPdo());
 $friends = $friendsDAO->getFriendsByUserId($userId);
 ?>
 

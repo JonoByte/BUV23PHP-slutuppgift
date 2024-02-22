@@ -1,6 +1,4 @@
 <?php
-// Inkludera din autoloader
-
 require 'src/config.php';
 
 $db = new Database();
