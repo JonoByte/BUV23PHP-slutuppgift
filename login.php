@@ -1,4 +1,4 @@
-<?php require 'src/config.php'?>
+<?php require 'src/config.php' ?>
 <!doctype html>
 <html lang="en">
 
@@ -35,7 +35,14 @@
         <div class="main">
 
             <div>
-                <h2 class="login"> </h2>
+                <h2 class="login"> Du är inloggad som:</h2>
+                <?php $userId = $_SESSION['username'];
+                echo '<h2 class="login">' . $userId . '</h2>' . '<BR>';
+                ?>
+                <!--knappen för att logga ut-->
+                <form action="src/controller/logoutController.php" method="post">
+                    <input type="submit" name="logout" value="Log out">
+                </form>
             </div>
             <div>
                 <form action="src/controller/loginController.php" method="post">
@@ -43,13 +50,13 @@
                     <label class="label-style">Password:</label> <input type="password" name="password" class="input-style"><br>
                     <input type="submit" value="Log in">
                 </form>
-                
+
                 <!-- kolla upp ajax för att stanna kvar på sidan -->
 
             </div>
 
             <div>
-            <a href="register.php" class="reglink">New to Gamescore? Register here!</a>
+                <a href="register.php" class="reglink">New to Gamescore? Register here!</a>
             </div>
         </div>
 

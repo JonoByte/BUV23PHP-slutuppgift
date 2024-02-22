@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $username; // Spara användarnamnet i sessionen
         echo "<h2>Du är inloggad som: " . htmlspecialchars($username) . "</h2>";
         // Omdirigera användaren till en säker sida
-        header('Location: profile.php'); // Anpassa till din skyddade sida
+        header('Location: ../../friends.php'); // Anpassa till din skyddade sida
         exit;
     } else {
         echo "<h2>Felaktigt användarnamn eller lösenord</h2>";
