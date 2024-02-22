@@ -1,41 +1,18 @@
 <?php require 'src/config/autoloader.php'; ?>
 
 <?php
+require 'src/config/autoloader.php';
+require __DIR__ . '/src/config/pdo.php';
+require 'src/model/database/dao/FriendsDAO.php';
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
 
-/*
-// Include the FriendsDAO class and establish a database connection
-require_once('src/model/database/dao/FriendsDAO.php');
+$userId = $_SESSION['username'];
 
-// Replace with your database connection details
-$host = 'localhost';
-$dbname = 'gamescore';
-$username = 'root';
-$password = '';
-
-$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-// Instantiate the FriendsDAO with the database connection
 $friendsDAO = new FriendsDAO($pdo);
-
-// Replace 'user_id' with the actual user ID
-$userId = 'user_id';
-
-// Retrieve the list of friends
 $friends = $friendsDAO->getFriendsByUserId($userId);
-?>
-
-<?php
-
-//måste vara inloggad för att komma åt friends
-//Användaren är inte inloggad, omdirigera till login-sidan
-
-// session_start();
-// if (!isset($_SESSION['username'])) {
-//     header('Location: login.php');
-//     exit;
-// }
-*/
 ?>
 
 <!doctype html>
@@ -51,6 +28,32 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Handle the button click event
+            $("#sendFriendRequest").click(function() {
+                // Get the values from the form
+                var friendUsername = $("#recipient-name").val();
+                var message = $("#message-text").val();
+
+                // Make an AJAX request to the server
+                $.ajax({
+                    url: 'processFriendsRequest.php',
+                    type: 'POST',
+                    data: {
+                        friendUsername: friendUsername
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -75,7 +78,7 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
         <div class="main">
             <div class="container">
                 <img class="profile" src="img/profile.jpg" alt="profile picture">
-                <h1>Username</h1>
+                <h1><?php echo $userId ?></h1>
             </div>
 
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Friend</button>
@@ -93,15 +96,11 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
                                     <label for="recipient-name" class="col-form-label">Friends Username:</label>
                                     <input type="text" class="form-control" id="recipient-name">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Message:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
-                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Send message</button>
+                            <button type="button" class="btn btn-primary" id="sendFriendRequest">Send</button>
                         </div>
                     </div>
                 </div>
@@ -114,15 +113,15 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
             <div class="container">
                 <div class="row justify-content-center">
                     <?php foreach ($friends as $friend) : ?>
-                        echo '<div class="col-lg-3 col-md-3 col-sm-6">';
-                            echo '<div class="card mb-4">';
-                                echo '<img src="' . $friend['profilepic'] . '" alt="Profile Picture">';
-                                echo '<div class="card-body">';
-                                    echo '<p><?php echo $friend['id']; ?></p>';
-                                    echo '<a href="#" class="btn btn-primary">Send message</a>';
-                                    echo '</div>';
-                                echo '</div>';
-                            echo '</div>';
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="card mb-4">
+                                <img src="' . $friend['profilepic'] . '" alt="Profile Picture">
+                                <div class="card-body">
+                                    <p><?php echo $friend['id']; ?></p>
+                                    <a href="#" class="btn btn-primary">Send message</a>
+                                </div>
+                            </div>
+                        </div>
                     <?php endforeach; ?>
                 </div>
             </div>
