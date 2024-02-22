@@ -3,8 +3,12 @@ session_start();
 
 spl_autoload_register(function ($className) {
 
-    $basePath = __DIR__ . '/src/';
+    //sökvägen blir fel, den utgår från src/config,
+    //den ska utgå från 2 mappar upp där alla sidor ligger
 
+    $basePath = '../';
+    print_r($basePath);
+    echo 'test';    
     $class = str_replace('', DIRECTORY_SEPARATOR, $className);
 
     $paths = [
@@ -20,7 +24,12 @@ spl_autoload_register(function ($className) {
             break;
         }
     }
+    
 });
+
+
+//http://localhost/BUV23PHP-slutuppgift/src/config/src/config/model/database/
+
 
 //klistra in php raden här nedan längst upp på sidan:
 /*<?php require 'src/config/autoloader.php'; ?>*/

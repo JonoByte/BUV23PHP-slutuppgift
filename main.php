@@ -1,3 +1,4 @@
+<?php require 'src/config/autoloader.php'; ?>
 <!DOCTYPE html>
 
 
@@ -64,12 +65,11 @@
     <?php
 
 
-    require __DIR__ . '/src/config/pdo.php';
+    // require __DIR__ . '/src/config/pdo.php';
 
-    require_once('src/model/database/entity/news.php');
+    // require_once('src/model/database/entity/news.php');
 
-    // Include the NewsDAO class file
-    require_once('src/model/database/dao/NewsDAO.php');
+    // require_once('src/model/database/dao/NewsDAO.php');
 
 
     // Instantiate the NewsDAO object

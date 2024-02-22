@@ -35,7 +35,7 @@
         <div class="main">
 
             <div>
-                <h2 class="login">Log in</h2>
+                <h2 class="login"> </h2>
             </div>
             <div>
                 <form action="" method="post">
@@ -46,9 +46,9 @@
                 <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
-                    require 'src/config/pdo.php'; // Anpassa sökvägen till din pdo.php-fil
-                    require 'src/model/database/entity/User.php'; // Om du behöver användarobjektet
-                    require 'src/model/database/dao/UserDAO.php';
+                    // require 'src/config/pdo.php'; // Anpassa sökvägen till din pdo.php-fil
+                    // require 'src/model/database/entity/User.php'; // Om du behöver användarobjektet
+                    // require 'src/model/database/dao/UserDAO.php';
                 
                     $username = $_POST['username'];
                     $password = $_POST['password'];

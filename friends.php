@@ -1,13 +1,8 @@
+<?php require 'src/config/autoloader.php'; ?>
+
 <?php
 
-
-//kolla hur jag har kopplat upp mig via pdo.php!
-//det är som en connection sträng som tar hand om host, dbname å allt så du slipper ha det här!
-// kolla i login.php hur jag gjorde, rad 54 har jag använt mig av $pdo för att fixa hela kopplingen tilldatabasen
-
-
-
-
+/*
 // Include the FriendsDAO class and establish a database connection
 require_once('src/model/database/dao/FriendsDAO.php');
 
@@ -38,6 +33,7 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
 //     header('Location: login.php');
 //     exit;
 // }
+*/
 ?>
 
 <!doctype html>
