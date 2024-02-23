@@ -7,7 +7,7 @@ $filteredGamesFilePath = 'filtered_games.json';
 
 if (!file_exists($filteredGamesFilePath)) {
     $apiKey = "43e773150eda4c50b462a6d47a38e5d9";
-    $numPages = 5;
+    $numPages = 10;
     $games = [];
 
     for ($i = 1; $i <= $numPages; $i++) {
@@ -45,8 +45,7 @@ $games = json_decode(file_get_contents($filteredGamesFilePath), true);
     <link rel="stylesheet" href="CSS/browse.css">
 
     <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -85,7 +84,7 @@ $games = json_decode(file_get_contents($filteredGamesFilePath), true);
                     $totalPages = ceil(count($games) / $gamesPerPage); // 100 / 20 = 5
                     $start = ($page - 1) * $gamesPerPage; // 0, 20, 40, 60, 80
                     $games = array_slice($games, $start, $gamesPerPage); // 0-19, 20-39, 40-59, 60-79, 80-99
-                    
+
                     foreach ($games as $game) {
                         echo '<div class="col-lg-3 col-md-3 col-sm-6">';
                         echo '<div class="card mb-4">';
@@ -127,13 +126,9 @@ $games = json_decode(file_get_contents($filteredGamesFilePath), true);
 
 
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
 
 </html>

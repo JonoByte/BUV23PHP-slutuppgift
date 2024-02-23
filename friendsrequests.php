@@ -72,13 +72,15 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
         <div id="friend">
             <div class="container">
                 <div class="row justify-content-center">
+
                     <?php foreach ($friendRequests as $friend) : ?>
+
                         <div class="col-lg-3 col-md-3 col-sm-6">
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <p>User ID: <?php echo $friend['user_id_a']; ?></p>
                                     <!-- Add a data attribute to store the friend request user ID -->
-                                    <a href="#" class="btn btn-primary accept-friend" data-user-id="<?php echo $friend['user_id_b']; ?>">Accept Friend</a>
+                                    <a href="#" class="btn btn-primary accept-friend" data-user-id="<?php echo $friend['user_id_a']; ?>">Accept Friend</a>
                                 </div>
                             </div>
                         </div>

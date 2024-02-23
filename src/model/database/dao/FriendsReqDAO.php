@@ -29,18 +29,16 @@ class FriendsReqDAO
             return false;
         }
     }
-    // Method to get friend requests for a specific user (user_id_b)
-    public function getFriendRequests($userA)
+
+    public function getFriendRequests($userB)
     {
         $query = "SELECT user_id_a, created_at
         FROM friends
-        WHERE ((user_id_a = :user_id_a AND user_id_b = :user_id_b)
-                OR (user_id_a = :user_id_b AND user_id_b = :user_id_a))
-            AND status = 'pending'";
+        WHERE user_id_b = :user_id_b
+        AND status = 'pending'";
 
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':user_id_a', $userA);  // Change $userA to $userB
-        $stmt->bindParam(':user_id_b', $userA);
+        $stmt->bindParam(':user_id_b', $userB, PDO::PARAM_INT); // Assuming user IDs are integers
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -50,10 +48,10 @@ class FriendsReqDAO
     public function acceptFriendRequest($userA, $userB)
     {
         $query = "UPDATE friends
-                  SET status = 'accepted'
-                  WHERE (user_id_a = :user_id_a AND user_id_b = :user_id_b)
-                     OR (user_id_a = :user_id_b AND user_id_b = :user_id_a)
-                     AND status = 'pending'";
+              SET status = 'accepted'
+              WHERE ((user_id_a = :user_id_a AND user_id_b = :user_id_b)
+                 OR (user_id_a = :user_id_b AND user_id_b = :user_id_a))
+                 AND status = 'pending'";
 
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':user_id_a', $userA);
