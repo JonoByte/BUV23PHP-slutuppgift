@@ -25,24 +25,43 @@
             </div>
         </header>
         <div class="nav">
-            <a href="main.php">Home</a>
-            <a href="browse.php">Browse</a>
-            <a href="forum/forums.html">Forum</a>
-            <a href="friends.php">Friends</a>
-            <a href="login.php">Login</a>
+        <?php
+        echo '<a href="main.php">Home</a>';
+        echo '<a href="browse.php">Browse</a>';
+        echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
+        echo isset($username) ? "<a href='logout.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+
+        // if (isset($_SESSION['username'])) {
+        //     echo '<a href="main.php">Home</a>';
+        //     echo '<a href="browse.php">Browse</a>';
+        //     echo '<a href="friends.php">Friends</a>';
+        //     echo '<a href="src/controller/logoutController.php">Log out</a>';
+        // }
+
+        // else {
+        //     echo '<a href="main.php">Home</a>';
+        //     echo '<a href="browse.php">Browse</a>';
+        //     echo '<a href="login.php">Login</a>';
+        // }
+        ?>
         </div>
 
         <div class="main">
 
             <div>
-                <h2 class="login"> Du är inloggad som:</h2>
-                <?php $userId = $_SESSION['username'];
-                echo '<h2 class="login">' . $userId . '</h2>' . '<BR>';
+                <?php
+
+                if (isset($_SESSION['username'])) {
+                    $userId = $_SESSION['username'];
+                    echo '<h2 class="login">Du är inloggad som:</h2>';
+                    echo '<h2 class="login">' . $userId . '</h2><br>';
+                    // HTML-koden för logga ut-knappen
+                    echo '<form action="src/controller/logoutController.php" method="post">
+              <input type="submit" name="logout" value="Log out">
+          </form>';
+                }
                 ?>
-                <!--knappen för att logga ut-->
-                <form action="src/controller/logoutController.php" method="post">
-                    <input type="submit" name="logout" value="Log out">
-                </form>
+
             </div>
             <div>
                 <form action="src/controller/loginController.php" method="post">
