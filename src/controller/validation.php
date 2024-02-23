@@ -1,6 +1,4 @@
 <?php
-//validering för att kolla om användare finns i databasen
-//eller om användaren skriver in fel
 
 function validateUsername($username) {
     return !empty($username);

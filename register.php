@@ -36,27 +36,23 @@
                 <h2 class="login">Register new user</h2>
             </div>
             <div>
-                <form action="process-register.php" method="post" id="signup" novalidate>
+                <form action="src/controller/registerController.php" method="post" id="signup" novalidate>
                     <div>
                         <label class="label-style" for="name">Username: </label>
                         <input type="text" id="name" name="name">
                     </div>
-
                     <div>
                         <label class="label-style" for="email">Email: </label>
                         <input type="email" id="email" name="email">
                     </div>
-
                     <div>
                         <label class="label-style" for="password">Password: </label>
                         <input type="password" id="password" name="password">
                     </div>
-
                     <div>
                         <label class="label-style" for="password_confirmation">Repeat password: </label>
                         <input type="password" id="password_confirmation" name="password_confirmation">
                     </div>
-
                     <input type="submit" value="Register">
                 </form>
             </div>

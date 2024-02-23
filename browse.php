@@ -1,14 +1,39 @@
 <!doctype html>
 <html lang="en">
+<script src="https://unpkg.com/vanilla-tilt@1.7.0"></script>
+<script src="Browse.js"></script>
 <?php
-$apiKey = "43e773150eda4c50b462a6d47a38e5d9";
-$url = "https://api.rawg.io/api/games?key=" . $apiKey;
-$jsonFilePath = 'games.json';
+$filteredGamesFilePath = 'filtered_games.json';
 
-if (!file_exists($jsonFilePath)) {
-    $json = file_get_contents($url);
-    file_put_contents($jsonFilePath, $json); // save the json file
+if (!file_exists($filteredGamesFilePath)) {
+    $apiKey = "43e773150eda4c50b462a6d47a38e5d9";
+    $numPages = 5;
+    $games = [];
+
+    for ($i = 1; $i <= $numPages; $i++) {
+        $url = "https://api.rawg.io/api/games?key=" . $apiKey . "&page=" . $i;
+        $json = file_get_contents($url);
+        $data = json_decode($json, true);
+
+        if ($data && isset($data['results'])) {
+            foreach ($data['results'] as $game) {
+                $games[] = [
+                    'id' => $game['id'],
+                    'name' => $game['name'],
+                    'release_date' => $game['released'],
+                    'rating' => $game['rating'],
+                    'metacritic' => $game['metacritic'],
+                    'updated' => $game['updated'],
+                    'image_background' => $game['image_background'],
+                ];
+            }
+        }
+    }
+
+    file_put_contents($filteredGamesFilePath, json_encode($games, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 }
+
+$games = json_decode(file_get_contents($filteredGamesFilePath), true);
 ?>
 
 <head>
@@ -47,12 +72,25 @@ if (!file_exists($jsonFilePath)) {
             <div class="container">
                 <div class="row justify-content-center">
                     <?php
-                    $games = json_decode(file_get_contents('games.json'), true)['results'];
+
+                    $games = json_decode(file_get_contents('filtered_games.json'), true);
+                    $gamesPerPage = 20;
+
+                    if (isset($_GET['page'])) {
+                        $page = $_GET['page'];
+                    } else {
+                        $page = 1;
+                    }
+
+                    $totalPages = ceil(count($games) / $gamesPerPage); // 100 / 20 = 5
+                    $start = ($page - 1) * $gamesPerPage; // 0, 20, 40, 60, 80
+                    $games = array_slice($games, $start, $gamesPerPage); // 0-19, 20-39, 40-59, 60-79, 80-99
+                    
                     foreach ($games as $game) {
                         echo '<div class="col-lg-3 col-md-3 col-sm-6">';
                         echo '<div class="card mb-4">';
-                        $image = isset($game['background_image']) ? $game['background_image'] : 'placeholder.jpg';
-                        echo '<img class="card-img-top" src="' . $image . '" alt="Card image">';
+                        $image = isset($game['image_background']) ? $game['image_background'] : 'placeholder.jpg';
+                        echo '<img class="card-img-top" src="' . $image . '" alt="Card image" loading="lazy">';
                         echo '<div class="card-body">';
                         echo '<h5 class="card-title">' . htmlspecialchars($game['name']) . '</h5>';
                         $description = isset($game['short_description']) ? $game['short_description'] : 'No description available.';
@@ -62,13 +100,22 @@ if (!file_exists($jsonFilePath)) {
                         echo '</div>';
                         echo '</div>';
                     }
+
+                    echo '<div class="pagination">';
+                    for ($i = 1; $i <= $totalPages; $i++) { // 1, 2, 3, 4, 5
+                        if ($i == $page) {
+                            echo "<a href='?page=" . $i . "' class='active'>" . $i . "</a> ";
+                        } else {
+                            echo "<a href='?page=" . $i . "'>" . $i . "</a> ";
+                        }
+                    }
+                    echo '</div>';
                     ?>
                 </div>
             </div>
+
         </div>
-
     </div>
-
 
 
 
