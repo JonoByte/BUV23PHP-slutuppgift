@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+$username = null;
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+}
+
 spl_autoload_register(function ($className) {
 
     $basePath = __DIR__;
@@ -32,7 +37,7 @@ spl_autoload_register(function ($className) {
 //http://localhost/BUV23PHP-slutuppgift/src/config/src/config/model/database/
 
 //klistra in php raden här nedan längst upp på sidan:
-/*<?php require 'src/config/autoloader.php'; ?>*/
+/*<?php require 'src/config.php' ?>*/
 
 //echo för att testa så den laddar in:
 // echo 'test från autoloader';

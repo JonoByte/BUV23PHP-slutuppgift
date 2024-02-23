@@ -65,11 +65,12 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
             </div>
         </header>
         <div class="nav">
-            <a href="main.php">Home</a>
-            <a href="browse.php">Browse</a>
-            <a href="forum/forums.html">Forum</a>
-            <a href="friends.php">Friends</a>
-            <a href="login.php">Login</a>
+            <?php
+            echo '<a href="main.php">Home</a>';
+            echo '<a href="browse.php">Browse</a>';
+            echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
+            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+            ?>
         </div>
 
         <div class="main">

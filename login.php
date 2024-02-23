@@ -1,8 +1,11 @@
 <?php
 require 'src/config.php';
-if (isset($_SESSION['username'])) {
-    $username = $_SESSION['username'];
-}
+
+// $username;
+// if (isset($_SESSION['username'])) {
+//     $username = $_SESSION['username'];
+// }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -30,25 +33,12 @@ if (isset($_SESSION['username'])) {
             </div>
         </header>
         <div class="nav">
-        <?php
-        echo '<a href="main.php">Home</a>';
-        echo '<a href="browse.php">Browse</a>';
-        echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
-        echo isset($username) ? "<a href='logout.php'>Logout</a>" : "<a href='login.php'>Login</a>";
-
-        // if (isset($_SESSION['username'])) {
-        //     echo '<a href="main.php">Home</a>';
-        //     echo '<a href="browse.php">Browse</a>';
-        //     echo '<a href="friends.php">Friends</a>';
-        //     echo '<a href="src/controller/logoutController.php">Log out</a>';
-        // }
-
-        // else {
-        //     echo '<a href="main.php">Home</a>';
-        //     echo '<a href="browse.php">Browse</a>';
-        //     echo '<a href="login.php">Login</a>';
-        // }
-        ?>
+            <?php
+            echo '<a href="main.php">Home</a>';
+            echo '<a href="browse.php">Browse</a>';
+            echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
+            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+            ?>
         </div>
 
         <div class="main">
@@ -56,15 +46,15 @@ if (isset($_SESSION['username'])) {
             <div>
                 <?php
                 //visar vem som är inloggad i loginskärmen
-        //         if (isset($_SESSION['username'])) {
-        //             $userId = $_SESSION['username'];
-        //             echo '<h2 class="login">Du är inloggad som:</h2>';
-        //             echo '<h2 class="login">' . $userId . '</h2><br>';
-        //             // HTML-koden för logga ut-knappen
-        //             echo '<form action="src/controller/logoutController.php" method="post">
-        //       <input type="submit" name="logout" value="Log out">
-        //   </form>';
-        //         }
+                //         if (isset($_SESSION['username'])) {
+                //             $userId = $_SESSION['username'];
+                //             echo '<h2 class="login">Du är inloggad som:</h2>';
+                //             echo '<h2 class="login">' . $userId . '</h2><br>';
+                //             // HTML-koden för logga ut-knappen
+                //             echo '<form action="src/controller/logoutController.php" method="post">
+                //       <input type="submit" name="logout" value="Log out">
+                //   </form>';
+                //         }
                 ?>
 
             </div>
