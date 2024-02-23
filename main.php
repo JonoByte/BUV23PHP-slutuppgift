@@ -137,7 +137,7 @@
                                     <div class="card-body2">
                                         <h5 class="card-title2">title</h5>
                                         <p class="card-text2">Some quick example text to build on the title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <a href="#" class="btn btn-primary2">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                                     <div class="card-body2">
                                         <h5 class="card-title2">title</h5>
                                         <p class="card-text2">Some quick example text to build on the title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <a href="#" class="btn btn-primary2">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                                     <div class="card-body2">
                                         <h5 class="card-title2">title</h5>
                                         <p class="card-text2">Some quick example text to build on the title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <a href="#" class="btn btn-primary2">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
