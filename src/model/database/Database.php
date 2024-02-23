@@ -5,10 +5,10 @@ class Database
 
     public function __construct()
     {
-        $host = 'localhost'; // eller din databasserver
-        $db   = 'gamescore'; // ditt databasnamn
-        $user = 'root'; // din databasanvändare
-        $pass = ''; // ditt databaslösenord
+        $host = 'localhost';
+        $db   = 'gamescore';
+        $user = 'root';
+        $pass = '';
         $charset = 'utf8mb4';
 
         $options = [
