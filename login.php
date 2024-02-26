@@ -29,7 +29,7 @@
             echo '<a href="main.php">Home</a>';
             echo '<a href="browse.php">Browse</a>';
             echo isset($username) ? "<a href='friends.php'>$username</a>" : "";
-            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php' class='nav-link-active'>Login</a>";
             ?>
         </div>
 
@@ -53,7 +53,10 @@
             </div>
 
             <div>
-                <a href="register.php" class="reglink">New to Gamescore? Register here!</a>
+                <p>New to Gamescore?</p><br>
+            </div>
+            <div>
+                <a href="register.php" class="reglink">Register here!</a>
             </div>
         </div>
 

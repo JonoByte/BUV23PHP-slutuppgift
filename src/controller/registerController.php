@@ -3,7 +3,8 @@ require '../config.php';
 
 // Funktion för att omdirigera tillbaka till register.php med ett felmeddelande
 function redirectWithError($error) {
-    header('Location: register.php?error=' . urlencode($error));
+    header('Location: ../../register.php');
+    //?error=' . urlencode($error)
     exit;
 }
 

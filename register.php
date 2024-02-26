@@ -24,11 +24,12 @@
             </div>
         </header>
         <div class="nav">
-            <a href="main.php">Home</a>
-            <a href="browse.php">Browse</a>
-            <a href="forum/forums.html">Forum</a>
-            <a href="friends.php">Friends</a>
-            <a href="login.php">Login</a>
+            <?php
+            echo '<a href="main.php">Home</a>';
+            echo '<a href="browse.php">Browse</a>';
+            echo isset($username) ? "<a href='friends.php'>$username</a>" : "";
+            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+            ?>
         </div>
 
         <div class="main">
@@ -36,23 +37,11 @@
                 <h2 class="login">Register new user</h2>
             </div>
             <div>
-                <form action="src/controller/registerController.php" method="post" id="signup" novalidate>
-                    <div>
-                        <label class="label-style" for="name">Username: </label>
-                        <input type="text" id="name" name="username">
-                    </div>
-                    <div>
-                        <label class="label-style" for="email">Email: </label>
-                        <input type="email" id="email" name="email">
-                    </div>
-                    <div>
-                        <label class="label-style" for="password">Password: </label>
-                        <input type="password" id="password" name="password">
-                    </div>
-                    <div>
-                        <label class="label-style" for="password_confirmation">Repeat password: </label>
-                        <input type="password" id="password_confirmation" name="password_confirmation">
-                    </div>
+                <form action="src/controller/registerController.php" method="post">
+                    <input type="username" name="username" placeholder="Username" class="form-control search-input"><br>
+                    <input type="email" name="email" placeholder="email" class="form-control search-input"><br>
+                    <input type="password" name="password" placeholder="password" class="form-control search-input"><br>
+                    <input type="password" name="password" placeholder="password again" class="form-control search-input"><br>
                     <input type="submit" value="Register">
                 </form>
             </div>
