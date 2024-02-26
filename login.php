@@ -1,12 +1,4 @@
-<?php
-require 'src/config.php';
-
-// $username;
-// if (isset($_SESSION['username'])) {
-//     $username = $_SESSION['username'];
-// }
-
-?>
+<?php require 'src/config.php' ?>
 <!doctype html>
 <html lang="en">
 
@@ -36,7 +28,7 @@ require 'src/config.php';
             <?php
             echo '<a href="main.php">Home</a>';
             echo '<a href="browse.php">Browse</a>';
-            echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
+            echo isset($username) ? "<a href='friends.php'>$username</a>" : "";
             echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
             ?>
         </div>
@@ -44,18 +36,6 @@ require 'src/config.php';
         <div class="main">
 
             <div>
-                <?php
-                //visar vem som är inloggad i loginskärmen
-                //         if (isset($_SESSION['username'])) {
-                //             $userId = $_SESSION['username'];
-                //             echo '<h2 class="login">Du är inloggad som:</h2>';
-                //             echo '<h2 class="login">' . $userId . '</h2><br>';
-                //             // HTML-koden för logga ut-knappen
-                //             echo '<form action="src/controller/logoutController.php" method="post">
-                //       <input type="submit" name="logout" value="Log out">
-                //   </form>';
-                //         }
-                ?>
 
             </div>
             <div>

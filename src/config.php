@@ -1,5 +1,7 @@
 <?php
+$lifetime=600;
 session_start();
+setcookie(session_name(),session_id(),time()+$lifetime); //refreshar afk tiden till 10 min varje gång du hoppar in på en ny sida
 
 $username = null;
 if (isset($_SESSION['username'])) {
