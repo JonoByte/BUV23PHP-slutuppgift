@@ -67,9 +67,7 @@ if (!file_exists($filteredGamesFilePath)) {
         </header>
         <div class="nav">
             <a href="main.php">Home</a>
-            <a href="browse.php" <?php if (basename($_SERVER['PHP_SELF']) == 'browse.php') {
-                echo 'class="nav-link-active"';
-            } ?>>Browse</a>
+            <a href="browse.php" class="nav-link-active">Browse</a>
             <a href="forum/forums.html">Forum</a>
             <?php
             echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
