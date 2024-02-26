@@ -25,7 +25,7 @@
         <div class="nav">
             <a href="main.php">Home</a>
             <a href="browse.php">Browse</a>
-            <a href="forum/forums.html">Forum</a>
+            <a href="posterwall.php">Community</a>
             <a href="friends.php">Friends</a>
             <a href="login.php">Login</a>
         </div>
