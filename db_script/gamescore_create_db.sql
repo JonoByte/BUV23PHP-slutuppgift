@@ -2,10 +2,10 @@ CREATE DATABASE `gamescore`;
 
 /*kör rad 1 först sen resten av tabellerna*/
 
-SELECT * FROM news
+SELECT * FROM news;
 
-INSERT INTO news (title, author, publishDate, content, image, url, source, address)
- VALUES ('Example News Title 2', 'Marty Doe', '2024-02-17 08:00:00', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et velit nec arcu aliquet tempus.', 'example_image.jpg', 'https://worldofwarcraft.blizzard.com/en-us/news', 'Example Source', 'Example Address')	
+
+select * from user;
 
 CREATE TABLE `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -14,6 +14,9 @@ CREATE TABLE `news` (
   `publishDate` datetime NOT NULL,
   `content` TEXT NOT NULL,
   `image` MEDIUMBLOB NOT NULL,
+  `url` varchar(255) NULL,
+  `source` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
