@@ -29,7 +29,7 @@
             echo '<a href="main.php">Home</a>';
             echo '<a href="browse.php">Browse</a>';
             echo isset($username) ? "<a href='friends.php'>$username</a>" : "";
-            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php' class='nav-link-active'>Login</a>";
             ?>
         </div>
 
@@ -40,17 +40,23 @@
             </div>
             <div>
                 <form action="src/controller/loginController.php" method="post">
-                    <label class="label-style">Username:</label> <input type="text" name="username" class="input-style"><br>
-                    <label class="label-style">Password:</label> <input type="password" name="password" class="input-style"><br>
+                    <input type="username" name="username" placeholder="Username" class="form-control search-input"><br>
+                    <input type="password" name="password" placeholder="Password" class="form-control search-input"><br>
                     <input type="submit" value="Log in">
                 </form>
+
+                <!-- stilen från Jonathans knapp -->
+                <!-- <input type="text" id="search" placeholder="Search" class="form-control search-input"> -->
 
                 <!-- kolla upp ajax för att stanna kvar på sidan -->
 
             </div>
 
             <div>
-                <a href="register.php" class="reglink">New to Gamescore? Register here!</a>
+                <p>New to Gamescore?</p><br>
+            </div>
+            <div>
+                <a href="register.php" class="reglink">Register here!</a>
             </div>
         </div>
 

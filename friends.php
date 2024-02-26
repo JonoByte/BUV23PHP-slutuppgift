@@ -124,7 +124,7 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
                 </div>
             </div>
         </div>
-
+        <a href="src/controller/deleteUserController.php">Delete this account!</a>
     </div>
 
 
