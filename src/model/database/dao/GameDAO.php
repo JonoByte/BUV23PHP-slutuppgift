@@ -49,4 +49,16 @@ class GameDAO
         $game = $statement->fetchObject(Game::class);
         return $game ?: null;
     }
+
+    public function getTopRatedGames(int $limit = 3): array {
+        $sql = "SELECT * FROM games ORDER BY rating DESC, metacritic DESC LIMIT :limit";
+        $statement = $this->pdo->prepare($sql);
+        // Bind param as integer
+        $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS, Game::class);
+    }
+    
+
+
 }

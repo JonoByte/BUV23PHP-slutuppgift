@@ -21,6 +21,12 @@
     // Get all the articles
     $newsLists = $newsDAO->findAll();
 
+    $pdo = $db->getPdo();
+    $gameDAO = new GameDAO($pdo);
+    $games = $gameDAO->getAllGames();
+
+    $topRatedGames = $gameDAO->getTopRatedGames(5);
+
     ?>
 
 
@@ -43,11 +49,16 @@
             </div>
         </header>
         <div class="nav">
-            <a href="main.php">Home</a>
+            <a href="main.php" <?php if (basename($_SERVER['PHP_SELF']) == 'main.php') {
+                                    echo 'class="nav-link-active"';
+                                } ?>>Main</a>
+
             <a href="browse.php">Browse</a>
             <a href="posterwall.php">Community</a>
-            <a href="friends.php">Friends</a>
-            <a href="login.php">Login</a>
+            <?php
+            echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
+            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+            ?>
         </div>
 
         <div id="main">
@@ -111,7 +122,8 @@
                         <div class="row col-lg-10">
                             <?php foreach ($newsLists as $newsList) : ?>
                                 <div class="mb-2 custom-card">
-                                    <img class="card-img-top" src="<?php echo $newsList->getImage() ? 'data:image/jpeg;base64,' . base64_encode($newsList->getImage()) : 'placeholder.jpg'; ?>" alt="<?php echo $newsList->getTitle(); ?>">
+                                    <img class="card-img-top" src="<?php echo $newsList->getImage() ? $newsList->getImage() : 'placeholder.jpg'; ?>
+                                    " alt="<?php echo $newsList->getTitle(); ?>">
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $newsList->getTitle(); ?></h5>
                                         <p class="card-text"><?php echo $newsList->getContent(); ?></p>
@@ -129,40 +141,27 @@
 
                         <div class="col-lg-2">
 
-                            <h1>Latest reviews</h1>
+                            <h1>TOP-RATED REVIEWS</h1>
                             <!-- START: Fristående Kort -->
-                            <div class="mb-2 custom-card1">
-                                <div class="border-5000">
-                                    <img class="card-img-top" src="img/product-1-sm.jpg" alt="image cap">
-                                    <div class="card-body2">
-                                        <h5 class="card-title2">title</h5>
-                                        <p class="card-text2">Some quick example text to build on the title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary2">Go somewhere</a>
+                            <div class="row justify-content-md-center">
+                                <?php foreach ($topRatedGames as $game) : ?>
+                                    <div class="col-md-12">
+                                        <div class="card mb-3 custom-card2">
+                                            <img src="<?php echo htmlspecialchars($game->getImageBackground()); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($game->getName()); ?>">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><?php echo htmlspecialchars($game->getName()); ?></h5>
+                                                <p class="card-text">Rating: <?php echo htmlspecialchars($game->getRating()); ?></p>
+                                                <p class="card-text">Metacritic: <?php echo htmlspecialchars($game->getMetacritic()); ?></p>
+                                                <!-- Lägg till en knapp för att gå till recensionen, liknande den från browse.php -->
+                                                <a href="game_details.php?id=<?php echo htmlspecialchars($game->getId()); ?>" class="btn btn-primary">Learn More</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
-                            <div class="mb-2 custom-card2">
-                                <div class="card-transparent">
-                                    <img class="card-img-top" src="img/product-9-sm.jpg" alt="image cap">
-                                    <div class="card-body2">
-                                        <h5 class="card-title2">title</h5>
-                                        <p class="card-text2">Some quick example text to build on the title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary2">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-2 custom-card3">
-                                <div class="review3">
-                                    <img class="card-img-top" src="img/product-6-sm.jpg" alt="image cap">
-                                    <div class="card-body2">
-                                        <h5 class="card-title2">title</h5>
-                                        <p class="card-text2">Some quick example text to build on the title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary2">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- END: Fristående Kort -->
+
+
                         </div>
 
                     </div>
