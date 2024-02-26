@@ -76,9 +76,9 @@
                         <div class="carousel-item active" data-bs-interval="5000">
                             <img src="img/wow.jpg" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
-                                <h1>We have the latest news in the gaming world</h1>
-                                <h2>search your favourite game and learn all from tips and tricks to lore</h2>
-                                <h3>make friends and join the community</h3>
+                                <h1 class="fs-1">We have the latest news in the gaming world</h1>
+                                <h2 class="fs-2">Search your favourite game and learn all from tips and tricks to lore</h2>
+                                <h3 class="fs-3">Make friends and join the community</h3>
                             </div>
                         </div>
                         <div class="carousel-item" data-bs-interval="5000">
