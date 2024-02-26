@@ -1,19 +1,31 @@
 <?php
 require 'src/config.php';
+
 $db = new Database();
+$friendsReqDAO = new FriendsReqDAO($db->getPdo());
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Assume you have instantiated the FriendsReqDAO class
-    $friendsReqDAO = new FriendsReqDAO($db->getPdo()); // Replace with your actual PDO instance
+    // Assuming userA is the session user and userB is the user from the AJAX request
+    $userA = isset($_SESSION['username']) ? $_SESSION['username'] : null; // Make sure 'username' session variable exists
+    $userB = isset($_POST['userId']) ? $_POST['userId'] : null;
 
-    // Get the user ID from the AJAX request
-    $userA = $_SESSION['username']; // Assuming the user ID is stored in the session
-
-    // Assuming you have a method in FriendsReqDAO to accept the friend request
-    if ($friendsReqDAO->acceptFriendRequest($userA, $_POST['userId'])) {
-        echo "Friend request accepted successfully!";
+    // Check if both userA and userB are provided
+    if ($userA && $userB) {
+        try {
+            // Attempt to accept the friend request
+            if ($friendsReqDAO->acceptFriendRequest($userA, $userB)) {
+                echo "Friend request accepted successfully!";
+            } else {
+                // If the method returns false, but no exception was thrown
+                echo "Failed to accept friend request.";
+            }
+        } catch (PDOException $e) {
+            // Log the exception message and return a generic error message
+            error_log("PDOException in accept_friend_request.php: " . $e->getMessage());
+            echo "An error occurred while processing your request.";
+        }
     } else {
-        echo "Failed to accept friend request.";
+        echo "Invalid data provided.";
     }
 } else {
     echo "Invalid request method.";

@@ -74,6 +74,9 @@ header {
     color: #ffe345;
 }
 
+.nav-link-active {
+    color: #ffe345 !important;
+}
 
 #friend .container {
     padding-top: 25px;

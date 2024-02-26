@@ -23,25 +23,35 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Handle the click event on "Accept Friend" button
             $(".accept-friend").click(function() {
-                var userId = $(this).data("user-id");
+                var button = $(this); // Preserve the button context
+                var userId = button.data("user-id"); // Get the user ID from the data attribute
 
                 // Make an AJAX request to update the status to 'accepted'
                 $.ajax({
-                    url: 'accept_friend_request.php', // Update with the correct path
+                    url: 'accept_friend_request.php', // Ensure this is the correct path to your PHP script
                     type: 'POST',
                     data: {
                         userId: userId
                     },
                     success: function(response) {
-                        // Handle the response from the server (e.g., show a success message)
-                        console.log(response);
-                        // Optionally, remove the card or update the UI after successful acceptance
+                        // Trim whitespace and check the response
+                        var trimmedResponse = response.trim();
+
+                        if (trimmedResponse === "Friend request accepted successfully!") {
+                            // Success action: display a message, update the UI, etc.
+                            alert("Friend request accepted successfully!");
+                            // Example: Remove the friend request card or update its status
+                            button.closest('.card').fadeOut(); // This fades out and removes the card
+                        } else {
+                            // Handle application-level failures not caught by the 'error' callback
+                            alert("Failed to accept friend request: " + trimmedResponse);
+                        }
                     },
-                    error: function(error) {
-                        // Handle errors (e.g., show an error message)
-                        console.error(error);
+                    error: function(xhr, status, error) {
+                        // Handle HTTP errors
+                        console.error("AJAX Error: " + status + " - " + error);
+                        alert("An error occurred while processing the request.");
                     }
                 });
             });
@@ -63,9 +73,12 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
         <div class="nav">
             <a href="main.php">Home</a>
             <a href="browse.php">Browse</a>
-            <a href="forum/forums.html">Forum</a>
-            <a href="friends.php">Friends</a>
-            <a href="login.php">Login</a>
+            <a href='friends.php' <?php if (basename($_SERVER['PHP_SELF']) == 'friendsrequests.php') {
+                                        echo 'class="nav-link-active"';
+                                    } ?>>Friends</a>
+            <?php
+            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+            ?>
         </div>
 
 

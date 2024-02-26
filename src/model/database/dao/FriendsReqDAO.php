@@ -60,8 +60,7 @@ class FriendsReqDAO
         try {
             return $stmt->execute();
         } catch (PDOException $e) {
-            // Handle the exception, log it, or return false
-            // For simplicity, we're returning false in case of an exception here
+            error_log("PDOException in acceptFriendRequest: " . $e->getMessage());
             return false;
         }
     }
