@@ -3,6 +3,7 @@
 <script src="https://unpkg.com/vanilla-tilt@1.7.0"></script>
 <script src="Browse.js"></script>
 <?php
+require 'src/config.php';
 $filteredGamesFilePath = 'filtered_games.json';
 
 if (!file_exists($filteredGamesFilePath)) {
@@ -61,11 +62,12 @@ $games = json_decode(file_get_contents($filteredGamesFilePath), true);
             </div>
         </header>
         <div class="nav">
-            <a href="main.php">Home</a>
-            <a href="browse.php">Browse</a>
-            <a href="forum/forums.html">Forum</a>
-            <a href="friends.php">Friends</a>
-            <a href="login.php">Login</a>
+            <?php
+            echo '<a href="main.php">Home</a>';
+            echo '<a href="browse.php">Browse</a>';
+            echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
+            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+            ?>
         </div>
 
         <div id="main">

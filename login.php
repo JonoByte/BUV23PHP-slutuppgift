@@ -42,22 +42,6 @@ require 'src/config.php';
         </div>
 
         <div class="main">
-
-            <div>
-                <?php
-                //visar vem som är inloggad i loginskärmen
-                //         if (isset($_SESSION['username'])) {
-                //             $userId = $_SESSION['username'];
-                //             echo '<h2 class="login">Du är inloggad som:</h2>';
-                //             echo '<h2 class="login">' . $userId . '</h2><br>';
-                //             // HTML-koden för logga ut-knappen
-                //             echo '<form action="src/controller/logoutController.php" method="post">
-                //       <input type="submit" name="logout" value="Log out">
-                //   </form>';
-                //         }
-                ?>
-
-            </div>
             <div>
                 <form action="src/controller/loginController.php" method="post">
                     <label class="label-style">Username:</label> <input type="text" name="username" class="input-style"><br>
