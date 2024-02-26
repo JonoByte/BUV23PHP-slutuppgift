@@ -1,7 +1,14 @@
+<?php require 'src/config.php';
+$db = new Database();
+$pdo = $db->getPdo();
+$gameDAO = new GameDAO($pdo);
+$games = $gameDAO->getAllGames();
+?>
 <!doctype html>
 <html lang="en">
 <script src="https://unpkg.com/vanilla-tilt@1.7.0"></script>
 <script src="Browse.js"></script>
+
 <?php
 $filteredGamesFilePath = 'filtered_games.json';
 
@@ -24,7 +31,7 @@ if (!file_exists($filteredGamesFilePath)) {
                     'rating' => $game['rating'],
                     'metacritic' => $game['metacritic'],
                     'updated' => $game['updated'],
-                    'image_background' => $game['image_background'],
+                    'image_background' => $game['background_image'],
                 ];
             }
         }
@@ -33,7 +40,7 @@ if (!file_exists($filteredGamesFilePath)) {
     file_put_contents($filteredGamesFilePath, json_encode($games, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 }
 
-$games = json_decode(file_get_contents($filteredGamesFilePath), true);
+//$games = json_decode(file_get_contents($filteredGamesFilePath), true);
 ?>
 
 <head>
@@ -50,10 +57,8 @@ $games = json_decode(file_get_contents($filteredGamesFilePath), true);
 </head>
 
 <body>
-
     <div class="container-xxl">
         <header>
-            <!-- <img src="img/header-pic.jpg" alt="lololol"> -->
             <div class=header-text>
                 <h1>Gamescore</h1>
                 <h2>Play, Review, Connect Your Gaming Community Awaits!</h2>
@@ -62,19 +67,39 @@ $games = json_decode(file_get_contents($filteredGamesFilePath), true);
         </header>
         <div class="nav">
             <a href="main.php">Home</a>
-            <a href="browse.php">Browse</a>
+            <a href="browse.php" <?php if (basename($_SERVER['PHP_SELF']) == 'browse.php') {
+                echo 'class="nav-link-active"';
+            } ?>>Browse</a>
             <a href="forum/forums.html">Forum</a>
-            <a href="friends.php">Friends</a>
-            <a href="login.php">Login</a>
+            <?php
+            echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
+            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+            ?>
         </div>
 
         <div id="main">
-            <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 col-4">
+                    <input type="text" id="search" placeholder="Search" class="form-control search-input">
+                </div>
+                <div class="col-lg-9 col-sm-6 col-8 d-flex justify-content-end">
+                    <form action="import_games.php" method="post">
+                        <input type="submit" value="Import Games From Json"
+                            class="btn btn-primary bg-dark button-browse">
+                    </form>
+                </div>
+            </div>
+
+            <div class="container" id="game-list">
                 <div class="row justify-content-center">
                     <?php
 
-                    $games = json_decode(file_get_contents('filtered_games.json'), true);
+                    //$games = json_decode(file_get_contents('filtered_games.json'), true);
                     $gamesPerPage = 20;
+                    $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int) $_GET['page'] : 1;
+                    $offset = ($page - 1) * $gamesPerPage;
+
+                    $games = $gameDAO->getAllGames($gamesPerPage, $offset);
 
                     if (isset($_GET['page'])) {
                         $page = $_GET['page'];
@@ -87,21 +112,25 @@ $games = json_decode(file_get_contents($filteredGamesFilePath), true);
                     $games = array_slice($games, $start, $gamesPerPage); // 0-19, 20-39, 40-59, 60-79, 80-99
                     
                     foreach ($games as $game) {
-                        echo '<div class="col-lg-3 col-md-3 col-sm-6">';
+                        echo '<div class="col-lg-3 col-md-4 col-sm-6">';
                         echo '<div class="card mb-4">';
-                        $image = isset($game['image_background']) ? $game['image_background'] : 'placeholder.jpg';
+                        $image = $game->getImageBackground() ? $game->getImageBackground() : 'placeholder.jpg';
                         echo '<img class="card-img-top" src="' . $image . '" alt="Card image" loading="lazy">';
                         echo '<div class="card-body">';
-                        echo '<h5 class="card-title">' . htmlspecialchars($game['name']) . '</h5>';
-                        $description = isset($game['short_description']) ? $game['short_description'] : 'No description available.';
-                        echo '<p class="card-text">' . htmlspecialchars($description) . '</p>';
-                        echo '<a href="game_details.php?id=' . $game['id'] . '" class="btn btn-primary">Learn More</a>';
+                        echo '<h5 class="card-title">' . htmlspecialchars($game->getName()) . '</h5>';
+                        //$description = $game->getShortDescription() ? $game->getShortDescription() : 'No description available.';
+                        $released = $game->getReleaseDate() ? $game->getReleaseDate() : 'No release date available.';
+                        echo '<p class="card-text">' . "Released:  " . htmlspecialchars($released) . '</p>';
+                        echo '<a href="game_details.php?id=' . $game->getId() . '" class="btn btn-primary">Learn More</a>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
                     }
+                    ?>
+                </div>
 
-                    echo '<div class="pagination">';
+                <div class="pagination">
+                    <?php
                     for ($i = 1; $i <= $totalPages; $i++) { // 1, 2, 3, 4, 5
                         if ($i == $page) {
                             echo "<a href='?page=" . $i . "' class='active'>" . $i . "</a> ";
@@ -109,22 +138,14 @@ $games = json_decode(file_get_contents($filteredGamesFilePath), true);
                             echo "<a href='?page=" . $i . "'>" . $i . "</a> ";
                         }
                     }
-                    echo '</div>';
                     ?>
                 </div>
+
             </div>
-
         </div>
+
     </div>
-
-
-
-
-
-
-
-
-
+    </div>
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -134,6 +155,41 @@ $games = json_decode(file_get_contents($filteredGamesFilePath), true);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#search').on('input', function () {
+                var term = $('#search').val();
+                if (term) {
+                    $.ajax({
+                        url: 'search_games.php',
+                        type: 'POST',
+                        data: { term: term },
+                        success: function (data) {
+                            $('#game-list').html(data);
+
+                            setTimeout(function () {
+                                VanillaTilt.init(document.querySelectorAll(".card"), {
+                                    max: 20,
+                                    speed: 400,
+                                    glare: true,
+                                    "max-glare": 0.4
+                                });
+                                VanillaTilt.init(document.querySelectorAll("#main .btn"), {
+                                    max: 20,
+                                    speed: 400,
+                                    perspective: 1000,
+                                    scale: 1.2,
+                                });
+                            }, 0);
+                        }
+                    });
+                } else {
+                    location.reload();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
