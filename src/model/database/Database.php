@@ -5,10 +5,10 @@ class Database
 
     public function __construct()
     {
-        $host = 'localhost';
-        $db   = 'gamescore';
-        $user = 'root';
-        $pass = '';
+        $host = 'localhost:3308'; // eller din databasserver
+        $db   = 'gamescore'; // ditt databasnamn
+        $user = 'root'; // din databasanvändare
+        $pass = ''; // ditt databaslösenord
         $charset = 'utf8mb4';
 
         $options = [
@@ -25,7 +25,8 @@ class Database
         }
     }
 
-    public function getPdo(){
+    public function getPdo()
+    {
         return $this->pdo;
     }
 }

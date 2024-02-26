@@ -1,8 +1,8 @@
 <?php
 require 'src/config.php';
 if (!isset($_SESSION['username'])) {
-     header('Location: login.php');
-     exit;
+    header('Location: login.php');
+    exit;
 }
 
 $userId = $_SESSION['username'];
@@ -65,10 +65,12 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
             </div>
         </header>
         <div class="nav">
+            <a href="main.php">Home</a>
+            <a href="browse.php">Browse</a>
+            <a href='friends.php' <?php if (basename($_SERVER['PHP_SELF']) == 'friends.php') {
+                                        echo 'class="nav-link-active"';
+                                    } ?>>Friends</a>
             <?php
-            echo '<a href="main.php">Home</a>';
-            echo '<a href="browse.php">Browse</a>';
-            echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
             echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
             ?>
         </div>
@@ -124,7 +126,7 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
                 </div>
             </div>
         </div>
-
+        <a href="src/controller/deleteUserController.php">Delete this account!</a>
     </div>
 
 

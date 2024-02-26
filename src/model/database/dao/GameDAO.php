@@ -1,6 +1,6 @@
 <?php
-class GameDAO{
-
+class GameDAO
+{
     private PDO $pdo;
 
     public function __construct(PDO $pdo)
@@ -8,23 +8,57 @@ class GameDAO{
         $this->pdo = $pdo;
     }
 
-    public function add(Game $game) : void
+    public function add(Game $game): void
     {
-        $sql = "INSERT INTO games (title, agerating) VALUES (:title, :agerating)";
-        $statement = $this->pdo->prepare($sql);
-        $statement->bindValue(":title", $game->getTitle());
-        $statement->bindValue(":agerating", $game->getRating());
-        $statement->execute();
+    $sql = "INSERT INTO games (id, name, release_date, rating, metacritic, image_background, updated) VALUES (:id, :name, :release_date, :rating, :metacritic, :image_background, :updated)";
+    $statement = $this->pdo->prepare($sql);
+    $statement->bindValue(":id", $game->getId(), PDO::PARAM_INT);
+    $statement->bindValue(":name", $game->getName());
+    $statement->bindValue(":release_date", $game->getReleaseDate());
+    $statement->bindValue(":rating", $game->getRating());
+    $statement->bindValue(":metacritic", $game->getMetacritic());
+    $statement->bindValue(":image_background", $game->getImageBackground());
+    $statement->bindValue(":updated", $game->getUpdated());
+    $statement->execute();
     }
-
-    public function find(int $id) :?Game
+    public function getAllGames(): array
     {
-        $sql = "SELECT * FROM Game WHERE id = :id";
+        $sql = "SELECT * FROM games";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+        $games = $statement->fetchAll(PDO::FETCH_CLASS, Game::class);
+        return $games;
+    }
+    public function find(int $id): ?Game
+    {
+        $sql = "SELECT * FROM games WHERE id = :id";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(":id", $id);
         $statement->execute();
-        return $statement->fetch(PDO::FETCH_CLASS, Game::class);
-    }
-}
+        $game = $statement->fetchObject(Game::class);
 
-?>
+        return $game ?: null;
+    }
+
+    public function findByName(string $name): ?Game
+    {
+        $sql = "SELECT * FROM games WHERE name = :name";
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(":name", $name);
+        $statement->execute();
+        $game = $statement->fetchObject(Game::class);
+        return $game ?: null;
+    }
+
+    public function getTopRatedGames(int $limit = 3): array {
+        $sql = "SELECT * FROM games ORDER BY rating DESC, metacritic DESC LIMIT :limit";
+        $statement = $this->pdo->prepare($sql);
+        // Bind param as integer
+        $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS, Game::class);
+    }
+    
+
+
+}
