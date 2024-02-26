@@ -20,7 +20,7 @@ class UserDAO{
     }
 
     public function findUser($username) : ?User {
-        $sql = "SELECT * FROM user WHERE id = :username"; // Använd rätt kolumnnamn för användarnamn
+        $sql = "SELECT * FROM user WHERE id = :username";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(":username", $username);
         $statement->execute();
@@ -28,7 +28,12 @@ class UserDAO{
         return $statement->fetch();
     }
 
-    
+    public function deleteUserByUsername(string $username): bool {
+        $sql = "DELETE FROM user WHERE id = :username";
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(":username", $username);
+        return $statement->execute(); // Returnerar true vid framgång, annars false
+    }
 }
 
 ?>

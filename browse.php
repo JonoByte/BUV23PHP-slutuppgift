@@ -14,7 +14,7 @@ $filteredGamesFilePath = 'filtered_games.json';
 
 if (!file_exists($filteredGamesFilePath)) {
     $apiKey = "43e773150eda4c50b462a6d47a38e5d9";
-    $numPages = 5;
+    $numPages = 10;
     $games = [];
 
     for ($i = 1; $i <= $numPages; $i++) {
@@ -52,8 +52,7 @@ if (!file_exists($filteredGamesFilePath)) {
     <link rel="stylesheet" href="CSS/browse.css">
 
     <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -67,9 +66,7 @@ if (!file_exists($filteredGamesFilePath)) {
         </header>
         <div class="nav">
             <a href="main.php">Home</a>
-            <a href="browse.php" <?php if (basename($_SERVER['PHP_SELF']) == 'browse.php') {
-                echo 'class="nav-link-active"';
-            } ?>>Browse</a>
+            <a href="browse.php" class="nav-link-active">Browse</a>
             <a href="forum/forums.html">Forum</a>
             <?php
             echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
@@ -84,8 +81,7 @@ if (!file_exists($filteredGamesFilePath)) {
                 </div>
                 <div class="col-lg-9 col-sm-6 col-8 d-flex justify-content-end">
                     <form action="import_games.php" method="post">
-                        <input type="submit" value="Import Games From Json"
-                            class="btn btn-primary bg-dark button-browse">
+                        <input type="submit" value="Import Games From Json" class="btn btn-primary bg-dark button-browse">
                     </form>
                 </div>
             </div>
@@ -110,7 +106,7 @@ if (!file_exists($filteredGamesFilePath)) {
                     $totalPages = ceil(count($games) / $gamesPerPage); // 100 / 20 = 5
                     $start = ($page - 1) * $gamesPerPage; // 0, 20, 40, 60, 80
                     $games = array_slice($games, $start, $gamesPerPage); // 0-19, 20-39, 40-59, 60-79, 80-99
-                    
+
                     foreach ($games as $game) {
                         echo '<div class="col-lg-3 col-md-4 col-sm-6">';
                         echo '<div class="card mb-4">';
@@ -148,27 +144,25 @@ if (!file_exists($filteredGamesFilePath)) {
     </div>
 
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#search').on('input', function () {
+        $(document).ready(function() {
+            $('#search').on('input', function() {
                 var term = $('#search').val();
                 if (term) {
                     $.ajax({
                         url: 'search_games.php',
                         type: 'POST',
-                        data: { term: term },
-                        success: function (data) {
+                        data: {
+                            term: term
+                        },
+                        success: function(data) {
                             $('#game-list').html(data);
 
-                            setTimeout(function () {
+                            setTimeout(function() {
                                 VanillaTilt.init(document.querySelectorAll(".card"), {
                                     max: 20,
                                     speed: 400,

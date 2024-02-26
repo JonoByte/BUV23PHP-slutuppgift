@@ -1,9 +1,8 @@
 <?php
-require 'src/config/autoloader.php';
-require __DIR__ . '/src/config/pdo.php';
-require 'src/model/database/dao/FriendsReqDAO.php';
+require 'src/config.php';
 
-$friendsReqDAO = new FriendsReqDAO($pdo);
+$db = new Database();
+$friendsReqDAO = new FriendsReqDAO($db->getPdo());
 
 // Get data from the AJAX request
 $userB = $_POST['friendUsername'];
