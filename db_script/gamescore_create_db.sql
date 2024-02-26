@@ -60,32 +60,6 @@ CREATE TABLE `friends` (
   CONSTRAINT `CONSTRAINT_1` CHECK (`user_id_a` <> `user_id_b`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `forum` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `post` varchar(255) NOT NULL,
-  `postdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `content` text NOT NULL,
-  `reply` text DEFAULT NULL,
-  `replycount` int(11) NOT NULL,
-  `replydate` datetime NOT NULL,
-  `forumcol` varchar(45) DEFAULT NULL,
-  `fk_userId` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK från users_idx` (`fk_userId`),
-  CONSTRAINT `fk_userId` FOREIGN KEY (`fk_userId`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE `review` (
-  `user_id` varchar(255) NOT NULL,
-  `game_title` varchar(255) NOT NULL,
-  `rating` float NOT NULL,
-  `content` text DEFAULT NULL,
-  `reviewdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`user_id`,`game_title`),
-  KEY `fk_review_game` (`game_title`),
-  CONSTRAINT `fk_review_game` FOREIGN KEY (`game_title`) REFERENCES `game` (`title`),
-  CONSTRAINT `fk_review_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `news` (`title`, `author`, `publishDate`, `content`, `image`, `url`, `source`, `address`) VALUES 
