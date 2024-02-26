@@ -1,5 +1,12 @@
 <?php
+$lifetime=600;
 session_start();
+setcookie(session_name(),session_id(),time()+$lifetime); //refreshar afk tiden till 10 min varje gång du hoppar in på en ny sida
+
+$username = null;
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+}
 
 spl_autoload_register(function ($className) {
 
@@ -32,7 +39,7 @@ spl_autoload_register(function ($className) {
 //http://localhost/BUV23PHP-slutuppgift/src/config/src/config/model/database/
 
 //klistra in php raden här nedan längst upp på sidan:
-/*<?php require 'src/config/autoloader.php'; ?>*/
+/*<?php require 'src/config.php' ?>*/
 
 //echo för att testa så den laddar in:
 // echo 'test från autoloader';

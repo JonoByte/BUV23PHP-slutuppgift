@@ -1,57 +1,81 @@
 <?php
-
 class Game
 {
     private int $id;
-    private string $title;
-    //private string $description;
-    private int $rating;
-    private ?int $igdbId;
+    private string $name;
+    private string $release_date;
+    private float $rating;
+    private ?int $metacritic;
+    private string $image_background;
+    private string $updated;
 
     public function getId(): int
     {
         return $this->id;
     }
 
-    public function getTitle(): string
+    public function setId(int $id): void
     {
-        return $this->title;
+        $this->id = $id;
     }
 
-    public function setTitle(string $title): void
+    public function getName(): string
     {
-        $this->title = $title;
+        return $this->name;
     }
 
-    // public function getDescription(): string
-    // {
-    //     return $this->description;
-    // }
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
 
-    // public function setDescription(string $description): void
-    // {
-    //     $this->description = $description;
-    // }
+    public function getReleaseDate(): string
+    {
+        return $this->release_date;
+    }
 
-    public function getRating(): int
+    public function setReleaseDate(string $release_date): void
+    {
+        $this->release_date = $release_date;
+    }
+
+    public function getRating(): float
     {
         return $this->rating;
     }
 
-    public function setRating(int $rating): void
+    public function setRating(float $rating): void
     {
         $this->rating = $rating;
     }
 
-    public function getIgdbId(): ?int
+    public function getMetacritic(): ?int
     {
-        return $this->igdbId;
+        return $this->metacritic;
     }
 
-    public function setIgdbId(?int $igdbId): void
+    public function setMetacritic(?int $metacritic): void
     {
-        $this->igdbId = $igdbId;
+        $this->metacritic = $metacritic;
+    }
+
+    public function getImageBackground(): string
+    {
+        return $this->image_background;
+    }
+
+    public function setImageBackground(string $image_background): void
+    {
+        $this->image_background = $image_background;
+    }
+
+    public function getUpdated(): string
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(string $updated): void
+    {
+        $this->updated = $updated;
     }
 }
-
-?>

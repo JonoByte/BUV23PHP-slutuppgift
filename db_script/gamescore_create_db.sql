@@ -2,10 +2,10 @@ CREATE DATABASE `gamescore`;
 
 /*kör rad 1 först sen resten av tabellerna*/
 
-SELECT * FROM news
+SELECT * FROM news;
 
-INSERT INTO news (title, author, publishDate, content, image, url, source, address)
- VALUES ('Example News Title 2', 'Marty Doe', '2024-02-17 08:00:00', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et velit nec arcu aliquet tempus.', 'example_image.jpg', 'https://worldofwarcraft.blizzard.com/en-us/news', 'Example Source', 'Example Address')	
+
+select * from user;
 
 CREATE TABLE `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -14,6 +14,9 @@ CREATE TABLE `news` (
   `publishDate` datetime NOT NULL,
   `content` TEXT NOT NULL,
   `image` MEDIUMBLOB NOT NULL,
+  `url` varchar(255) NULL,
+  `source` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -38,19 +41,15 @@ CREATE TABLE `message` (
   CONSTRAINT `fk_messages_receiver` FOREIGN KEY (`receiver_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `game` (
-  `title` varchar(255) NOT NULL,
-  `gameinfo` text NOT NULL,
-  `agerating` int(11) NOT NULL,
-  `releasedate` date NOT NULL,
-  `publisher` varchar(255) DEFAULT NULL,
-  `developer` varchar(255) DEFAULT NULL,
-  `genre` enum('FPS','RPG','Adventure','Fantasy','MMORPG','Survival','Battle Royal','MOBA','RTS') NOT NULL,
-  `platform` enum('PC','Playstation','Xbox','Nintendo') NOT NULL,
-  `averagerating` float DEFAULT NULL,
-  `coverimg` mediumblob DEFAULT NULL,
-  `trailerurl` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`title`)
+CREATE TABLE `games` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `release_date` date NOT NULL,
+  `rating` float NOT NULL,
+  `metacritic` int(11) DEFAULT NULL,
+  `updated` datetime NOT NULL,
+  `image_background` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `friends` (
