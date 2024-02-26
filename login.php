@@ -40,10 +40,13 @@
             </div>
             <div>
                 <form action="src/controller/loginController.php" method="post">
-                    <label class="label-style">Username:</label> <input type="text" name="username" class="input-style"><br>
-                    <label class="label-style">Password:</label> <input type="password" name="password" class="input-style"><br>
+                    <input type="username" name="username" placeholder="Username" class="form-control search-input"><br>
+                    <input type="password" name="password" placeholder="Password" class="form-control search-input"><br>
                     <input type="submit" value="Log in">
                 </form>
+
+                <!-- stilen från Jonathans knapp -->
+                <!-- <input type="text" id="search" placeholder="Search" class="form-control search-input"> -->
 
                 <!-- kolla upp ajax för att stanna kvar på sidan -->
 

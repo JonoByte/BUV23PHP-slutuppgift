@@ -39,7 +39,7 @@
                 <form action="src/controller/registerController.php" method="post" id="signup" novalidate>
                     <div>
                         <label class="label-style" for="name">Username: </label>
-                        <input type="text" id="name" name="name">
+                        <input type="text" id="name" name="username">
                     </div>
                     <div>
                         <label class="label-style" for="email">Email: </label>
