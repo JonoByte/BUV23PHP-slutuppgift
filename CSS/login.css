@@ -88,6 +88,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 input[type="submit"] {
@@ -112,6 +113,7 @@ input[type="submit"] {
 }
 input.search-input {
     align-items: center;
+    color: #ffffff !important;
     background-color: #ffffff1e !important;
 }
 

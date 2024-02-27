@@ -34,6 +34,13 @@ class UserDAO{
         $statement->bindValue(":username", $username);
         return $statement->execute(); // Returnerar true vid framgång, annars false
     }
+
+    public function makeAdmin($username) : void {
+        $sql = "UPDATE `gamescore`.`user` SET `admin` = 'admin' WHERE (`id` = $username)";
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(":username", $username);
+        $statement->execute();
+    }
 }
 
 ?>
