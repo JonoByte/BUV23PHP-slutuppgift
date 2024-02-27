@@ -68,9 +68,9 @@ if (!file_exists($filteredGamesFilePath)) {
         <div class="nav">
             <a href="main.php">Home</a>
             <a href="browse.php" class="nav-link-active">Browse</a>
-            <a href="forum/forums.html">Forum</a>
+            <a href="posterwall.php">Community</a>
             <?php
-            echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
+            echo isset($username) ? "<a href='friends.php'>$username</a>" : "";
             echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
             ?>
         </div>
