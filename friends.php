@@ -62,10 +62,9 @@ $friends = $friendsDAO->getFriendsByUserId($username);
         <div class="nav">
             <a href="main.php">Home</a>
             <a href="browse.php">Browse</a>
-            <a href='friends.php' <?php if (basename($_SERVER['PHP_SELF']) == 'friends.php') {
-                                        echo 'class="nav-link-active"';
-                                    } ?>>Friends</a>
+            <a href="posterwall.php">Community</a>
             <?php
+            echo isset($username) ? "<a href='friends.php' class='nav-link-active'>$username</a>" : "";
             echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
             ?>
         </div>
@@ -76,14 +75,14 @@ $friends = $friendsDAO->getFriendsByUserId($username);
                 <h1><?php echo $username ?></h1>
             </div>
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Friend</button>
+            <button type="button" class="buttons" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Friend</button>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Add Friend</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="buttons" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form>
@@ -94,14 +93,14 @@ $friends = $friendsDAO->getFriendsByUserId($username);
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="sendFriendRequest">Send</button>
+                            <button type="button" class="buttons" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="buttons" id="sendFriendRequest">Send</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <a href="friendsrequests.php"><button type="button" class="btn btn-primary">Friends Requests</button></a>
+            <a href="friendsrequests.php"><button type="button" class="buttons">Friends Requests</button></a>
         </div>
 
         <div id="friend">
@@ -113,7 +112,7 @@ $friends = $friendsDAO->getFriendsByUserId($username);
                                 <img src="img/profile.jpg" alt="Profile Picture">
                                 <div class="card-body">
                                     <p><?php echo $friend['id']; ?></p>
-                                    <a href="#" class="btn btn-primary">Send message</a>
+                                    <a href="#" class="buttons">Send message</a>
                                 </div>
                             </div>
                         </div>
