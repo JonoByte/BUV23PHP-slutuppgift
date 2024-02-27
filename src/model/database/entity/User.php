@@ -5,6 +5,7 @@ class User
     private string $username;
     private string $password;
     private string $email;
+    private string $role;
 
     //getFriends funktion
     
@@ -31,6 +32,14 @@ class User
 
     public function setEmail(string $email): void {
         $this->email = $email;
+    }
+    
+    public function getRole(): string {
+        return $this->role;
+    }
+
+    public function setRole(string $role): void {
+        $this->role = $role;
     }
 }
 

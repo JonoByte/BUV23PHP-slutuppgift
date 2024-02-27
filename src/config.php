@@ -8,6 +8,13 @@ if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
 
+$userRole = null;
+
+if (isset($_SESSION['role'])) {
+    $userRole = $_SESSION['role'];
+    echo $userRole; // använda till if för att kolla rollen user/admin
+}
+
 spl_autoload_register(function ($className) {
 
     $basePath = __DIR__;

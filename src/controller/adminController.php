@@ -2,27 +2,31 @@
 require '../config.php';
 
 // Kontrollera om användarnamnet är tillgängligt och är inloggat
-if (isset($username) && !empty($username)) {
-    $db = new Database();
-    $userDao = new UserDAO($db->getPdo());
+if (isset($_POST['adminkey']) && isset($_SESSION['username'])) {
+    $username = $_POST['username'];
+    $adminkey = $_POST['adminkey'];
+    $expectedAdminKey = "alfakrull";
+    
+    if ($adminkey === $expectedAdminKey) {
+        $db = new Database();
+        $userDao = new UserDAO($db->getPdo());
 
-    try {
-        //sätter user till admin status
-        $userDao->makeAdmin($username);
-        
-        // Redirect till en bekräftelsesida eller någon annan sida efter borttagningen
-        header('Location: ../../friends.php');
-
-        echo $username . ' is now admin status';
-        exit;
-    } catch (Exception $e) {
-        // Hantera eventuella fel här
-        echo "An error occurred: " . $e->getMessage();
+        try {
+            // Sätter user till admin-status
+            $userDao->makeAdmin($username);
+            
+            // Redirect till en bekräftelsesida eller någon annan sida efter åtgärden
+            header('Location: ../../friends.php');
+            exit; // Det är viktigt att avsluta skriptet efter en header-redirect
+        } catch (Exception $e) {
+            // Hantera eventuella fel här
+            echo "An error occurred: " . $e->getMessage();
+        }
+    } else {
+        echo "Invalid admin key provided.";
     }
-}
-
-else {
-    // Om användarnamnet inte är tillgängligt eller inte är inloggat
-    echo "User not logged in or username not provided.";
+} else {
+    // Om användarnamn eller adminkey inte är tillgängliga eller är tomma
+    echo "User not logged in, username not provided, or admin key not provided.";
 }
 ?>

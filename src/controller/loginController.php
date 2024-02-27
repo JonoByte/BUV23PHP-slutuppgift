@@ -8,15 +8,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $db = new Database();
     $userDao = new UserDAO($db->getPdo());
-    $user = $userDao->findUser($username); // Anta att du har denna metod
-
+    $user = $userDao->findUser($username);
+    $userRole = $userDao->findRoleByUsername($username);
+    
     if ($user && password_verify($password, $user->getPassword())) {
-        // Lösenordet är korrekt, starta en session för användaren
-        session_start();
+        // Lösenordet är korrekt
         $_SESSION['username'] = $username; // Spara användarnamnet i sessionen
-        echo "<h2>Du är inloggad som: " . htmlspecialchars($username) . "</h2>";
-        // Omdirigera användaren till en säker sida
-        header('Location: ../../friends.php'); // Anpassa till din skyddade sida
+        $_SESSION['role'] = $userRole;
+        header('Location: ../../friends.php');
+         // Anpassa till din skyddade sida
         exit;
     } else {
         echo "<h2>Felaktigt användarnamn eller lösenord</h2>";
