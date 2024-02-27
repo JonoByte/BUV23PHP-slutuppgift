@@ -24,34 +24,30 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
     <script>
         $(document).ready(function() {
             $(".accept-friend").click(function() {
-                var button = $(this); // Preserve the button context
-                var userId = button.data("user-id"); // Get the user ID from the data attribute
+                var userId = $(this).data("user-id");
+                var cardSelector = "#friendRequestCard_" + userId; // Construct the selector for the card
 
-                // Make an AJAX request to update the status to 'accepted'
                 $.ajax({
-                    url: 'accept_friend_request.php', // Ensure this is the correct path to your PHP script
+                    url: 'src/controller/acceptFriendController.php', // Make sure this path is correct
                     type: 'POST',
                     data: {
                         userId: userId
                     },
                     success: function(response) {
-                        // Trim whitespace and check the response
-                        var trimmedResponse = response.trim();
-
-                        if (trimmedResponse === "Friend request accepted successfully!") {
-                            // Success action: display a message, update the UI, etc.
-                            alert("Friend request accepted successfully!");
-                            // Example: Remove the friend request card or update its status
-                            button.closest('.card').fadeOut(); // This fades out and removes the card
+                        // Assuming the response includes a success message
+                        if (response.message === "Friend request accepted successfully!") {
+                            // Remove or hide the friend request card
+                            $(cardSelector).fadeOut("slow", function() {
+                                $(this).remove(); // This will remove the card from the DOM after fading out
+                            });
                         } else {
-                            // Handle application-level failures not caught by the 'error' callback
-                            alert("Failed to accept friend request: " + trimmedResponse);
+                            // Handle any other responses or errors
+                            alert('Failed to accept the friend request.');
                         }
                     },
-                    error: function(xhr, status, error) {
-                        // Handle HTTP errors
-                        console.error("AJAX Error: " + status + " - " + error);
-                        alert("An error occurred while processing the request.");
+                    error: function(error) {
+                        // Handle errors
+                        console.error(error);
                     }
                 });
             });
@@ -59,7 +55,7 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
     </script>
 </head>
 
-<body>
+<body>0
 
     <div class="container-xxl">
         <header>
@@ -85,14 +81,11 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
         <div id="friend">
             <div class="container">
                 <div class="row justify-content-center">
-
                     <?php foreach ($friendRequests as $friend) : ?>
-
                         <div class="col-lg-3 col-md-3 col-sm-6">
-                            <div class="card mb-4">
+                            <div class="card mb-4" id="friendRequestCard_<?php echo $friend['user_id_a']; ?>">
                                 <div class="card-body">
                                     <p>User ID: <?php echo $friend['user_id_a']; ?></p>
-                                    <!-- Add a data attribute to store the friend request user ID -->
                                     <a href="#" class="btn btn-primary accept-friend" data-user-id="<?php echo $friend['user_id_a']; ?>">Accept Friend</a>
                                 </div>
                             </div>
