@@ -1,15 +1,10 @@
 <?php
 require 'src/config.php';
-if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
-    exit;
-}
 
-$userId = $_SESSION['username'];
 
 $db = new Database();
 $friendsDAO = new FriendsDAO($db->getPdo());
-$friends = $friendsDAO->getFriendsByUserId($userId);
+$friends = $friendsDAO->getFriendsByUserId($username);
 ?>
 
 <!doctype html>
@@ -78,7 +73,7 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
         <div class="main">
             <div class="container">
                 <img class="profile" src="img/profile.jpg" alt="profile picture">
-                <h1><?php echo $userId ?></h1>
+                <h1><?php echo $username ?></h1>
             </div>
 
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Friend</button>

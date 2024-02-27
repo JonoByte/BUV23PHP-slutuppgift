@@ -59,6 +59,15 @@ class FriendsReqDAO
         $stmt->bindParam(':user_id_b2', $userB);
         $stmt->bindValue(':new_status', 'accepted');
         $stmt->bindValue(':current_status', 'pending');
+        $stmt->execute();
+
+
+        $query = "INSERT INTO friends (user_id_a, user_id_b, status, created_at)
+              VALUES (:user_id_a, :user_id_b, 'accepted', current_timestamp())";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':user_id_a', $userA);
+        $stmt->bindParam(':user_id_b', $userB);
 
         try {
             $stmt->execute();

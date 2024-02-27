@@ -1,10 +1,9 @@
 <?php
 require 'src/config.php';
-$userId = $_SESSION['username'];
 
 $db = new Database();
 $friendsReqDAO = new FriendsReqDAO($db->getPdo());
-$friendRequests = $friendsReqDAO->getFriendRequests($userId);
+$friendRequests = $friendsReqDAO->getFriendRequests($username);
 ?>
 
 <!doctype html>
@@ -37,6 +36,7 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
                         if (response.message === "Friend request accepted successfully!") {
                             $(cardSelector).fadeOut("slow", function() {
                                 $(this).remove();
+                                getFriendsByUserId($username);
                             });
                         } else {
                             alert('Failed to accept the friend request.');
@@ -84,6 +84,10 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
                                     <img src="img/profile.jpg" alt="Profile Picture">
                                     <p>User ID: <?php echo $friend['user_id_a']; ?></p>
                                     <a href="#" class="btn btn-primary accept-friend" data-user-id="<?php echo $friend['user_id_a']; ?>">Accept Friend</a>
+                                    <?php
+                                    $friendsDAO = new FriendsDAO($db->getPdo());
+                                    $friends = $friendsDAO->getFriendsByUserId($username);
+                                    ?>
                                 </div>
                             </div>
                         </div>
