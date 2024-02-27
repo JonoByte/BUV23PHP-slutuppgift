@@ -110,6 +110,10 @@ header {
     z-index: 2;
 }
 
+.buttons:hover {
+    background-color: #393939;
+}
+
 /* mickes css från login till form och knappar */
 
 .adminkey {

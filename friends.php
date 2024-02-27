@@ -56,7 +56,7 @@ $friends = $friendsDAO->getFriendsByUserId($username);
             <div class=header-text>
                 <h1>Gamescore</h1>
                 <h2>Play, Review, Connect Your Gaming Community Awaits!</h2>
-                <h3>Home</h3>
+                <h3>Profile</h3>
             </div>
         </header>
         <div class="nav">
