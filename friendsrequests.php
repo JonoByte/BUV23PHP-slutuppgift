@@ -15,7 +15,7 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+    <link rel="icon" type="webp" href="Logo.webp">
     <link rel="stylesheet" href="CSS/friends.css">
 
     <!-- Bootstrap CSS v5.2.1 -->
@@ -25,28 +25,24 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
         $(document).ready(function() {
             $(".accept-friend").click(function() {
                 var userId = $(this).data("user-id");
-                var cardSelector = "#friendRequestCard_" + userId; // Construct the selector for the card
+                var cardSelector = "#friendRequestCard_" + userId;
 
                 $.ajax({
-                    url: 'src/controller/acceptFriendController.php', // Make sure this path is correct
+                    url: 'src/controller/acceptFriendController.php',
                     type: 'POST',
                     data: {
                         userId: userId
                     },
                     success: function(response) {
-                        // Assuming the response includes a success message
                         if (response.message === "Friend request accepted successfully!") {
-                            // Remove or hide the friend request card
                             $(cardSelector).fadeOut("slow", function() {
-                                $(this).remove(); // This will remove the card from the DOM after fading out
+                                $(this).remove();
                             });
                         } else {
-                            // Handle any other responses or errors
                             alert('Failed to accept the friend request.');
                         }
                     },
                     error: function(error) {
-                        // Handle errors
                         console.error(error);
                     }
                 });

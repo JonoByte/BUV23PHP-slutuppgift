@@ -20,7 +20,7 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+    <link rel="icon" type="webp" href="Logo.webp">
     <link rel="stylesheet" href="CSS/friends.css">
 
     <!-- Bootstrap CSS v5.2.1 -->
@@ -28,9 +28,7 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Handle the button click event
             $("#sendFriendRequest").click(function() {
-                // Get the values from the form
                 var friendUsername = $("#recipient-name").val();
                 var message = $("#message-text").val();
 
@@ -43,8 +41,8 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
                     },
                     success: function(response) {
                         console.log(response);
-                        // Close the modal after a successful AJAX request
                         $('#exampleModal').modal('hide');
+                        refreshFriendsList();
                     },
                     error: function(error) {
                         console.error(error);
