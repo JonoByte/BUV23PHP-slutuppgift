@@ -81,6 +81,7 @@ $friendRequests = $friendsReqDAO->getFriendRequests($userId);
                         <div class="col-lg-3 col-md-3 col-sm-6">
                             <div class="card mb-4" id="friendRequestCard_<?php echo $friend['user_id_a']; ?>">
                                 <div class="card-body">
+                                    <img src="img/profile.jpg" alt="Profile Picture">
                                     <p>User ID: <?php echo $friend['user_id_a']; ?></p>
                                     <a href="#" class="btn btn-primary accept-friend" data-user-id="<?php echo $friend['user_id_a']; ?>">Accept Friend</a>
                                 </div>

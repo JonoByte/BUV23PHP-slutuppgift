@@ -115,7 +115,7 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
                     <?php foreach ($friends as $friend) : ?>
                         <div class="col-lg-3 col-md-3 col-sm-6">
                             <div class="card mb-4">
-                                <img src="' . $friend['profilepic'] . '" alt="Profile Picture">
+                                <img src="img/profile.jpg" alt="Profile Picture">
                                 <div class="card-body">
                                     <p><?php echo $friend['id']; ?></p>
                                     <a href="#" class="btn btn-primary">Send message</a>
