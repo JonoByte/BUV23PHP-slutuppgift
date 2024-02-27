@@ -43,6 +43,8 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
                     },
                     success: function(response) {
                         console.log(response);
+                        // Close the modal after a successful AJAX request
+                        $('#exampleModal').modal('hide');
                     },
                     error: function(error) {
                         console.error(error);

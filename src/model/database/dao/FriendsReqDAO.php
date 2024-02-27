@@ -38,29 +38,34 @@ class FriendsReqDAO
         AND status = 'pending'";
 
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':user_id_b', $userB, PDO::PARAM_INT); // Assuming user IDs are integers
+        $stmt->bindParam(':user_id_b', $userB, PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Method to accept a friend request
-    public function acceptFriendRequest($userA, $userB)
+    public function acceptFriendRequest(string $userA, string $userB): bool
     {
         $query = "UPDATE friends
-              SET status = 'accepted'
-              WHERE ((user_id_a = :user_id_a AND user_id_b = :user_id_b)
-                 OR (user_id_a = :user_id_b AND user_id_b = :user_id_a))
-                 AND status = 'pending'";
+          SET status = :new_status
+          WHERE (user_id_a = :user_id_a1 AND user_id_b = :user_id_b1)
+             OR (user_id_a = :user_id_b2 AND user_id_b = :user_id_a2)
+          AND status = :current_status";
 
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':user_id_a', $userA);
-        $stmt->bindParam(':user_id_b', $userB);
+        $stmt->bindParam(':user_id_a1', $userA);
+        $stmt->bindParam(':user_id_b1', $userB);
+        $stmt->bindParam(':user_id_a2', $userA);
+        $stmt->bindParam(':user_id_b2', $userB);
+        $stmt->bindValue(':new_status', 'accepted');
+        $stmt->bindValue(':current_status', 'pending');
 
         try {
-            return $stmt->execute();
+            $stmt->execute();
+            return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
             error_log("PDOException in acceptFriendRequest: " . $e->getMessage());
+            error_log("Error Code: " . $e->getCode());
             return false;
         }
     }
