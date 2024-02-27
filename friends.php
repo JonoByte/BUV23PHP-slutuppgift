@@ -126,7 +126,16 @@ $friends = $friendsDAO->getFriendsByUserId($userId);
                 </div>
             </div>
         </div>
-        <a href="src/controller/deleteUserController.php">Delete this account!</a>
+        <div class="adminkey">
+            <a href="src/controller/deleteUserController.php">Delete this account!</a>
+        </div>
+        <div class="adminkey">
+            <form action="src/controller/adminController.php">
+                <input type="password" name="password" placeholder="Admin-key" class="form-control search-input"><br>
+                <input type="submit" value="Uppgrade to Admin">
+            </form>
+        </div>
+
     </div>
 
 

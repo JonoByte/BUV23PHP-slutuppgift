@@ -112,6 +112,7 @@ input[type="submit"] {
 }
 input.search-input {
     align-items: center;
+    color: #ffffff !important;
     background-color: #ffffff1e !important;
 }
 
