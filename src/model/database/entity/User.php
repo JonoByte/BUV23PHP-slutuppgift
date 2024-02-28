@@ -9,7 +9,6 @@ class User
 
     //getFriends funktion
     
-
     public function getUsername(): string {
         return $this->username;
     }
