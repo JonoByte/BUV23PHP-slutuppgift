@@ -61,6 +61,27 @@ CREATE TABLE `friends` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
+CREATE TABLE comment (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT,
+    content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_id varchar (255),
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES post(post_id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE post (
+    post_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(255) NOT NULL,
+    content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ 
+    FOREIGN KEY (user_id) REFERENCES `user`(id) ON DELETE CASCADE
+);
+
+
 
 INSERT INTO `news` (`title`, `author`, `publishDate`, `content`, `image`, `url`, `source`, `address`) VALUES 
 ('Epic Fantasy Adventure Released', 'John Doe', '2024-02-25 10:00:00', 'An epic fantasy adventure game has been released, offering immersive worlds and challenging quests.','https://media.rawg.io/media/games/737/737ea5662211d2e0bbd6f5989189e4f1.jpg' ,'https://www.youtube.com/watch?v=xvFZjo5PgG0', 'GameSource', 'Virtual World'),
