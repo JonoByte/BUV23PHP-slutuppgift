@@ -10,7 +10,6 @@ $games = $gameDAO->getAllGames();
 <script src="Browse.js"></script>
 
 <?php
-require 'src/config.php';
 $filteredGamesFilePath = 'filtered_games.json';
 
 if (!file_exists($filteredGamesFilePath)) {
