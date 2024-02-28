@@ -10,7 +10,6 @@ $games = $gameDAO->getAllGames();
 <script src="Browse.js"></script>
 
 <?php
-require 'src/config.php';
 $filteredGamesFilePath = 'filtered_games.json';
 
 if (!file_exists($filteredGamesFilePath)) {
@@ -45,7 +44,7 @@ if (!file_exists($filteredGamesFilePath)) {
 ?>
 
 <head>
-<link rel="icon" type="webp" href="Logo.webp">
+    <link rel="icon" type="webp" href="Logo.webp">
     <title>Gamescore</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />

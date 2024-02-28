@@ -45,6 +45,32 @@ $friends = $friendsDAO->getFriendsByUserId($username);
                 });
             });
         });
+        $(document).ready(function() {
+            $('#sendMessageModal').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                var recipientId = button.data('friend-id'); // Extract info from data-* attributes
+                var modal = $(this);
+                modal.find('.btn-primary').click(function() {
+                    var messageText = modal.find('#message-text').val();
+                    // AJAX request to send message
+                    $.ajax({
+                        url: 'src/controller/messageController.php',
+                        type: 'POST',
+                        data: {
+                            receiverId: recipientId,
+                            messageText: messageText
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            modal.modal('hide');
+                        },
+                        error: function(error) {
+                            console.error(error);
+                        }
+                    });
+                });
+            });
+        });
     </script>
 </head>
 
@@ -101,6 +127,7 @@ $friends = $friendsDAO->getFriendsByUserId($username);
             </div>
 
             <a href="friendsrequests.php"><button type="button" class="buttons">Friends Requests</button></a>
+            <a href="messages.php"><button type="button" class="buttons">Messages</button></a>
         </div>
 
         <div id="friend">
@@ -112,7 +139,7 @@ $friends = $friendsDAO->getFriendsByUserId($username);
                                 <img src="img/profile.jpg" alt="Profile Picture">
                                 <div class="card-body">
                                     <p><?php echo $friend['id']; ?></p>
-                                    <button class="buttons">Send message</a>
+                                    <button class="buttons" data-bs-toggle="modal" data-bs-target="#sendMessageModal" data-friend-id="<?php echo $friend['id']; ?>">Send Message</button>
                                 </div>
                             </div>
                         </div>
@@ -120,6 +147,31 @@ $friends = $friendsDAO->getFriendsByUserId($username);
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="sendMessageModal" tabindex="-1" aria-labelledby="sendMessageModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="sendMessageModalLabel">Send Message</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Message:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="buttons" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="buttons btn-primary" id="sendMessage">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="adminkey">
             <a href="src/controller/deleteUserController.php">Delete this account!</a>
         </div>
