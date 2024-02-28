@@ -85,7 +85,7 @@ header {
 
 .post h3 {
     display: inline-block;
-    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); /* Original gradient background */
+    background-image: linear-gradient(to right, #4facfe 0%, #003bfe 100%); /* Original gradient background */
     color: #fff;
     padding: 5px 10px; /* Reduced padding for a smaller button */
     font-size: 0.8em; /* Smaller text to match the button's size */
@@ -125,7 +125,7 @@ textarea, input[type="text"] {
 
 button {
     display: inline-block;
-    background-image: linear-gradient(to right, #4facfe 0%, #fafe00 100%); /* Original gradient background */
+    background-image: linear-gradient(to right, #4facfe 0%, #003bfe 100%); /* Original gradient background */
     color: #fff;
     padding: 5px 10px; /* Reduced padding for a smaller button */
     font-size: 0.8em; /* Smaller text to match the button's size */
