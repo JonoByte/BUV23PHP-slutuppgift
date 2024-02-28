@@ -29,7 +29,7 @@ $friends = $friendsDAO->getFriendsByUserId($username);
 
                 // Make an AJAX request to the server
                 $.ajax({
-                    url: 'processFriendsRequest.php',
+                    url: 'src/controller/processRequestController.php',
                     type: 'POST',
                     data: {
                         friendUsername: friendUsername
@@ -112,7 +112,7 @@ $friends = $friendsDAO->getFriendsByUserId($username);
                                 <img src="img/profile.jpg" alt="Profile Picture">
                                 <div class="card-body">
                                     <p><?php echo $friend['id']; ?></p>
-                                    <a href="#" class="buttons">Send message</a>
+                                    <button class="buttons">Send message</a>
                                 </div>
                             </div>
                         </div>
