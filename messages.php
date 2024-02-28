@@ -71,7 +71,7 @@ require_once 'src/config.php';
 
         <div class="main">
             <div class="container">
-                <img class="profile" src="img/profile.jpg" alt="profile picture">
+                <img class="profile" src="placeholder.jpg" alt="profile picture">
                 <h1><?php echo $username ?></h1>
             </div>
         </div>
