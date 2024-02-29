@@ -97,7 +97,7 @@ $friends = $friendsDAO->getFriendsByUserId($username);
 
         <div class="main">
             <div class="container">
-                <img class="profile" src="placeholder.jpg" alt="profile picture">
+                <img class="profile" src="placeholder.webp" alt="profile picture">
                 <h1><?php echo $username ?></h1>
             </div>
 
@@ -136,7 +136,7 @@ $friends = $friendsDAO->getFriendsByUserId($username);
                     <?php foreach ($friends as $friend) : ?>
                         <div class="col-lg-3 col-md-3 col-sm-6">
                             <div class="card mb-4">
-                                <img src="placeholder.jpg" alt="Profile Picture">
+                                <img src="placeholder.webp" alt="Profile Picture">
                                 <div class="card-body">
                                     <p><?php echo $friend['id']; ?></p>
                                     <button class="buttons" data-bs-toggle="modal" data-bs-target="#sendMessageModal" data-friend-id="<?php echo $friend['id']; ?>">Send Message</button>
