@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" type="webp" href="Logo.webp">
     <title>Gamescore</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
