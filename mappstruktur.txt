@@ -1,0 +1,28 @@
+webapp/
+│
+├── config/
+│   └── config.php           # Konfigurationsfiler, t.ex. databasinställningar
+│
+├── controller/              # Controllers som hanterar användarbegäranden
+│   ├── MainController.php
+│   └── UserController.php
+│
+├── model/                   # Modeller för affärslogik och databasoperationer
+│   ├── database/
+│   │   └── Database.php     # Databasanslutning och -operationer
+│   ├── User.php
+│   └── Product.php
+│
+├── view/                    # Vyfiler som genererar användargränssnittet
+│   ├── templates/
+│   │   ├── header.php
+│   │   └── footer.php
+│   ├── home.php
+│   └── login.php
+│
+├── public/                  # Offentligt tillgängliga filer, t.ex. bilder, CSS och JavaScript
+│   ├── css/
+│   ├── js/
+│   └── images/
+│
+└── .htaccess                # Serverkonfigurationsfil för omdirigeringar och säkerhet

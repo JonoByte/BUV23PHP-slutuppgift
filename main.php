@@ -49,14 +49,11 @@
             </div>
         </header>
         <div class="nav">
-            <a href="main.php" <?php if (basename($_SERVER['PHP_SELF']) == 'main.php') {
-                                    echo 'class="nav-link-active"';
-                                } ?>>Main</a>
-
+        <a href="main.php" class="nav-link-active">Home </a>
             <a href="browse.php">Browse</a>
             <a href="posterwall.php">Community</a>
             <?php
-            echo isset($username) ? "<a href='friends.php'>Friends</a>" : "";
+            echo isset($username) ? "<a href='friends.php'>$username</a>" : "";
             echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
             ?>
         </div>

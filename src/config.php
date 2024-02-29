@@ -8,13 +8,19 @@ if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
 
+$userRole = null;
+
+if (isset($_SESSION['role'])) {
+    $userRole = $_SESSION['role'];
+    // använda till if för att kolla rollen user/admin
+    // echo $userRole;
+}   
 spl_autoload_register(function ($className) {
 
     $basePath = __DIR__;
     
     $paths = [
-        $basePath . "/config/" . $className . ".php",
-        $basePath . "/controller/" . $className . ".php",
+        // $basePath . "/controller/" . $className . ".php",
         $basePath . "/model/database/" . $className . ".php",
         $basePath . "/model/database/dao/" . $className . ".php",
         $basePath . "/model/database/entity/" . $className . ".php",

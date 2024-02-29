@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" type="webp" href="Logo.webp">
     <title>Gamescore</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -44,7 +45,7 @@
                     <input type="password" name="password" placeholder="Password" class="form-control search-input"><br>
                     <input type="submit" value="Log in">
                 </form>
-
+                
                 <!-- stilen från Jonathans knapp -->
                 <!-- <input type="text" id="search" placeholder="Search" class="form-control search-input"> -->
 
