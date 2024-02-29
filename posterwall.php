@@ -12,7 +12,8 @@ $commentDAO = new CommentDAO($pdo);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallpost Section</title>
+    <link rel="icon" type="webp" href="Logo.webp">
+    <title>Gamescore</title>
     <link rel="stylesheet" href="CSS/posterwall.css">
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
@@ -26,7 +27,7 @@ $commentDAO = new CommentDAO($pdo);
             <div class="header-text">
                 <h1>Gamescore</h1>
                 <h2>Play, Review, Connect Your Gaming Community Awaits!</h2>
-                <h3>Browse</h3>
+                <h3>Community</h3>
             </div>
         </header>
 
@@ -54,13 +55,8 @@ $commentDAO = new CommentDAO($pdo);
             <div class="posts" id="postsContainer">
                 <?php foreach ($posts as $post) : ?>
                     <div class="post">
-
+                        
                         <p> user :<?= htmlspecialchars($post->getUserId()) ? htmlspecialchars($post->getUserId()) : "User not found"; ?></p>
-                        <?php if ($post->profilepic) : ?>
-                            <img src="data:image/jpeg;base64,<?= base64_encode($post->profilepic) ?>" alt="User Profile Picture" />
-                        <?php else : ?>
-                            <img src="path/to/default/profile/picture.jpg" alt="Default Profile Picture" />
-                        <?php endif; ?>
                         <div class="title">
                             <h2><?= htmlspecialchars($post->getContent()) ? htmlspecialchars($post->getContent()) : "Content not found"; ?></h2>
                         </div>
