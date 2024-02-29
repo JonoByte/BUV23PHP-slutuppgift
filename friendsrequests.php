@@ -51,7 +51,7 @@ $friendRequests = $friendsReqDAO->getFriendRequests($username);
     </script>
 </head>
 
-<body>0
+<body>
 
     <div class="container-xxl">
         <header>
