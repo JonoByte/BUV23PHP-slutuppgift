@@ -66,8 +66,8 @@ CREATE TABLE post (
     user_id VARCHAR(255) NOT NULL,
     content TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
- 
-    FOREIGN KEY (user_id) REFERENCES `user`(id) ON DELETE CASCADE
+    review_link TEXT DEFAULT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
 
