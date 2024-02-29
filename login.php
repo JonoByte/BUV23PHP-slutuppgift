@@ -45,7 +45,7 @@
                     <input type="password" name="password" placeholder="Password" class="form-control search-input"><br>
                     <input type="submit" value="Log in">
                 </form>
-
+                
                 <!-- stilen från Jonathans knapp -->
                 <!-- <input type="text" id="search" placeholder="Search" class="form-control search-input"> -->
 
