@@ -1,5 +1,6 @@
 <?php
 require '../config.php';
+require 'validation.php';
 
 // Funktion för att omdirigera tillbaka till register.php med ett felmeddelande
 function redirectWithError($error) {
@@ -10,21 +11,21 @@ function redirectWithError($error) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Använd valideringsfunktionerna
-    // if (!validateUsername($_POST["username"])) {
-    //     redirectWithError("Username is required");
-    // }
+    if (!validateUsername($_POST["username"])) {
+        redirectWithError("Username is required");
+    }
 
-    // if (!validateEmail($_POST["email"])) {
-    //     redirectWithError("Valid email is required");
-    // }
+    if (!validateEmail($_POST["email"])) {
+        redirectWithError("Valid email is required");
+    }
 
-    // if (!validatePassword($_POST["password"])) {
-    //     redirectWithError("Password must be at least 8 characters and contain at least one letter and one number");
-    // }
+    if (!validatePassword($_POST["password"])) {
+        redirectWithError("Password must be at least 8 characters and contain at least one letter and one number");
+    }
 
-    // if (!passwordsMatch($_POST["password"], $_POST["password_confirmation"])) {
-    //     redirectWithError("Passwords must match");
-    // }
+    if (!passwordsMatch($_POST["password"], $_POST["password_confirmation"])) {
+        redirectWithError("Passwords must match");
+    }
 }
 
 //skapa User-objektet och använda UserDAO för att spara användaren

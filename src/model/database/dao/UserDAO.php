@@ -32,14 +32,31 @@ class UserDAO{
         $sql = "DELETE FROM user WHERE id = :username";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(":username", $username);
-        return $statement->execute(); // Returnerar true vid framgång, annars false
+        return $statement->execute();
     }
 
     public function makeAdmin($username) : void {
-        $sql = "UPDATE `gamescore`.`user` SET `admin` = 'admin' WHERE (`id` = $username)";
+        $sql = "UPDATE `gamescore`.`user` SET `role` = 'admin' WHERE id = :username";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(":username", $username);
         $statement->execute();
+    }
+
+    public function findRoleByUsername($username) : ?string {
+        $sql = "SELECT role FROM user WHERE id = :username"; // Ändra 'username' till 'id' om det är en ID-sökning
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(":username", $username); // Bind the correct parameter
+        $statement->execute(); // Don't forget to execute the statement
+        $user = $statement->fetch();
+
+        $userRole = $user ? $user['role'] : null;
+        return $userRole;
+
+        // if ($user) {
+        //     return $user['role']; // Assuming 'role' is the column name in your database
+        // } else {
+        //     return null; // Or throw an exception, or handle as you see fit
+        // }
     }
 }
 
