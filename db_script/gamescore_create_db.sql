@@ -21,7 +21,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `profilepic` mediumblob DEFAULT NULL,
-  'role' enum('admin','user') NOT NULL DEFAULT 'user',
+  `role` enum('admin','user') NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -49,7 +49,7 @@ CREATE TABLE `game` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `friends` (
+CREATE TABLE `friend` (
   `user_id_a` varchar(255) NOT NULL,
   `user_id_b` varchar(255) NOT NULL,
   `status` enum('pending','accepted') NOT NULL DEFAULT 'pending',
