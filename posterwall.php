@@ -55,8 +55,13 @@ $commentDAO = new CommentDAO($pdo);
             <div class="posts" id="postsContainer">
                 <?php foreach ($posts as $post) : ?>
                     <div class="post">
-                        
-                        <p> user :<?= htmlspecialchars($post->getUserId()) ? htmlspecialchars($post->getUserId()) : "User not found"; ?></p>
+                    <?php if ($post->profilepic) : ?>
+                            <img src="data:image/jpeg;base64,<?= base64_encode($post->profilepic) ?>" alt="User Profile Picture" />
+                        <?php else : ?>
+                            <img src="placeholder.webp" alt="placeholder.webp" width="50px" height="50px" />
+                        <?php endif; ?>
+                        <p> user: <?= htmlspecialchars($post->getUserId()) ? htmlspecialchars($post->getUserId()) : "User not found"; ?></p>
+                      
                         <div class="title">
                             <h2><?= htmlspecialchars($post->getContent()) ? htmlspecialchars($post->getContent()) : "Content not found"; ?></h2>
                         </div>
