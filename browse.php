@@ -81,9 +81,11 @@ if (!file_exists($filteredGamesFilePath)) {
                     <input type="text" id="search" placeholder="Search" class="form-control search-input">
                 </div>
                 <div class="col-lg-9 col-sm-6 col-8 d-flex justify-content-end">
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') : ?>
                     <form action="import_games.php" method="post">
                         <input type="submit" value="Import Games From Json" class="btn btn-primary bg-dark button-browse">
                     </form>
+                    <?php endif; ?>
                 </div>
             </div>
 

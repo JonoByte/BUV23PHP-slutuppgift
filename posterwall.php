@@ -31,11 +31,13 @@ $commentDAO = new CommentDAO($pdo);
         </header>
 
         <div class="nav">
-            <a href="main.php">Home</a>
+        <a href="main.php">Home</a>
             <a href="browse.php">Browse</a>
-            <a href="posterwall.php">Community</a>
-            <a href="friends.php">Friends</a>
-            <a href="login.php">Login</a>
+            <a href="posterwall.php" class="nav-link-active">Community</a>
+            <?php
+            echo isset($username) ? "<a href='friends.php'>$username</a>" : "";
+            echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
+            ?>
         </div>
 
         <div class="wallpost-section">

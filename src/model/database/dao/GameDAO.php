@@ -21,13 +21,13 @@ class GameDAO
     $statement->bindValue(":updated", $game->getUpdated());
     $statement->execute();
     }
-    public function getAllGames(): array
+    public function getAllgames(): array
     {
         $sql = "SELECT * FROM game";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
-        $games = $statement->fetchAll(PDO::FETCH_CLASS, Game::class);
-        return $games;
+        $game = $statement->fetchAll(PDO::FETCH_CLASS, Game::class);
+        return $game;
     }
     public function find(int $id): ?Game
     {
@@ -50,7 +50,7 @@ class GameDAO
         return $game ?: null;
     }
 
-    public function getTopRatedGames(int $limit = 3): array {
+    public function getTopRatedgames(int $limit = 3): array {
         $sql = "SELECT * FROM game ORDER BY rating DESC, metacritic DESC LIMIT :limit";
         $statement = $this->pdo->prepare($sql);
         // Bind param as integer
