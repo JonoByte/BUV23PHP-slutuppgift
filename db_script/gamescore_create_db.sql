@@ -60,6 +60,15 @@ CREATE TABLE `friends` (
   CONSTRAINT `CONSTRAINT_1` CHECK (`user_id_a` <> `user_id_b`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE post (
+    post_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(255) NOT NULL,
+    content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ 
+    FOREIGN KEY (user_id) REFERENCES `user`(id) ON DELETE CASCADE
+);
+
 
 CREATE TABLE comment (
     comment_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -69,16 +78,6 @@ CREATE TABLE comment (
     user_id varchar (255),
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
     FOREIGN KEY (post_id) REFERENCES post(post_id) ON DELETE CASCADE
-);
-
-
-CREATE TABLE post (
-    post_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id VARCHAR(255) NOT NULL,
-    content TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
- 
-    FOREIGN KEY (user_id) REFERENCES `user`(id) ON DELETE CASCADE
 );
 
 
