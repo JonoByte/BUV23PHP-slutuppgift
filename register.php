@@ -24,9 +24,10 @@
             </div>
         </header>
         <div class="nav">
+        <a href="main.php">Home</a>
+            <a href="browse.php">Browse</a>
+            <a href="posterwall.php">Community</a>
             <?php
-            echo '<a href="main.php">Home</a>';
-            echo '<a href="browse.php">Browse</a>';
             echo isset($username) ? "<a href='friends.php'>$username</a>" : "";
             echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
             ?>

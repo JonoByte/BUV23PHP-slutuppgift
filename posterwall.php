@@ -26,7 +26,7 @@ $commentDAO = new CommentDAO($pdo);
             <div class="header-text">
                 <h1>Gamescore</h1>
                 <h2>Play, Review, Connect Your Gaming Community Awaits!</h2>
-                <h3>Browse</h3>
+                <h3>Community</h3>
             </div>
         </header>
 
