@@ -31,7 +31,7 @@ $commentDAO = new CommentDAO($pdo);
         </header>
 
         <div class="nav">
-        <a href="main.php">Home</a>
+            <a href="main.php">Home</a>
             <a href="browse.php">Browse</a>
             <a href="posterwall.php" class="nav-link-active">Community</a>
             <?php
@@ -54,8 +54,13 @@ $commentDAO = new CommentDAO($pdo);
             <div class="posts" id="postsContainer">
                 <?php foreach ($posts as $post) : ?>
                     <div class="post">
-                        
+
                         <p> user :<?= htmlspecialchars($post->getUserId()) ? htmlspecialchars($post->getUserId()) : "User not found"; ?></p>
+                        <?php if ($post->profilepic) : ?>
+                            <img src="data:image/jpeg;base64,<?= base64_encode($post->profilepic) ?>" alt="User Profile Picture" />
+                        <?php else : ?>
+                            <img src="path/to/default/profile/picture.jpg" alt="Default Profile Picture" />
+                        <?php endif; ?>
                         <div class="title">
                             <h2><?= htmlspecialchars($post->getContent()) ? htmlspecialchars($post->getContent()) : "Content not found"; ?></h2>
                         </div>

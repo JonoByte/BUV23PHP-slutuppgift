@@ -26,12 +26,15 @@ class PostDAO
     }
 
     public function getAllPost(): array
-    {
-        $sql = "SELECT * FROM post";
-        $stmt = $this->pdo->query($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Post');
-    }
+{
+    // Updated SQL query to join the `post` and `user` tables and select the profile picture
+    $sql = "SELECT post.*, user.profilepic FROM post JOIN user ON post.user_id = user.id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+    // Assuming you have a Post class that can handle the additional profilepic property
+    return $stmt->fetchAll(PDO::FETCH_CLASS, 'Post');
+}
+
 
     public function updatePost(Post $post)
     {
