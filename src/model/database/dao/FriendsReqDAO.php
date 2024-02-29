@@ -11,7 +11,7 @@ class FriendsReqDAO
 
     public function sendFriendRequest($userA, $userB)
     {
-        $query = "INSERT INTO friends (user_id_a, user_id_b, status, created_at)
+        $query = "INSERT INTO friend (user_id_a, user_id_b, status, created_at)
               VALUES (:user_id_a, :user_id_b, 'pending', current_timestamp())";
 
         $stmt = $this->pdo->prepare($query);
@@ -33,7 +33,7 @@ class FriendsReqDAO
     public function getFriendRequests($userB)
     {
         $query = "SELECT user_id_a, created_at
-        FROM friends
+        FROM friend
         WHERE user_id_b = :user_id_b
         AND status = 'pending'";
 
@@ -46,7 +46,7 @@ class FriendsReqDAO
 
     public function acceptFriendRequest(string $userA, string $userB): bool
     {
-        $query = "UPDATE friends
+        $query = "UPDATE friend
           SET status = :new_status
           WHERE (user_id_a = :user_id_a1 AND user_id_b = :user_id_b1)
              OR (user_id_a = :user_id_b2 AND user_id_b = :user_id_a2)
@@ -62,7 +62,7 @@ class FriendsReqDAO
         $stmt->execute();
 
 
-        $query = "INSERT INTO friends (user_id_a, user_id_b, status, created_at)
+        $query = "INSERT INTO friend (user_id_a, user_id_b, status, created_at)
               VALUES (:user_id_a, :user_id_b, 'accepted', current_timestamp())";
 
         $stmt = $this->pdo->prepare($query);

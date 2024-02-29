@@ -11,11 +11,11 @@ class FriendsDAO
 
     public function getFriendsByUserId($userId)
     {
-        $query = "SELECT user.id, user.email, user.profilepic, friends.status
-                  FROM friends
-                  JOIN user ON friends.user_id_b = user.id
-                  WHERE friends.user_id_a = :userId
-                    AND friends.status = 'accepted'";
+        $query = "SELECT user.id, user.email, user.profilepic, friend.status
+                  FROM friend
+                  JOIN user ON friend.user_id_b = user.id
+                  WHERE friend.user_id_a = :userId
+                    AND friend.status = 'accepted'";
 
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':userId', $userId);

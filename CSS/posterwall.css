@@ -152,4 +152,6 @@ button:hover {
     margin-top: 5px;
 }
 
-
+.nav-link-active {
+    color: #ffe345 !important;
+}
