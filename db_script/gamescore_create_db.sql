@@ -21,6 +21,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `profilepic` mediumblob DEFAULT NULL,
+  'role' enum('admin','user') NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
