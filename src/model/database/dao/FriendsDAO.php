@@ -12,7 +12,7 @@ class FriendsDAO
     public function getFriendsByUserId($userId)
     {
         $query = "SELECT user.id, user.email, user.profilepic, friends.status
-                  FROM friends
+                  FROM friend
                   JOIN user ON friends.user_id_b = user.id
                   WHERE friends.user_id_a = :userId
                     AND friends.status = 'accepted'";
