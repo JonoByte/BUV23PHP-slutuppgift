@@ -55,7 +55,7 @@ $commentDAO = new CommentDAO($pdo);
                 <?php foreach ($posts as $post) : ?>
                     <div class="post">
                         
-                        <p> user :<?= htmlspecialchars($post->getUserId()) ? htmlspecialchars($post->getUserId()) : "User not found"; ?></p>
+                        <p> user: <?= htmlspecialchars($post->getUserId()) ? htmlspecialchars($post->getUserId()) : "User not found"; ?></p>
                         <div class="title">
                             <h2><?= htmlspecialchars($post->getContent()) ? htmlspecialchars($post->getContent()) : "Content not found"; ?></h2>
                         </div>
