@@ -51,7 +51,7 @@ $friendRequests = $friendsReqDAO->getFriendRequests($username);
     </script>
 </head>
 
-<body>0
+<body>
 
     <div class="container-xxl">
         <header>
@@ -65,10 +65,9 @@ $friendRequests = $friendsReqDAO->getFriendRequests($username);
         <div class="nav">
             <a href="main.php">Home</a>
             <a href="browse.php">Browse</a>
-            <a href='friends.php' <?php if (basename($_SERVER['PHP_SELF']) == 'friendsrequests.php') {
-                                        echo 'class="nav-link-active"';
-                                    } ?>>Friends</a>
+            <a href="posterwall.php">Community</a>
             <?php
+            echo isset($username) ? "<a href='friends.php' class='nav-link-active'>$username</a>" : "";
             echo isset($username) ? "<a href='src/controller/logoutController.php'>Logout</a>" : "<a href='login.php'>Login</a>";
             ?>
         </div>

@@ -1,5 +1,5 @@
 <?php
-require '..config.php';
+require '../config.php';
 
 $db = new Database();
 $friendsReqDAO = new FriendsReqDAO($db->getPdo());
