@@ -37,7 +37,7 @@ CREATE TABLE `message` (
   CONSTRAINT `fk_messages_receiver` FOREIGN KEY (`receiver_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `games` (
+CREATE TABLE `game` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `release_date` date NOT NULL,

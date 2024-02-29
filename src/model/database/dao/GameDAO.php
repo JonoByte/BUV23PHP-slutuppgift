@@ -10,7 +10,7 @@ class GameDAO
 
     public function add(Game $game): void
     {
-    $sql = "INSERT INTO games (id, name, release_date, rating, metacritic, image_background, updated) VALUES (:id, :name, :release_date, :rating, :metacritic, :image_background, :updated)";
+    $sql = "INSERT INTO game (id, name, release_date, rating, metacritic, image_background, updated) VALUES (:id, :name, :release_date, :rating, :metacritic, :image_background, :updated)";
     $statement = $this->pdo->prepare($sql);
     $statement->bindValue(":id", $game->getId(), PDO::PARAM_INT);
     $statement->bindValue(":name", $game->getName());
@@ -23,7 +23,7 @@ class GameDAO
     }
     public function getAllGames(): array
     {
-        $sql = "SELECT * FROM games";
+        $sql = "SELECT * FROM game";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
         $games = $statement->fetchAll(PDO::FETCH_CLASS, Game::class);
@@ -31,7 +31,7 @@ class GameDAO
     }
     public function find(int $id): ?Game
     {
-        $sql = "SELECT * FROM games WHERE id = :id";
+        $sql = "SELECT * FROM game WHERE id = :id";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(":id", $id);
         $statement->execute();
@@ -42,7 +42,7 @@ class GameDAO
 
     public function findByName(string $name): ?Game
     {
-        $sql = "SELECT * FROM games WHERE name = :name";
+        $sql = "SELECT * FROM game WHERE name = :name";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(":name", $name);
         $statement->execute();
@@ -51,7 +51,7 @@ class GameDAO
     }
 
     public function getTopRatedGames(int $limit = 3): array {
-        $sql = "SELECT * FROM games ORDER BY rating DESC, metacritic DESC LIMIT :limit";
+        $sql = "SELECT * FROM game ORDER BY rating DESC, metacritic DESC LIMIT :limit";
         $statement = $this->pdo->prepare($sql);
         // Bind param as integer
         $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
