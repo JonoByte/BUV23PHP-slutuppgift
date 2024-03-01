@@ -35,16 +35,16 @@ class PostDAO
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Post');
     }
 
-    public function updatePost(Post $post)
-    {
-        $sql = "UPDATE post SET user_id = :user_id, content = :content, review_link = :review_link WHERE post_id = :post_id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':user_id', $post->getUserId());
-        $stmt->bindParam(':content', $post->getContent());
-        $stmt->bindParam(':review_link', $post->getReviewLink()); // Update review_link
-        $stmt->bindParam(':post_id', $post->getPostId());
-        $stmt->execute();
-    }
+    // public function updatePost(Post $post)
+    // {
+    //     $sql = "UPDATE post SET user_id = :user_id, content = :content, review_link = :review_link WHERE post_id = :post_id";
+    //     $stmt = $this->pdo->prepare($sql);
+    //     $stmt->bindParam(':user_id', $post->getUserId());
+    //     $stmt->bindParam(':content', $post->getContent());
+    //     $stmt->bindParam(':review_link', $post->getReviewLink()); // Update review_link
+    //     $stmt->bindParam(':post_id', $post->getPostId());
+    //     $stmt->execute();
+    // }
 
     public function getPostById($postId) {
         $sql = "SELECT * FROM post WHERE post_id = :post_id";

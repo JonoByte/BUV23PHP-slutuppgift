@@ -51,4 +51,3 @@ spl_autoload_register(function ($className) {
 //echo för att testa så den laddar in:
 // echo 'test från autoloader';
 
-?>

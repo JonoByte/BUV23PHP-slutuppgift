@@ -31,4 +31,3 @@ if (isset($_POST['adminkey']) && isset($_SESSION['username'])) {
     // Om användarnamn eller adminkey inte är tillgängliga eller är tomma
     echo "User not logged in, username not provided, or admin key not provided.";
 }
-?>

@@ -24,4 +24,3 @@ else {
     // Om användarnamnet inte är tillgängligt eller inte är inloggat
     echo "User not logged in or username not provided.";
 }
-?>

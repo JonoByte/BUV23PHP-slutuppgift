@@ -43,4 +43,3 @@ try {
 } catch (Exception $e) {
     redirectWithError("An error occurred, please try again.");
 }
-?>
