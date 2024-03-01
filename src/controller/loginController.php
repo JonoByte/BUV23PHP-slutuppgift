@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Lösenordet är korrekt
         $_SESSION['username'] = $username; // Spara användarnamnet i sessionen
         $_SESSION['role'] = $userRole;
-        header('Location: ../../friends.php');
+        header('Location: ../../view/friends.php');
          // Anpassa till din skyddade sida
         exit;
     } else {

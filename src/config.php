@@ -20,7 +20,8 @@ spl_autoload_register(function ($className) {
     $basePath = __DIR__;
     
     $paths = [
-        // $basePath . "/controller/" . $className . ".php",
+        $basePath . "/controller/" . $className . ".php",
+        $basePath . "../view/" . $className . ".php",
         $basePath . "/model/database/" . $className . ".php",
         $basePath . "/model/database/dao/" . $className . ".php",
         $basePath . "/model/database/entity/" . $className . ".php",

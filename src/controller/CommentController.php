@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment-content'], $_
     try {
         $commentDAO->insertComment($comment);
         // Redirect back to the posts page or wherever appropriate after successful insertion
-        header('Location: ../../posterwall.php');
+        header('Location: ../../view/posterwall.php');
         exit();
     } catch (Exception $e) {
         // Handle error - for example, log the error and redirect back with an error message

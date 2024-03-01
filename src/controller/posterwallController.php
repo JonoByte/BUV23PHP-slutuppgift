@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         $postDAO->insertPost($post); // Assuming insertPost expects a Post object
-        header('Location: ../../posterwall.php'); // Anpassa till din skyddade sida
+        header('Location: ../../view/posterwall.php'); // Anpassa till din skyddade sida
       
     } catch (Exception $e) {
         // Log the error or handle it as per your logging strategy

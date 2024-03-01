@@ -12,7 +12,7 @@ if (isset($username) && !empty($username)) {
         session_destroy(); // Förstör sessionen
         
         // Redirect till en bekräftelsesida eller någon annan sida efter borttagningen
-        header('Location: ../../main.php');
+        header('Location: ../../view/main.php');
         exit;
     } catch (Exception $e) {
         // Hantera eventuella fel här

@@ -4,7 +4,7 @@ require 'validation.php';
 
 // Funktion för att omdirigera tillbaka till register.php med ett felmeddelande
 function redirectWithError($error) {
-    header('Location: ../../register.php');
+    header('Location: ../../view/register.php');
     //?error=' . urlencode($error)
     exit;
 }
@@ -38,7 +38,7 @@ $db = new Database();
 $userDao = new UserDAO($db->getPdo());
 try {
     $userDao->addUser($user);
-    header('Location: ../../login.php?success=1');
+    header('Location: ../../view/login.php?success=1');
     exit;
 } catch (Exception $e) {
     redirectWithError("An error occurred, please try again.");

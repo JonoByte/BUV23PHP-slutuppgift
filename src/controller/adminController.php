@@ -15,7 +15,7 @@ if (isset($_POST['adminkey']) && isset($_SESSION['username'])) {
             $userDao->makeAdmin($username);
             $_SESSION['role'] = $userRole;
             // Redirect till en bekräftelsesida eller någon annan sida efter åtgärden
-            header('Location: ../../friends.php');
+            header('Location: ../../view/friends.php');
             exit; // Det är viktigt att avsluta skriptet efter en header-redirect
         } catch (Exception $e) {
             // Hantera eventuella fel här
