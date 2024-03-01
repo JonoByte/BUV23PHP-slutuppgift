@@ -65,7 +65,7 @@ function startGame() {
         });
         if (pacmanCurrentX > 250) {
             clearInterval(interval);
-            window.location.href = '../../view/main.php';
+            window.location.href = 'main.php';
         }
     }, 16);
 }
