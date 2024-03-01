@@ -13,7 +13,7 @@ if (isset($_POST['adminkey']) && isset($_SESSION['username'])) {
         try {
             // Sätter user till admin-status
             $userDao->makeAdmin($username);
-            $_SESSION['role'] = $userRole;
+            $_SESSION['role'] = 'admin';
             // Redirect till en bekräftelsesida eller någon annan sida efter åtgärden
             header('Location: ../../view/friends.php');
             exit; // Det är viktigt att avsluta skriptet efter en header-redirect
