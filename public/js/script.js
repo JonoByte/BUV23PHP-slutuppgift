@@ -19,7 +19,7 @@ function startGameWithNate() {
         console.error('Pacman or cherry picture not found');
         return;
     }
-    pacman.style.backgroundImage = "url('../img/nate528-pacman.gif')";
+    pacman.style.backgroundImage = "url('../public/img/nate528-pacman.gif')";
     pacman.style.top = "calc(50% - 20px)";
     cherry.removeEventListener('click', startGameWithNate);
     startGame();

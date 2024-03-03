@@ -1,8 +1,3 @@
-CREATE DATABASE `gamescore`;
-
-/*kör rad 1 först sen resten av tabellerna*/
-
-
 CREATE TABLE `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
