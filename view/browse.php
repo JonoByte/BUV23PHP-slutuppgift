@@ -1,6 +1,6 @@
 <?php require '../src/config.php';
-$db = new Database();
-$pdo = $db->getPdo();
+require 'db_connect.php';
+
 $gameDAO = new GameDAO($pdo);
 $games = $gameDAO->getAllGames();
 ?>
