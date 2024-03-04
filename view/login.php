@@ -50,8 +50,6 @@
                 <!-- stilen från Jonathans knapp -->
                 <!-- <input type="text" id="search" placeholder="Search" class="form-control search-input"> -->
 
-                <!-- kolla upp ajax för att stanna kvar på sidan -->
-
             </div>
 
             <div>
