@@ -1,4 +1,20 @@
-<?php require '../src/config.php' ?>
+<?php require '../src/config.php';
+require 'db_connect.php';
+
+ // $db = new Database();
+    $newsDAO = new NewsDAO($pdo);
+
+    // Get all the articles
+
+    $newsLists = $newsDAO->findAll();
+
+    // $pdo = $db->getPdo();
+    $gameDAO = new GameDAO($pdo);
+    $games = $gameDAO->getAllGames();
+
+    $topRatedGames = $gameDAO->getTopRatedGames(5);
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -14,21 +30,7 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 
-    <?php
 
-    $db = new Database();
-    $newsDAO = new NewsDAO($db->getPdo());
-
-    // Get all the articles
-    $newsLists = $newsDAO->findAll();
-
-    $pdo = $db->getPdo();
-    $gameDAO = new GameDAO($pdo);
-    $games = $gameDAO->getAllGames();
-
-    $topRatedGames = $gameDAO->getTopRatedGames(5);
-
-    ?>
 
 
 </head>

@@ -1,8 +1,9 @@
 <?php
 require '../src/config.php';
+require 'db_connect.php';
 
-$db = new Database();
-$friendsReqDAO = new FriendsReqDAO($db->getPdo());
+// $db = new Database();
+$friendsReqDAO = new FriendsReqDAO($pdo);
 $friendRequests = $friendsReqDAO->getFriendRequests($username);
 ?>
 
@@ -84,7 +85,7 @@ $friendRequests = $friendsReqDAO->getFriendRequests($username);
                                     <p>User ID: <?php echo $friend['user_id_a']; ?></p>
                                     <a href="#" class="buttons accept-friend" data-user-id="<?php echo $friend['user_id_a']; ?>">Accept Friend</a>
                                     <?php
-                                    $friendsDAO = new FriendsDAO($db->getPdo());
+                                    $friendsDAO = new FriendsDAO($pdo);
                                     $friends = $friendsDAO->getFriendsByUserId($username);
                                     ?>
                                 </div>
