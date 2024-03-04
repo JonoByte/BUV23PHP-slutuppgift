@@ -1,7 +1,8 @@
 <?php
 require '../src/config.php';
-$db = new Database();
-$pdo = $db->getPdo();
+require 'db_connect.php';
+// $db = new Database();
+// $pdo = $db->getPdo();
 $postDAO = new PostDAO($pdo);
 $posts = $postDAO->getAllPost();
 $commentDAO = new CommentDAO($pdo);

@@ -1,9 +1,10 @@
 <?php
 require '../src/config.php';
+require 'db_connect.php';
 
 
-$db = new Database();
-$friendsDAO = new FriendsDAO($db->getPdo());
+// $db = new Database();
+$friendsDAO = new FriendsDAO($pdo);
 $friends = $friendsDAO->getFriendsByUserId($username);
 ?>
 
